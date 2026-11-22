@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="cyber">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEUROATLAS · Narges11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-theme="cyber"] {
+      --bg: #070913;
+      --bg-elevated: rgba(15, 20, 38, 0.78);
+      --bg-card: rgba(20, 26, 48, 0.65);
+      --border: rgba(139, 92, 246, 0.22);
+      --text: #f3f6ff;
+      --text-muted: #9aa5c4;
+      --accent: #8b5cf6;
+      --accent-2: #06b6d4;
+      --accent-glow: rgba(139, 92, 246, 0.26);
+      --user-bubble: linear-gradient(135deg, #7c3aed, #0891b2);
+      --bot-bubble: rgba(255, 255, 255, 0.06);
+      --btn-text: #ffffff;
+    }
+
+    [data-theme="obsidian"] {
+      --bg: #0b0b0e;
+      --bg-elevated: rgba(22, 21, 26, 0.85);
+      --bg-card: rgba(28, 26, 33, 0.72);
+      --border: rgba(245, 158, 11, 0.25);
+      --text: #faf7f0;
+      --text-muted: #b0a899;
+      --accent: #f59e0b;
+      --accent-2: #fbbf24;
+      --accent-glow: rgba(245, 158, 11, 0.22);
+      --user-bubble: linear-gradient(135deg, #d97706, #b45309);
+      --bot-bubble: rgba(255, 255, 255, 0.05);
+      --btn-text: #111111;
+    }
+
+    [data-theme="ocean"] {
+      --bg: #04101c;
+      --bg-elevated: rgba(9, 27, 46, 0.82);
+      --bg-card: rgba(12, 36, 58, 0.68);
+      --border: rgba(34, 211, 238, 0.24);
+      --text: #eefaff;
+      --text-muted: #8cb4cc;
+      --accent: #22d3ee;
+      --accent-2: #3b82f6;
+      --accent-glow: rgba(34, 211, 238, 0.22);
+      --user-bubble: linear-gradient(135deg, #0284c7, #0891b2);
+      --bot-bubble: rgba(255, 255, 255, 0.06);
+      --btn-text: #04101c;
+    }
+
+    [data-theme="light"] {
+      --bg: #f4f7fb;
+      --bg-elevated: rgba(255, 255, 255, 0.9);
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --border: rgba(99, 102, 241, 0.2);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --accent: #4f46e5;
+      --accent-2: #0ea5e9;
+      --accent-glow: rgba(79, 70, 229, 0.14);
+      --user-bubble: linear-gradient(135deg, #4f46e5, #0284c7);
+      --bot-bubble: #eef2ff;
+      --btn-text: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Plus Jakarta Sans", "Vazirmatn", system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.65;
+      background-image:
+        radial-gradient(circle at 12% 15%, var(--accent-glow), transparent 36%),
+        radial-gradient(circle at 88% 80%, rgba(6, 182, 212, 0.14), transparent 34%);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    html[dir="rtl"] body {
+      font-family: "Vazirmatn", "Plus Jakarta Sans", system-ui, sans-serif;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      font-size: 1.12rem;
+    }
+
+    .brand-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      background: var(--bg-card);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .control-select, .lang-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .control-select {
+      padding: 6px 10px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .control-select option {
+      background: #0f172a;
+      color: #f8fafc;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: var(--btn-text);
+    }
+
+    /* Hero + Direct Chat */
+    .hero-section {
+      padding: 38px 0 32px;
+      display: grid;
+      grid-template-columns: 1.02fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero-info {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #94a3b8;
+    }
+
+    .status-dot.online {
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.6vw, 2.85rem);
+      line-height: 1.18;
+      font-weight: 800;
+      margin-top: 12px;
+      background: linear-gradient(120deg, var(--text), var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 14px;
+    }
+
+    .prompts-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .prompt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 13px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.2s, background 0.2s;
+      text-align: start;
+    }
+
+    .chip:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    /* Chat Box */
+    .chat-panel {
+      display: flex;
+      flex-direction: column;
+      height: 540px;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .chat-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: var(--user-bubble);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .chat-name { font-weight: 700; font-size: 0.98rem; }
+    .chat-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+    .clear-btn {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 9px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .clear-btn:hover { color: var(--text); border-color: var(--accent); }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      max-width: 86%;
+      padding: 12px 15px;
+      border-radius: 16px;
+      font-size: 0.93rem;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: var(--user-bubble);
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+    }
+
+    html[dir="rtl"] .msg.user {
+      border-bottom-right-radius: 16px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .msg.bot {
+      align-self: flex-start;
+      background: var(--bot-bubble);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-bottom-left-radius: 4px;
+    }
+
+    html[dir="rtl"] .msg.bot {
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg-meta {
+      margin-top: 6px;
+      font-size: 0.72rem;
+      opacity: 0.7;
+    }
+
+    .msg code {
+      font-family: "JetBrains Mono", monospace;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.85em;
+    }
+
+    .chat-input-bar {
+      padding: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      resize: none;
+      min-height: 44px;
+      max-height: 120px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.94rem;
+      outline: none;
+    }
+
+    .chat-input:focus { border-color: var(--accent); }
+
+    .send-btn {
+      background: var(--accent);
+      color: var(--btn-text);
+      border: none;
+      border-radius: 13px;
+      padding: 11px 18px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .send-btn:not(:disabled):hover { transform: translateY(-1px); }
+
+    /* Sections */
+    .section { padding: 28px 0; }
+    .section-title { font-size: 1.55rem; font-weight: 800; margin-bottom: 16px; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .info-card { padding: 24px; }
+    .info-card h3 { font-size: 1.06rem; margin-bottom: 8px; color: var(--accent); }
+    .info-card p { font-size: 0.92rem; color: var(--text-muted); }
+
+    footer {
+      margin-top: 32px;
+      padding: 24px 0 34px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 920px) {
+      .hero-section { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .chat-panel { height: 480px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="9" fill="url(#na-grad)" />
+          <circle cx="10" cy="11" r="2.2" fill="#fff" />
+          <circle cx="22" cy="11" r="2.2" fill="#fff" />
+          <circle cx="16" cy="22" r="2.5" fill="#fff" />
+          <path d="M10 11L22 11M10 11L16 22M22 11L16 22" stroke="#fff" stroke-width="1.7" stroke-linecap="round" />
+          <defs>
+            <linearGradient id="na-grad" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#8b5cf6" />
+              <stop offset="1" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>NEUROATLAS</span>
+        <span class="brand-badge">Narges11</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#top" data-i18n="navHome">Home</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#architecture" data-i18n="navArch">Python Stack</a>
+      </nav>
+
+      <div class="controls">
+        <select id="themeSelect" class="control-select" aria-label="Theme selector">
+          <option value="cyber" data-i18n="themeCyber">Theme: Cyber Dark</option>
+          <option value="obsidian" data-i18n="themeObsidian">Theme: Royal Obsidian</option>
+          <option value="ocean" data-i18n="themeOcean">Theme: Deep Ocean</option>
+          <option value="light" data-i18n="themeLight">Theme: Daylight</option>
+        </select>
+
+        <div class="lang-group" role="group" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="fa">فا</button>
+          <button class="lang-btn" data-lang="tr">TR</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero-section">
+      <div class="card hero-info">
+        <div>
+          <div class="status-pill">
+            <span id="statusDot" class="status-dot"></span>
+            <span id="statusText" data-i18n="statusChecking">Checking Python API...</span>
+          </div>
+          <h1 class="hero-title" data-i18n="heroTitle">NEUROATLAS by Narges11</h1>
+          <p class="hero-desc" data-i18n="heroDesc">
+            A student-built, multilingual, multi-theme personal knowledge & AI platform powered by Python. Ask any scientific, coding, or everyday question directly here.
+          </p>
+        </div>
+
+        <div>
+          <div class="prompts-label" data-i18n="tryAsking">Try asking directly</div>
+          <div class="prompt-chips" id="promptChips"></div>
+        </div>
+      </div>
+
+      <div class="card chat-panel" aria-label="NEUROATLAS AI Assistant">
+        <div class="chat-header">
+          <div class="chat-title-wrap">
+            <div class="chat-avatar">NA</div>
+            <div>
+              <div class="chat-name" data-i18n="chatTitle">NEUROATLAS AI Assistant</div>
+              <div class="chat-sub" data-i18n="chatSub">Ask anything · Science, Python, Daily Questions</div>
+            </div>
+          </div>
+          <button id="clearChatBtn" class="clear-btn" data-i18n="clearBtn">Clear</button>
+        </div>
+
+        <div id="chatMessages" class="chat-messages"></div>
+
+        <form id="chatForm" class="chat-input-bar">
+          <textarea
+            id="chatInput"
+            class="chat-input"
+            rows="1"
+            data-i18n-placeholder="inputPlaceholder"
+            placeholder="Ask any question here..."
+          ></textarea>
+          <button id="sendBtn" type="submit" class="send-btn" data-i18n="sendBtn">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title" data-i18n="aboutHeading">About NEUROATLAS & Narges11</h2>
+      <div class="grid-3">
+        <article class="card info-card">
+          <h3 data-i18n="card1Title">Student Builder</h3>
+          <p data-i18n="card1Desc">Created by Narges11 as a learning journey in Python, web engineering, and AI systems for the GenHacks hackathon.</p>
+        </article>
+        <article class="card info-card">
+          <h3 data-i18n="card2Title">Open Knowledge Assistant</h3>
+          <p data-i18n="card2Desc">Visitors can ask any general, academic, programming, or everyday question immediately without leaving the page.</p>
+        </article>
+        <article class="card info-card">
+          <h3 data-i18n="card3Title">Customizable Experience</h3>
+          <p data-i18n="card3Desc">Includes visitor-selectable themes and instant switching between English, Persian (RTL), and Turkish.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="architecture" class="section">
+      <h2 class="section-title" data-i18n="archHeading">Core Architecture (Python + Web)</h2>
+      <div class="grid-3">
+        <article class="card info-card">
+          <h3 data-i18n="arch1Title">Python Backend</h3>
+          <p data-i18n="arch1Desc">Runs locally via NEUROATLAS.py & server.py, and scales globally as Python serverless endpoints (/api/chat, /api/status).</p>
+        </article>
+        <article class="card info-card">
+          <h3 data-i18n="arch2Title">Dual-Provider AI</h3>
+          <p data-i18n="arch2Desc">Securely keeps API keys on the server side with automatic fallback between Gemini and Groq models.</p>
+        </article>
+        <article class="card info-card">
+          <h3 data-i18n="arch3Title">Zero-Bloat Frontend</h3>
+          <p data-i18n="arch3Desc">Fast vanilla HTML/CSS/JS interface with persistent theme and language preferences.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" data-i18n="footerText">NEUROATLAS · Built with Python by Narges11 for GenHacks 2026</div>
+  </footer>
+
+  <script>
+    const I18N = {
+      en: {
+        dir: "ltr",
+        navHome: "Home",
+        navAbout: "About",
+        navArch: "Python Stack",
+        themeCyber: "Theme: Cyber Dark",
+        themeObsidian: "Theme: Royal Obsidian",
+        themeOcean: "Theme: Deep Ocean",
+        themeLight: "Theme: Daylight",
+        statusChecking: "Checking Python API...",
+        statusReady: "Python AI Online",
+        statusNoKey: "Server Online (Add API Key)",
+        statusOffline: "API Offline",
+        heroTitle: "NEUROATLAS by Narges11",
+        heroDesc: "A student-built, multilingual, multi-theme personal knowledge & AI platform powered by Python. Ask any scientific, coding, or everyday question directly here.",
+        tryAsking: "Try asking directly",
+        chatTitle: "NEUROATLAS AI Assistant",
+        chatSub: "Ask anything · Science, Python, Daily Questions",
+        clearBtn: "Clear",
+        inputPlaceholder: "Ask any question here...",
+        sendBtn: "Send",
+        welcomeMsg: "Hi! I am NEUROATLAS, Narges11's AI assistant. Ask me anything—from science and Python coding to everyday questions!",
+        thinking: "Thinking...",
+        aboutHeading: "About NEUROATLAS & Narges11",
+        card1Title: "Student Builder",
+        card1Desc: "Created by Narges11 as a learning journey in Python, web engineering, and AI systems for the GenHacks hackathon.",
+        card2Title: "Open Knowledge Assistant",
+        card2Desc: "Visitors can ask any general, academic, programming, or everyday question immediately without leaving the page.",
+        card3Title: "Customizable Experience",
+        card3Desc: "Includes visitor-selectable themes and instant switching between English, Persian (RTL), and Turkish.",
+        archHeading: "Core Architecture (Python + Web)",
+        arch1Title: "Python Backend",
+        arch1Desc: "Runs locally via NEUROATLAS.py & server.py, and scales globally as Python serverless endpoints (/api/chat, /api/status).",
+        arch2Title: "Dual-Provider AI",
+        arch2Desc: "Securely keeps API keys on the server side with automatic fallback between Gemini and Groq models.",
+        arch3Title: "Zero-Bloat Frontend",
+        arch3Desc: "Fast vanilla HTML/CSS/JS interface with persistent theme and language preferences.",
+        footerText: "NEUROATLAS · Built with Python by Narges11 for GenHacks 2026",
+        prompts: [
+          "Explain how black holes form simply",
+          "Write a beginner Python loop example",
+          "What is NEUROATLAS?"
+        ]
+      },
+      fa: {
+        dir: "rtl",
+        navHome: "خانه",
+        navAbout: "درباره",
+        navArch: "ساختار پایتون",
+        themeCyber: "تم: سایبری تیره",
+        themeObsidian: "تم: مشکی طلایی",
+        themeOcean: "تم: اقیانوس عمیق",
+        themeLight: "تم: روشن",
+        statusChecking: "در حال بررسی سرور پایتون...",
+        statusReady: "هوش مصنوعی پایتون آنلاین است",
+        statusNoKey: "سرور آنلاین (کلید API تنظیم نشده)",
+        statusOffline: "عدم اتصال به API",
+        heroTitle: "NEUROATLAS · ساخته نرگس۱۱",
+        heroDesc: "یک وب‌سایت و پلتفرم هوش مصنوعی چندزبانه با قدرت پایتون، طراحی‌شده توسط نرگس۱۱. هر سوال علمی، برنامه‌نویسی یا عمومی دارید همین‌جا بپرسید.",
+        tryAsking: "نمونه سوال‌های سریع",
+        chatTitle: "دستیار هوشمند NEUROATLAS",
+        chatSub: "پاسخ به همه سوالات علمی، پایتون و روزمره",
+        clearBtn: "پاک کردن",
+        inputPlaceholder: "سوال خود را همین‌جا بنویسید...",
+        sendBtn: "ارسال",
+        welcomeMsg: "سلام! من NEUROATLAS دستیار هوشمند نرگس۱۱ هستم. هر سوالی در مورد علم، کدنویسی پایتون یا موضوعات روزمره دارید مستقیم از من بپرسید!",
+        thinking: "در حال فکر کردن...",
+        aboutHeading: "درباره NEUROATLAS و نرگس۱۱",
+        card1Title: "مسیر یادگیری دانش‌آموزی",
+        card1Desc: "ساخته‌شده توسط نرگس۱۱ به عنوان بخشی از یادگیری پایتون، طراحی وب و هوش مصنوعی برای مسابقه GenHacks.",
+        card2Title: "دستیار دانش عمومی",
+        card2Desc: "بازدیدکنندگان بدون نیاز به ورود به صفحه دیگر می‌توانند مستقیم همین‌جا هر سوالی بپرسند و پاسخ بگیرند.",
+        card3Title: "تجربه کاربری شخصی‌سازی‌شده",
+        card3Desc: "امکان انتخاب تم دلخواه توسط کاربر و تغییر آنی بین سه زبان انگلیسی، فارسی و ترکی.",
+        archHeading: "ساختار پایه (پایتون + وب)",
+        arch1Title: "بک‌اند پایتون",
+        arch1Desc: "اجرای محلی با NEUROATLAS.py و server.py و اجرای آنلاین ابری روی مسیرهای /api/chat و /api/status.",
+        arch2Title: "هوش مصنوعی دوگانه",
+        arch2Desc: "نگهداری امن کلیدها در سرور با پشتیبانی خودکار از Gemini و Groq.",
+        arch3Title: "ظاهر سریع و سبک",
+        arch3Desc: "ساخته‌شده با HTML/CSS/JS تمیز و ذخیره خودکار تم و زبان انتخابی کاربر.",
+        footerText: "NEUROATLAS · ساخته‌شده با پایتون توسط نرگس۱۱ برای GenHacks 2026",
+        prompts: [
+          "سیاه‌چاله‌ها چطور تشکیل می‌شوند؟",
+          "یک مثال ساده حلقه for در پایتون بنویس",
+          "پروژه NEUROATLAS چیست؟"
+        ]
+      },
+      tr: {
+        dir: "ltr",
+        navHome: "Ana Sayfa",
+        navAbout: "Hakkında",
+        navArch: "Python Yapısı",
+        themeCyber: "Tema: Siber Koyu",
+        themeObsidian: "Tema: Kraliyet Altın",
+        themeOcean: "Tema: Derin Okyanus",
+        themeLight: "Tema: Aydınlık",
+        statusChecking: "Python API kontrol ediliyor...",
+        statusReady: "Python Yapay Zekâ Çevrimiçi",
+        statusNoKey: "Sunucu Açık (API Anahtarı Ekleyin)",
+        statusOffline: "API Çevrimdışı",
+        heroTitle: "NEUROATLAS · Narges11",
+        heroDesc: "Narges11 tarafından Python ile geliştirilen çok dilli ve çok temalı kişisel bilgi ve yapay zekâ platformu. Bilimsel, kodlama veya günlük sorularınızı doğrudan buradan sorabilirsiniz.",
+        tryAsking: "Hızlı örnek sorular",
+        chatTitle: "NEUROATLAS Yapay Zekâ Asistanı",
+        chatSub: "Bilim, Python ve günlük her konuda soru sorun",
+        clearBtn: "Temizle",
+        inputPlaceholder: "Sorunuzu buraya yazın...",
+        sendBtn: "Gönder",
+        welcomeMsg: "Merhaba! Ben Narges11'in yapay zekâ asistanı NEUROATLAS. Bilimden Python kodlamaya kadar her konuda soru sorabilirsiniz!",
+        thinking: "Düşünüyor...",
+        aboutHeading: "NEUROATLAS ve Narges11 Hakkında",
+        card1Title: "Öğrenci Geliştirici",
+        card1Desc: "Narges11 tarafından GenHacks yarışması için Python, web geliştirme ve yapay zekâ öğrenme yolculuğu kapsamında oluşturuldu.",
+        card2Title: "Genel Bilgi Asistanı",
+        card2Desc: "Ziyaretçiler başka bir bölüme girmeden doğrudan bu sayfadan genel veya teknik sorular sorabilir.",
+        card3Title: "Seçilebilir Tema ve Dil",
+        card3Desc: "Ziyaretçilere tema seçme özgürlüğü ve İngilizce, Farsça, Türkçe arasında anında geçiş sunar.",
+        archHeading: "Temel Mimari (Python + Web)",
+        arch1Title: "Python Arka Uç",
+        arch1Desc: "Yerelde NEUROATLAS.py ve server.py ile, internette ise /api/chat ve /api/status uç noktalarıyla çalışır.",
+        arch2Title: "Çift Sağlayıcılı AI",
+        arch2Desc: "API anahtarlarını sunucuda güvenle saklar ve Gemini ile Groq arasında otomatik yedekleme yapar.",
+        arch3Title: "Hızlı Arayüz",
+        arch3Desc: "Tema ve dil tercihlerini tarayıcıda saklayan hafif ve modern HTML/CSS/JS arayüzü.",
+        footerText: "NEUROATLAS · GenHacks 2026 için Narges11 tarafından Python ile geliştirildi",
+        prompts: [
+          "Kara delikler nasıl oluşur?",
+          "Python'da basit bir döngü örneği yaz",
+          "NEUROATLAS nedir?"
+        ]
+      }
+    };
+
+    let currentLang = localStorage.getItem("na_lang") || "en";
+    if (!I18N[currentLang]) currentLang = "en";
+    let currentTheme = localStorage.getItem("na_theme") || "cyber";
+    let chatHistory = [];
+    let lastStatusState = "checking";
+
+    const themeSelect = document.getElementById("themeSelect");
+    const chatMessages = document.getElementById("chatMessages");
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const promptChips = document.getElementById("promptChips");
+
+    function applyTheme(theme) {
+      currentTheme = theme;
+      document.documentElement.setAttribute("data-theme", theme);
+      themeSelect.value = theme;
+      localStorage.setItem("na_theme", theme);
+    }
+
+    function updateStatusText() {
+      const dot = document.getElementById("statusDot");
+      const text = document.getElementById("statusText");
+      const dict = I18N[currentLang];
+      dot.classList.remove("online");
+      if (lastStatusState === "ready") {
+        dot.classList.add("online");
+        text.textContent = dict.statusReady;
+      } else if (lastStatusState === "nokey") {
+        dot.classList.add("online");
+        text.textContent = dict.statusNoKey;
+      } else if (lastStatusState === "offline") {
+        text.textContent = dict.statusOffline;
+      } else {
+        text.textContent = dict.statusChecking;
+      }
+    }
+
+    function applyLanguage(lang) {
+      currentLang = I18N[lang] ? lang : "en";
+      localStorage.setItem("na_lang", currentLang);
+      const dict = I18N[currentLang];
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = dict.dir;
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) el.setAttribute("placeholder", dict[key]);
+      });
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === currentLang);
+      });
+
+      promptChips.innerHTML = "";
+      dict.prompts.forEach((p) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip";
+        b.textContent = p;
+        b.addEventListener("click", () => {
+          chatInput.value = p;
+          chatForm.dispatchEvent(new Event("submit"));
+        });
+        promptChips.appendChild(b);
+      });
+
+      updateStatusText();
+      if (chatHistory.length === 0) {
+        renderMessages();
+      }
+    }
+
+    function formatText(str) {
+      const escaped = str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      return escaped
+        .replace(/`([^`]+)`/g, "<code>$1</code>")
+        .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    }
+
+    function appendMessage(role, content, meta = "") {
+      const box = document.createElement("div");
+      box.className = `msg ${role === "user" ? "user" : "bot"}`;
+      box.innerHTML = formatText(content);
+      if (meta) {
+        const m = document.createElement("div");
+        m.className = "msg-meta";
+        m.textContent = meta;
+        box.appendChild(m);
+      }
+      chatMessages.appendChild(box);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return box;
+    }
+
+    function renderMessages() {
+      chatMessages.innerHTML = "";
+      if (chatHistory.length === 0) {
+        appendMessage("bot", I18N[currentLang].welcomeMsg);
+        return;
+      }
+      chatHistory.forEach((m) => appendMessage(m.role, m.content, m.meta || ""));
+    }
+
+    async function checkApiStatus() {
+      try {
+        const res = await fetch("/api/status");
+        if (!res.ok) throw new Error("Status error");
+        const data = await res.json();
+        lastStatusState = data.ai_ready ? "ready" : "nokey";
+      } catch {
+        lastStatusState = "offline";
+      }
+      updateStatusText();
+    }
+
+    chatForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text || sendBtn.disabled) return;
+
+      if (chatHistory.length === 0) {
+        chatMessages.innerHTML = "";
+      }
+
+      chatHistory.push({ role: "user", content: text });
+      appendMessage("user", text);
+      chatInput.value = "";
+      sendBtn.disabled = true;
+
+      const typingEl = appendMessage("bot", I18N[currentLang].thinking);
+
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: text,
+            history: chatHistory.slice(-10, -1),
+            lang: currentLang,
+          }),
+        });
+        const data = await res.json();
+        typingEl.remove();
+
+        if (!res.ok) {
+          const errMsg = data.error || "Request failed.";
+          appendMessage("bot", errMsg);
+        } else {
+          const reply = data.reply || "";
+          const meta = data.provider ? `NEUROATLAS · ${data.provider}` : "";
+          chatHistory.push({ role: "assistant", content: reply, meta });
+          appendMessage("bot", reply, meta);
+        }
+      } catch (err) {
+        typingEl.remove();
+        appendMessage("bot", "Connection error: " + err.message);
+      } finally {
+        sendBtn.disabled = false;
+        chatInput.focus();
+      }
+    });
+
+    chatInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        chatForm.dispatchEvent(new Event("submit"));
+      }
+    });
+
+    document.getElementById("clearChatBtn").addEventListener("click", () => {
+      chatHistory = [];
+      renderMessages();
+    });
+
+    themeSelect.addEventListener("change", (e) => applyTheme(e.target.value));
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+    });
+
+    applyTheme(currentTheme);
+    applyLanguage(currentLang);
+    checkApiStatus();
+  </script>
+</body>
+</html>
