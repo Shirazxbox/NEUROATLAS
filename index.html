@@ -1,3 +1,5 @@
+
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="cyber">
 <head>
@@ -7,158 +9,546 @@
   <title>NEUROATLAS · Narges Bayat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root, [data-theme="cyber"] {
-      --bg:#070913; --bg-elevated:rgba(15,20,38,.86); --bg-card:rgba(20,26,48,.74);
-      --bg-input:rgba(255,255,255,.045); --border:rgba(139,92,246,.24); --text:#f3f6ff;
-      --text-muted:#9aa5c4; --accent:#8b5cf6; --accent-2:#06b6d4; --accent-glow:rgba(139,92,246,.24);
-      --user-bubble:linear-gradient(135deg,#7c3aed,#0891b2); --bot-bubble:rgba(255,255,255,.06);
-      --btn-text:#ffffff; --code-bg:rgba(0,0,0,.44);
+      --bg:#060812;
+      --bg-elevated:rgba(10,14,28,.86);
+      --bg-card:rgba(15,20,38,.78);
+      --bg-card-solid:#10162b;
+      --bg-input:rgba(255,255,255,.045);
+      --border:rgba(139,92,246,.24);
+      --border-strong:rgba(6,182,212,.38);
+      --on-bg:#f3f6ff;
+      --on-bg-muted:#9aa5c4;
+      --text:#f3f6ff;
+      --text-muted:#9aa5c4;
+      --accent:#8b5cf6;
+      --accent-2:#06b6d4;
+      --accent-glow:rgba(139,92,246,.22);
+      --user-bubble:linear-gradient(135deg,#7c3aed,#0891b2);
+      --bot-bubble:rgba(255,255,255,.055);
+      --btn-text:#ffffff;
+      --code-bg:#04060d;
+      --opt-bg:#0f172a;
+      --opt-text:#f8fafc;
+      --card-shadow:0 18px 46px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.07);
+      --radius:20px;
+      --heading-font:inherit;
     }
+
     [data-theme="obsidian"] {
-      --bg:#0b0b0e; --bg-elevated:rgba(22,21,26,.9); --bg-card:rgba(28,26,33,.8);
-      --bg-input:rgba(255,255,255,.045); --border:rgba(245,158,11,.26); --text:#faf7f0;
-      --text-muted:#b0a899; --accent:#f59e0b; --accent-2:#fbbf24; --accent-glow:rgba(245,158,11,.2);
-      --user-bubble:linear-gradient(135deg,#d97706,#b45309); --bot-bubble:rgba(255,255,255,.05);
-      --btn-text:#111111; --code-bg:rgba(0,0,0,.45);
+      --bg:#090a0d;
+      --bg-elevated:rgba(14,15,19,.92);
+      --bg-card:rgba(20,21,26,.9);
+      --bg-card-solid:#16171d;
+      --bg-input:rgba(255,255,255,.04);
+      --border:rgba(245,158,11,.24);
+      --border-strong:rgba(45,212,191,.36);
+      --on-bg:#faf7f0;
+      --on-bg-muted:#a8a295;
+      --text:#faf7f0;
+      --text-muted:#a8a295;
+      --accent:#f59e0b;
+      --accent-2:#2dd4bf;
+      --accent-glow:rgba(245,158,11,.16);
+      --user-bubble:linear-gradient(135deg,#d97706,#b45309);
+      --bot-bubble:rgba(255,255,255,.045);
+      --btn-text:#111111;
+      --code-bg:#050608;
+      --opt-bg:#16171d;
+      --opt-text:#faf7f0;
+      --card-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(245,158,11,.12);
+      --radius:14px;
+      --heading-font:inherit;
     }
+
     [data-theme="ocean"] {
-      --bg:#04101c; --bg-elevated:rgba(9,27,46,.88); --bg-card:rgba(12,36,58,.76);
-      --bg-input:rgba(255,255,255,.045); --border:rgba(34,211,238,.24); --text:#eefaff;
-      --text-muted:#8cb4cc; --accent:#22d3ee; --accent-2:#3b82f6; --accent-glow:rgba(34,211,238,.2);
-      --user-bubble:linear-gradient(135deg,#0284c7,#0891b2); --bot-bubble:rgba(255,255,255,.06);
-      --btn-text:#04101c; --code-bg:rgba(0,0,0,.38);
+      --bg:#084c8d;
+      --bg-elevated:rgba(5,44,86,.86);
+      --bg-card:rgba(255,255,255,.95);
+      --bg-card-solid:#ffffff;
+      --bg-input:#eff6ff;
+      --border:rgba(14,116,204,.22);
+      --border-strong:rgba(2,132,199,.45);
+      --on-bg:#f0f9ff;
+      --on-bg-muted:#bae6fd;
+      --text:#0b2545;
+      --text-muted:#476380;
+      --accent:#0284c7;
+      --accent-2:#06b6d4;
+      --accent-glow:rgba(56,189,248,.24);
+      --user-bubble:linear-gradient(135deg,#0369a1,#0891b2);
+      --bot-bubble:#eef6ff;
+      --btn-text:#ffffff;
+      --code-bg:#0b2545;
+      --opt-bg:#ffffff;
+      --opt-text:#0b2545;
+      --card-shadow:0 20px 44px rgba(3,37,76,.22), inset 0 1px 0 #ffffff;
+      --radius:22px;
+      --heading-font:inherit;
     }
+
     [data-theme="light"] {
-      --bg:#f4f7fb; --bg-elevated:rgba(255,255,255,.92); --bg-card:#ffffff;
-      --bg-input:#f8fafc; --border:rgba(99,102,241,.22); --text:#0f172a;
-      --text-muted:#475569; --accent:#4f46e5; --accent-2:#0ea5e9; --accent-glow:rgba(79,70,229,.12);
-      --user-bubble:linear-gradient(135deg,#4f46e5,#0284c7); --bot-bubble:#eef2ff;
-      --btn-text:#ffffff; --code-bg:#1e293b;
+      --bg:#f3f6fb;
+      --bg-elevated:rgba(255,255,255,.92);
+      --bg-card:#ffffff;
+      --bg-card-solid:#ffffff;
+      --bg-input:#f8fafc;
+      --border:#dde4f0;
+      --border-strong:rgba(79,70,229,.35);
+      --on-bg:#0f172a;
+      --on-bg-muted:#475569;
+      --text:#0f172a;
+      --text-muted:#475569;
+      --accent:#4338ca;
+      --accent-2:#0284c7;
+      --accent-glow:rgba(67,56,202,.1);
+      --user-bubble:linear-gradient(135deg,#4338ca,#0284c7);
+      --bot-bubble:#eef2ff;
+      --btn-text:#ffffff;
+      --code-bg:#0f172a;
+      --opt-bg:#ffffff;
+      --opt-text:#0f172a;
+      --card-shadow:0 12px 30px rgba(15,23,42,.06);
+      --radius:16px;
+      --heading-font:inherit;
     }
+
     [data-theme="paper"] {
-      --bg:#f3f0e8; --bg-elevated:rgba(243,240,232,.94); --bg-card:#fffdf8;
-      --bg-input:#f7f4ec; --border:#d6d1c5; --text:#172522; --text-muted:#5d6962;
-      --accent:#a94f35; --accent-2:#526b5d; --accent-glow:rgba(169,79,53,.1);
-      --user-bubble:linear-gradient(135deg,#172522,#526b5d); --bot-bubble:#ebe7dc;
-      --btn-text:#ffffff; --code-bg:#172522;
+      --bg:#f1ece0;
+      --bg-elevated:rgba(241,236,224,.94);
+      --bg-card:#fcfaf3;
+      --bg-card-solid:#fcfaf3;
+      --bg-input:#f4efe2;
+      --border:#d4cdbd;
+      --border-strong:#a44a32;
+      --on-bg:#1a2622;
+      --on-bg-muted:#5c665f;
+      --text:#1a2622;
+      --text-muted:#5c665f;
+      --accent:#a44a32;
+      --accent-2:#4a6658;
+      --accent-glow:rgba(164,74,50,.1);
+      --user-bubble:linear-gradient(135deg,#1a2622,#4a6658);
+      --bot-bubble:#ece6d8;
+      --btn-text:#ffffff;
+      --code-bg:#1a2622;
+      --opt-bg:#fcfaf3;
+      --opt-text:#1a2622;
+      --card-shadow:0 8px 24px rgba(40,32,20,.06);
+      --radius:12px;
+      --heading-font:"Newsreader","Vazirmatn",Georgia,serif;
     }
+
     *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:"Plus Jakarta Sans","Vazirmatn",system-ui,sans-serif;background-color:var(--bg);color:var(--text);min-height:100vh;line-height:1.68;background-image:radial-gradient(circle at 12% 14%,var(--accent-glow),transparent 36%),radial-gradient(circle at 88% 82%,rgba(6,182,212,.12),transparent 34%);transition:background-color .25s,color .25s}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{
+      font-family:"Plus Jakarta Sans","Vazirmatn",system-ui,-apple-system,sans-serif;
+      background-color:var(--bg);
+      color:var(--on-bg);
+      min-height:100vh;
+      line-height:1.68;
+      overflow-x:clip;
+      position:relative;
+      transition:background-color .28s ease,color .28s ease;
+    }
     html[dir="rtl"] body{font-family:"Vazirmatn","Plus Jakarta Sans",system-ui,sans-serif}
-    .container{width:min(1220px,93%);margin:0 auto}
-    .navbar{position:sticky;top:0;z-index:60;backdrop-filter:blur(16px);background:var(--bg-elevated);border-bottom:1px solid var(--border)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:800;letter-spacing:.04em;font-size:1.08rem;cursor:pointer}
-    .brand-badge{font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--accent);background:var(--bg-card)}
-    .nav-tabs{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-    .nav-tab{border:1px solid transparent;background:transparent;color:var(--text-muted);padding:6px 12px;border-radius:9px;font-size:.86rem;font-weight:600;font-family:inherit;cursor:pointer;transition:.2s}
-    .nav-tab:hover{color:var(--text);border-color:var(--border)}
-    .nav-tab.active{background:var(--accent-glow);color:var(--accent);border-color:var(--border)}
-    .controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .control-select,.lang-group{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:4px;display:flex;align-items:center;gap:3px}
-    .control-select{padding:6px 10px;color:var(--text);font-family:inherit;font-size:.83rem;font-weight:600;cursor:pointer;outline:none}
-    .control-select option{background:#111827;color:#f8fafc}
-    .lang-btn{border:none;background:transparent;color:var(--text-muted);padding:5px 9px;border-radius:7px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit}
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      transition:opacity .3s ease;
+    }
+    [data-theme="cyber"] body::before{
+      background:
+        radial-gradient(ellipse 75% 45% at 15% 0%,rgba(139,92,246,.22),transparent 65%),
+        radial-gradient(ellipse 65% 40% at 90% 10%,rgba(6,182,212,.16),transparent 60%),
+        radial-gradient(ellipse 60% 45% at 50% 100%,rgba(124,58,237,.14),transparent 65%);
+    }
+    [data-theme="obsidian"] body::before{
+      background-image:
+        linear-gradient(rgba(245,158,11,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(245,158,11,.05) 1px,transparent 1px),
+        radial-gradient(circle at 80% 12%,rgba(45,212,191,.1),transparent 42%);
+      background-size:40px 40px,40px 40px,100% 100%;
+    }
+    [data-theme="ocean"] body::before{
+      background:
+        radial-gradient(circle at 12% 10%,rgba(56,189,248,.48),transparent 42%),
+        radial-gradient(circle at 88% 22%,rgba(14,165,233,.42),transparent 45%),
+        linear-gradient(160deg,#053264 0%,#0959a3 48%,#0a72b8 100%);
+    }
+    [data-theme="light"] body::before{
+      background:
+        radial-gradient(circle at 10% 8%,rgba(67,56,202,.06),transparent 38%),
+        radial-gradient(circle at 90% 85%,rgba(2,132,199,.06),transparent 36%);
+    }
+    [data-theme="paper"] body::before{
+      background-image:radial-gradient(rgba(26,38,34,.055) 1px,transparent 0);
+      background-size:22px 22px;
+    }
+
+    .container{width:min(1240px,93%);margin:0 auto}
+
+    .navbar{
+      position:sticky;top:0;z-index:70;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      background:var(--bg-elevated);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:10px 0;flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      color:var(--on-bg);font-weight:800;letter-spacing:.03em;font-size:1.04rem;
+      cursor:pointer;flex-shrink:0;
+    }
+    .brand-badge{
+      font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;
+      border:1px solid var(--border);color:var(--accent);background:var(--bg-card);
+    }
+    [data-theme="ocean"] .brand-badge{color:#0369a1;background:rgba(255,255,255,.94)}
+
+    .nav-tabs{
+      display:flex;gap:4px;align-items:center;
+      overflow-x:auto;scrollbar-width:none;max-width:100%;
+    }
+    .nav-tabs::-webkit-scrollbar{display:none}
+    .nav-tab{
+      border:1px solid transparent;background:transparent;color:var(--on-bg-muted);
+      padding:7px 12px;border-radius:10px;font-size:.84rem;font-weight:600;
+      font-family:inherit;cursor:pointer;transition:.18s;white-space:nowrap;flex-shrink:0;
+    }
+    .nav-tab:hover{color:var(--on-bg);border-color:var(--border)}
+    .nav-tab.active{background:var(--bg-card);color:var(--accent);border-color:var(--border-strong);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+
+    .controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex-shrink:0}
+    .control-select,.lang-group{
+      background:var(--bg-card);color:var(--text);
+      border:1px solid var(--border);border-radius:11px;
+      display:flex;align-items:center;gap:3px;
+    }
+    .lang-group{padding:3px}
+    .control-select{
+      padding:7px 11px;font-family:inherit;font-size:.82rem;font-weight:700;
+      cursor:pointer;outline:none;max-width:185px;
+    }
+    .control-select option{background:var(--opt-bg);color:var(--opt-text)}
+    .lang-btn{
+      border:none;background:transparent;color:var(--text-muted);
+      padding:5px 9px;border-radius:8px;font-size:.79rem;font-weight:700;
+      cursor:pointer;font-family:inherit;transition:.15s;
+    }
     .lang-btn.active{background:var(--accent);color:var(--btn-text)}
-    .search-wrap{position:relative;margin:18px 0 6px;z-index:40}
-    .search-bar{display:flex;align-items:center;gap:10px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:8px 14px}
-    .search-bar input{flex:1;border:none;background:transparent;color:var(--text);font-family:inherit;font-size:.92rem;outline:none}
-    .search-bar kbd{font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:2px 7px;border:1px solid var(--border);border-radius:6px;color:var(--text-muted)}
-    .search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;max-height:420px;overflow-y:auto;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.35);backdrop-filter:blur(18px);padding:8px}
+
+    .search-wrap{position:relative;margin:18px 0 8px;z-index:50}
+    .search-bar{
+      display:flex;align-items:center;gap:10px;
+      background:var(--bg-card);color:var(--text);
+      border:1px solid var(--border);border-radius:15px;padding:9px 15px;
+      box-shadow:var(--card-shadow);
+    }
+    .search-bar input{
+      flex:1;min-width:0;border:none;background:transparent;
+      color:var(--text);font-family:inherit;font-size:.92rem;outline:none;
+    }
+    .search-bar input::placeholder{color:var(--text-muted)}
+    .search-bar kbd{
+      font-family:"JetBrains Mono",monospace;font-size:.72rem;
+      padding:2px 7px;border:1px solid var(--border);border-radius:6px;
+      color:var(--text-muted);flex-shrink:0;
+    }
+    .search-results{
+      position:absolute;top:calc(100% + 6px);left:0;right:0;
+      max-height:420px;overflow-y:auto;
+      background:var(--bg-card-solid);color:var(--text);
+      border:1px solid var(--border-strong);border-radius:15px;
+      box-shadow:0 24px 54px rgba(0,0,0,.35);padding:8px;
+    }
     .search-results[hidden]{display:none}
-    .search-item{display:block;width:100%;text-align:start;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 12px;color:var(--text);font-family:inherit;cursor:pointer;border-radius:8px}
+    .search-item{
+      display:block;width:100%;text-align:start;background:transparent;border:none;
+      border-bottom:1px solid var(--border);padding:10px 12px;color:var(--text);
+      font-family:inherit;cursor:pointer;border-radius:9px;
+    }
+    .search-item:last-child{border-bottom:none}
     .search-item:hover{background:var(--accent-glow)}
-    .search-item small{display:block;color:var(--accent);font-size:.74rem;font-weight:700}
-    .search-item span{display:block;color:var(--text-muted);font-size:.82rem}
-    .view{display:none;padding:22px 0 42px}
-    .view.active{display:block;animation:fadeIn .22s ease}
-    @keyframes fadeIn{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
-    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(14px);box-shadow:0 14px 40px rgba(0,0,0,.16)}
-    .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:stretch}
-    .hero-info{padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
-    .status-pill{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:5px 13px;border-radius:999px;border:1px solid var(--border);font-size:.8rem;font-weight:600;color:var(--text-muted)}
-    .status-dot{width:9px;height:9px;border-radius:50%;background:#94a3b8}
+    .search-item small{display:block;color:var(--accent);font-size:.73rem;font-weight:700}
+    .search-item span{display:block;color:var(--text-muted);font-size:.82rem;overflow-wrap:anywhere}
+
+    .view{display:none;padding:18px 0 44px}
+    .view.active{display:block;animation:fadeIn .24s ease}
+    @keyframes fadeIn{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+    .card{
+      background:var(--bg-card);
+      color:var(--text);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:var(--card-shadow);
+      min-width:0;
+    }
+    [data-theme="obsidian"] .card{position:relative}
+    [data-theme="obsidian"] .card::after{
+      content:"";position:absolute;top:10px;inset-inline-end:10px;
+      width:8px;height:8px;border-top:1.5px solid var(--accent);border-inline-end:1.5px solid var(--accent);
+      opacity:.55;pointer-events:none;border-radius:1px;
+    }
+
+    .hero-grid{display:grid;grid-template-columns:1fr 1.12fr;gap:22px;align-items:stretch}
+    .hero-info{padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
+    .hero-top-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .status-pill{
+      display:inline-flex;align-items:center;gap:8px;width:fit-content;
+      padding:5px 12px;border-radius:999px;border:1px solid var(--border);
+      background:var(--bg-input);font-size:.78rem;font-weight:600;color:var(--text-muted);
+    }
+    .status-dot{width:8px;height:8px;border-radius:50%;background:#94a3b8;flex-shrink:0}
     .status-dot.online{background:#22c55e;box-shadow:0 0 10px #22c55e}
-    .hero-title{font-size:clamp(1.85rem,3.4vw,2.7rem);line-height:1.16;font-weight:800;margin-top:12px;background:linear-gradient(120deg,var(--text),var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero-desc{color:var(--text-muted);font-size:.97rem;margin-top:12px}
-    .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
-    .stat-box{padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg-input)}
-    .stat-box strong{display:block;font-size:1.2rem;color:var(--accent)}
-    .stat-box span{font-size:.74rem;color:var(--text-muted)}
-    .prompts-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px}
+    .telemetry-tag{
+      font-family:"JetBrains Mono",monospace;font-size:.71rem;
+      color:var(--accent);letter-spacing:.06em;text-transform:uppercase;
+    }
+
+    .connectome-box{
+      position:relative;height:118px;border-radius:14px;overflow:hidden;
+      border:1px solid var(--border);background:var(--bg-input);
+    }
+    #neuralCanvas{display:block;width:100%;height:100%}
+    .connectome-badge{
+      position:absolute;bottom:8px;inset-inline-start:10px;
+      font-family:"JetBrains Mono",monospace;font-size:.68rem;
+      padding:2px 8px;border-radius:999px;
+      background:var(--bg-card-solid);color:var(--text-muted);
+      border:1px solid var(--border);pointer-events:none;
+    }
+
+    .hero-title{
+      font-family:var(--heading-font);
+      font-size:clamp(1.68rem,3vw,2.45rem);line-height:1.18;font-weight:800;
+      margin-top:4px;
+      background:linear-gradient(125deg,var(--text) 15%,var(--accent) 65%,var(--accent-2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .hero-desc{color:var(--text-muted);font-size:.94rem;margin-top:8px}
+
+    .stat-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:6px}
+    .stat-box{
+      padding:10px 11px;border:1px solid var(--border);border-radius:12px;
+      background:var(--bg-input);min-width:0;
+    }
+    .stat-box strong{display:block;font-size:1.15rem;color:var(--accent);font-weight:800}
+    .stat-box span{display:block;font-size:.73rem;color:var(--text-muted);line-height:1.35}
+
+    .prompts-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin-bottom:8px}
     .prompt-chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{background:var(--bg-input);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:10px;font-size:.82rem;font-family:inherit;cursor:pointer;transition:.18s;text-align:start}
+    .chip{
+      background:var(--bg-input);border:1px solid var(--border);color:var(--text);
+      padding:7px 12px;border-radius:10px;font-size:.82rem;font-family:inherit;
+      cursor:pointer;transition:.18s;text-align:start;max-width:100%;
+    }
     .chip:hover{border-color:var(--accent);background:var(--accent-glow)}
-    .chat-panel{display:flex;flex-direction:column;height:550px;overflow:hidden}
-    .chat-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .chat-title-wrap{display:flex;align-items:center;gap:10px}
-    .chat-avatar{width:36px;height:36px;border-radius:10px;background:var(--user-bubble);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem}
-    .chat-name{font-weight:700;font-size:.96rem}
-    .chat-sub{font-size:.76rem;color:var(--text-muted)}
-    .btn-ghost{border:1px solid var(--border);background:transparent;color:var(--text-muted);padding:6px 12px;border-radius:9px;font-size:.8rem;font-family:inherit;cursor:pointer}
-    .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
-    .btn-primary{background:var(--accent);color:var(--btn-text);border:none;border-radius:11px;padding:10px 18px;font-weight:700;font-size:.88rem;font-family:inherit;cursor:pointer;transition:.15s;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
-    .btn-primary:hover{transform:translateY(-1px)}
-    .btn-primary:disabled{opacity:.5;cursor:not-allowed}
+
+    .chat-panel{display:flex;flex-direction:column;height:590px;overflow:hidden}
+    .chat-header{
+      padding:14px 18px;border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+    }
+    .chat-title-wrap{display:flex;align-items:center;gap:10px;min-width:0}
+    .chat-avatar{
+      width:36px;height:36px;border-radius:11px;background:var(--user-bubble);
+      display:grid;place-items:center;color:#fff;font-weight:800;font-size:.86rem;flex-shrink:0;
+    }
+    .chat-name{font-weight:700;font-size:.95rem}
+    .chat-sub{font-size:.75rem;color:var(--text-muted)}
+
+    .btn-ghost{
+      border:1px solid var(--border);background:transparent;color:var(--text-muted);
+      padding:7px 13px;border-radius:10px;font-size:.81rem;font-weight:600;
+      font-family:inherit;cursor:pointer;transition:.16s;touch-action:manipulation;
+    }
+    .btn-ghost:hover{color:var(--text);border-color:var(--accent);background:var(--accent-glow)}
+    .btn-primary{
+      background:var(--accent);color:var(--btn-text);border:none;border-radius:11px;
+      padding:10px 17px;font-weight:700;font-size:.86rem;font-family:inherit;
+      cursor:pointer;transition:.16s;text-decoration:none;display:inline-flex;
+      align-items:center;justify-content:center;gap:7px;touch-action:manipulation;
+    }
+    .btn-primary:hover{transform:translateY(-1px);filter:brightness(1.06)}
+    .btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
     .chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
-    .msg{max-width:88%;padding:12px 15px;border-radius:16px;font-size:.92rem;word-wrap:break-word;white-space:pre-wrap}
+    .msg{
+      max-width:88%;padding:12px 15px;border-radius:16px;font-size:.91rem;
+      overflow-wrap:anywhere;word-break:break-word;white-space:pre-wrap;
+    }
     .msg.user{align-self:flex-end;background:var(--user-bubble);color:#fff;border-bottom-right-radius:4px}
     html[dir="rtl"] .msg.user{border-bottom-right-radius:16px;border-bottom-left-radius:4px}
     .msg.bot{align-self:flex-start;background:var(--bot-bubble);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:4px}
     html[dir="rtl"] .msg.bot{border-bottom-left-radius:16px;border-bottom-right-radius:4px}
-    .msg-meta{margin-top:6px;font-size:.72rem;opacity:.72}
-    .msg code{font-family:"JetBrains Mono",monospace;background:rgba(0,0,0,.28);color:#e2e8f0;padding:2px 6px;border-radius:6px;font-size:.84em}
-    .code-wrap{margin:8px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--code-bg);direction:ltr;text-align:left}
-    .code-head{display:flex;justify-content:space-between;align-items:center;padding:5px 10px;font-size:.72rem;color:#cbd5e1;background:rgba(255,255,255,.06);font-family:"JetBrains Mono",monospace}
-    .copy-code-btn{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:2px 8px;border-radius:6px;font-size:.7rem;cursor:pointer}
-    .code-wrap pre{margin:0;padding:10px 12px;overflow-x:auto;font-family:"JetBrains Mono",monospace;font-size:.82rem;color:#f8fafc;white-space:pre}
+    .msg-meta{margin-top:6px;font-size:.71rem;opacity:.72}
+    .msg code{
+      font-family:"JetBrains Mono",monospace;background:var(--code-bg);color:#e2e8f0;
+      padding:2px 6px;border-radius:6px;font-size:.83em;
+    }
+    .code-wrap{
+      margin:8px 0;border-radius:11px;overflow:hidden;border:1px solid var(--border);
+      background:var(--code-bg);direction:ltr;text-align:left;max-width:100%;
+    }
+    .code-head{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:6px 11px;font-size:.72rem;color:#cbd5e1;
+      background:rgba(255,255,255,.07);font-family:"JetBrains Mono",monospace;
+    }
+    .copy-code-btn{
+      border:1px solid rgba(255,255,255,.28);background:transparent;color:#fff;
+      padding:2px 8px;border-radius:6px;font-size:.7rem;cursor:pointer;
+    }
+    .code-wrap pre{
+      margin:0;padding:11px 13px;overflow-x:auto;font-family:"JetBrains Mono",monospace;
+      font-size:.81rem;color:#f8fafc;white-space:pre;
+    }
+
     .chat-input-bar{padding:12px 14px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:flex-end}
-    .chat-input,.field,textarea,select.field{width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:12px;padding:10px 13px;color:var(--text);font-family:inherit;font-size:.92rem;outline:none}
+    .chat-input,.field,textarea,select.field{
+      width:100%;min-width:0;background:var(--bg-input);border:1px solid var(--border);
+      border-radius:12px;padding:10px 13px;color:var(--text);font-family:inherit;font-size:.91rem;outline:none;
+    }
     .chat-input{flex:1;resize:none;min-height:42px;max-height:120px}
     .chat-input:focus,.field:focus,textarea:focus{border-color:var(--accent)}
-    select.field option{background:#111827;color:#f8fafc}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+    select.field option{background:var(--opt-bg);color:var(--opt-text)}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:14px}
     .pad{padding:24px}
+
     .section-head{margin:26px 0 14px}
-    .section-head h2{font-size:1.5rem;font-weight:800}
-    .section-head p{color:var(--text-muted);font-size:.92rem}
-    .tag{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
-    .muted{color:var(--text-muted);font-size:.92rem}
-    .atlas-layout{display:grid;grid-template-columns:270px 1fr;gap:22px;margin-top:14px}
-    .chapter-side{max-height:75vh;overflow-y:auto;padding:14px}
-    .chapter-btn{display:block;width:100%;text-align:start;background:transparent;border:none;border-bottom:1px solid var(--border);padding:9px 6px;color:var(--text-muted);font-family:inherit;font-size:.84rem;cursor:pointer}
+    .section-head h2{font-family:var(--heading-font);font-size:clamp(1.32rem,2.3vw,1.65rem);font-weight:800;color:var(--on-bg)}
+    .section-head p{color:var(--on-bg-muted);font-size:.92rem;margin-top:3px}
+
+    .tag{font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+    .muted{color:var(--text-muted);font-size:.91rem;overflow-wrap:anywhere}
+    .card h3{font-family:var(--heading-font)}
+
+    .gallery-card{overflow:hidden;display:flex;flex-direction:column}
+    .gallery-media{
+      position:relative;height:152px;background:var(--code-bg);
+      border-bottom:1px solid var(--border);overflow:hidden;
+      display:grid;place-items:center;
+    }
+    .gallery-media img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform .35s ease;
+    }
+    .gallery-card:hover .gallery-media img{transform:scale(1.04)}
+    [data-theme="paper"] .gallery-media img{filter:sepia(.28) contrast(1.04)}
+    .gallery-fallback{display:none;width:100%;height:100%;place-items:center;padding:12px;color:var(--accent)}
+    .gallery-media.is-fallback img{display:none}
+    .gallery-media.is-fallback .gallery-fallback{display:grid}
+    .gallery-pill{
+      position:absolute;top:9px;inset-inline-start:9px;
+      font-family:"JetBrains Mono",monospace;font-size:.66rem;font-weight:600;
+      padding:3px 8px;border-radius:999px;
+      background:rgba(6,8,18,.78);color:#f8fafc;border:1px solid rgba(255,255,255,.22);
+    }
+    .gallery-body{padding:15px;display:flex;flex-direction:column;gap:5px;flex:1}
+    .gallery-body h4{font-size:.94rem;font-weight:700}
+    .gallery-body p{font-size:.81rem;color:var(--text-muted);line-height:1.5}
+    .gallery-credit{margin-top:auto;padding-top:6px;font-size:.71rem;color:var(--accent);font-family:"JetBrains Mono",monospace}
+
+    .atlas-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:22px;margin-top:14px;align-items:start}
+    .chapter-side{max-height:76vh;overflow-y:auto;padding:14px;position:sticky;top:78px}
+    .chapter-btn{
+      display:block;width:100%;text-align:start;background:transparent;border:none;
+      border-bottom:1px solid var(--border);padding:9px 6px;color:var(--text-muted);
+      font-family:inherit;font-size:.84rem;cursor:pointer;line-height:1.45;
+    }
     .chapter-btn:hover,.chapter-btn.active{color:var(--accent);font-weight:700}
     .chapter-hidden{display:none!important}
     .chapter-body{padding:28px}
-    .chapter-body h2{font-size:1.75rem;margin:6px 0 8px}
-    .chapter-body h3{font-size:1.15rem;margin:20px 0 6px;color:var(--accent)}
-    .callout{border-inline-start:3px solid var(--accent);background:var(--bg-input);padding:13px 16px;border-radius:10px;margin:16px 0}
+    .chapter-body h2{font-family:var(--heading-font);font-size:clamp(1.4rem,2.5vw,1.82rem);margin:6px 0 8px}
+    .chapter-body h3{font-size:1.12rem;margin:20px 0 6px;color:var(--accent)}
+
+    .callout{
+      border-inline-start:3px solid var(--accent);background:var(--bg-input);
+      padding:13px 16px;border-radius:11px;margin:14px 0;overflow-wrap:anywhere;
+    }
     details.qa{background:var(--bg-input);border:1px solid var(--border);border-radius:11px;padding:10px 14px;margin:8px 0}
     details.qa summary{cursor:pointer;font-weight:600;font-size:.9rem}
     details.qa p{margin-top:8px;color:var(--text-muted);font-size:.88rem}
+
     .sub-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
-    .sub-tab{border:1px solid var(--border);background:var(--bg-card);color:var(--text-muted);padding:7px 14px;border-radius:10px;font-family:inherit;font-size:.84rem;font-weight:600;cursor:pointer}
+    .sub-tab{
+      border:1px solid var(--border);background:var(--bg-card);color:var(--text-muted);
+      padding:8px 14px;border-radius:11px;font-family:inherit;font-size:.84rem;
+      font-weight:600;cursor:pointer;transition:.16s;
+    }
     .sub-tab.active{background:var(--accent);color:var(--btn-text);border-color:var(--accent)}
     .sub-panel{display:none}
     .sub-panel.active{display:block}
+
     .flashcard{min-height:190px;display:grid;place-items:center;text-align:center;padding:28px}
-    .flashcard h3{font-size:1.35rem;margin-top:8px}
+    .flashcard h3{font-size:1.3rem;margin-top:8px}
     .quiz-q{padding:14px;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;background:var(--bg-input)}
-    .quiz-q label{display:block;margin-top:6px;font-size:.9rem;cursor:pointer}
-    .about-hero{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;padding:28px}
-    .avatar-ring{width:170px;height:170px;border-radius:28px;border:2px solid var(--border);background:var(--bg-input);display:grid;place-items:center;margin:0 auto}
+    .quiz-q label{display:block;margin-top:7px;font-size:.9rem;cursor:pointer}
+
+    .about-hero{display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px;align-items:center;padding:28px}
+    .avatar-ring{
+      width:165px;height:165px;border-radius:28px;border:2px solid var(--border-strong);
+      background:var(--bg-input);display:grid;place-items:center;margin:0 auto;color:var(--text);
+    }
     .skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-    .skill-pill{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg-input);font-size:.82rem;font-weight:600}
-    .fab-chat{position:fixed;bottom:22px;right:22px;z-index:55;box-shadow:0 10px 28px rgba(0,0,0,.35)}
-    html[dir="rtl"] .fab-chat{right:auto;left:22px}
+    .skill-pill{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg-input);font-size:.81rem;font-weight:600}
+
+    .fab-chat{position:fixed;bottom:22px;inset-inline-end:22px;z-index:55;box-shadow:0 12px 30px rgba(0,0,0,.35)}
     .hidden{display:none!important}
-    a.ext{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
-    footer{margin-top:36px;padding:24px 0 36px;border-top:1px solid var(--border);text-align:center;font-size:.84rem;color:var(--text-muted)}
-    @media(max-width:960px){.hero-grid,.atlas-layout,.grid-3,.grid-2,.about-hero{grid-template-columns:1fr}.stat-strip{grid-template-columns:repeat(2,1fr)}.chat-panel{height:480px}}
+    a.ext{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent);overflow-wrap:anywhere}
+
+    footer{
+      margin-top:36px;padding:24px 0 36px;border-top:1px solid var(--border);
+      text-align:center;font-size:.84rem;color:var(--on-bg-muted);
+    }
+
+    @media(max-width:1024px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .atlas-layout{grid-template-columns:1fr}
+      .chapter-side{position:static;max-height:220px}
+      .chat-panel{height:510px}
+    }
+    @media(max-width:720px){
+      .container{width:94%}
+      .nav-inner{gap:8px;padding:9px 0}
+      .nav-tabs{order:3;width:100%;padding-top:4px;border-top:1px solid var(--border)}
+      .controls{width:auto}
+      .control-select{max-width:155px;font-size:.78rem;padding:6px 8px}
+      .grid-3,.grid-2,.grid-4,.about-hero{grid-template-columns:1fr}
+      .stat-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-info,.pad,.chapter-body,.about-hero{padding:18px}
+      .chat-panel{height:470px}
+      .msg{max-width:94%}
+      .search-bar kbd{display:none}
+    }
+    @media(max-width:420px){
+      .brand-badge{display:none}
+      .controls{width:100%;justify-content:space-between}
+      .control-select{flex:1;max-width:none}
+      .fab-chat{bottom:14px;inset-inline-end:14px;padding:9px 14px;font-size:.82rem}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    }
   </style>
 </head>
 <body>
@@ -217,9 +607,19 @@
       <div class="hero-grid">
         <div class="card hero-info">
           <div>
-            <div class="status-pill"><span id="statusDot" class="status-dot"></span><span id="statusText" data-i18n="statusChecking">Checking Python API...</span></div>
-            <h1 class="hero-title" data-i18n="heroTitle">NEUROATLAS by Narges Bayat</h1>
+            <div class="hero-top-row">
+              <div class="status-pill"><span id="statusDot" class="status-dot"></span><span id="statusText" data-i18n="statusChecking">Checking Python API...</span></div>
+              <span class="telemetry-tag">GENHACKS 2026 · ATLAS v2</span>
+            </div>
+
+            <div class="connectome-box" style="margin-top:12px" aria-hidden="true">
+              <canvas id="neuralCanvas"></canvas>
+              <span class="connectome-badge" data-i18n="connectomeLabel">Interactive Neural Connectome</span>
+            </div>
+
+            <h1 class="hero-title" style="margin-top:14px" data-i18n="heroTitle">NEUROATLAS by Narges Bayat</h1>
             <p class="hero-desc" data-i18n="heroDesc">An evidence-led neuroscience atlas and multilingual Python AI platform built for GenHacks 2026.</p>
+
             <div class="stat-strip">
               <div class="stat-box"><strong id="statChapters">23</strong><span data-i18n="statCh">Atlas Chapters</span></div>
               <div class="stat-box"><strong id="statSources">24</strong><span data-i18n="statSrc">NIH/NCBI Sources</span></div>
@@ -227,6 +627,7 @@
               <div class="stat-box"><strong>5</strong><span data-i18n="statThemes">Themes</span></div>
             </div>
           </div>
+
           <div>
             <div class="prompts-label" data-i18n="tryAsking">Try asking directly</div>
             <div class="prompt-chips" id="promptChips"></div>
@@ -253,17 +654,23 @@
       </div>
 
       <div class="grid-3">
-        <article class="card pad"><div class="tag" data-i18n="hm1Tag">01 / KNOWLEDGE ATLAS</div><h3 data-i18n="hm1Title">23 Neuroscience Chapters</h3><p class="muted" data-i18n="hm1Desc">From neurons to cognition, sleep, and neuroimaging.</p><div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('atlas')" data-i18n="openBtn">Open →</button></div></article>
-        <article class="card pad"><div class="tag" data-i18n="hm2Tag">02 / LIVE EVIDENCE</div><h3 data-i18n="hm2Title">PubMed & 24 NIH Sources</h3><p class="muted" data-i18n="hm2Desc">Search live NCBI PubMed records and academic references.</p><div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('research')" data-i18n="openBtn">Open →</button></div></article>
-        <article class="card pad"><div class="tag" data-i18n="hm3Tag">03 / CREATOR & LEARNING</div><h3 data-i18n="hm3Title">Narges Bayat · Student Builder</h3><p class="muted" data-i18n="hm3Desc">Built with Python for GenHacks 2026.</p><div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('about')" data-i18n="openBtn">Open →</button></div></article>
+        <article class="card pad"><div class="tag" data-i18n="hm1Tag">01 / KNOWLEDGE ATLAS</div><h3 data-i18n="hm1Title">23 Neuroscience Chapters</h3><p class="muted" style="margin-top:6px" data-i18n="hm1Desc">From neurons to cognition, sleep, and neuroimaging.</p><div style="margin-top:14px"><button class="btn-ghost" onclick="switchView('atlas')" data-i18n="openBtn">Open →</button></div></article>
+        <article class="card pad"><div class="tag" data-i18n="hm2Tag">02 / LIVE EVIDENCE</div><h3 data-i18n="hm2Title">PubMed & 24 NIH Sources</h3><p class="muted" style="margin-top:6px" data-i18n="hm2Desc">Search live NCBI PubMed records and academic references.</p><div style="margin-top:14px"><button class="btn-ghost" onclick="switchView('research')" data-i18n="openBtn">Open →</button></div></article>
+        <article class="card pad"><div class="tag" data-i18n="hm3Tag">03 / CREATOR & LEARNING</div><h3 data-i18n="hm3Title">Narges Bayat · Student Builder</h3><p class="muted" style="margin-top:6px" data-i18n="hm3Desc">Built with Python for GenHacks 2026.</p><div style="margin-top:14px"><button class="btn-ghost" onclick="switchView('about')" data-i18n="openBtn">Open →</button></div></article>
       </div>
+
+      <div class="section-head">
+        <h2 data-i18n="galHeading">Public Domain Neuroimaging & Microscopy Archive</h2>
+        <p data-i18n="galSub">Verified open-science specimens from NIH, NIMH, and historical neuroanatomy archives.</p>
+      </div>
+      <div class="grid-4" id="specimenGallery"></div>
     </section>
 
     <section id="view-atlas" class="view">
       <div class="section-head"><h2 data-i18n="atlasHeading">Neuroanatomy & Systems Atlas</h2><p data-i18n="atlasSub">Evidence-led educational chapters. Not for medical diagnosis or treatment.</p></div>
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
         <input id="chapterFilter" class="field" style="max-width:340px" type="search" data-i18n-placeholder="filterChaptersPh" placeholder="Filter 23 chapters…" />
-        <span id="chapterFilterCount" class="muted"></span>
+        <span id="chapterFilterCount" class="muted" style="color:var(--on-bg-muted)"></span>
       </div>
       <div class="atlas-layout">
         <aside id="chapterNav" class="card chapter-side"></aside>
@@ -281,7 +688,7 @@
       </div>
       <div id="sub-pubmed" class="sub-panel active card pad">
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <input id="pubmedQuery" class="field" style="flex:1" data-i18n-placeholder="pubmedPh" placeholder="e.g. hippocampal plasticity, EEG sleep" />
+          <input id="pubmedQuery" class="field" style="flex:1;min-width:220px" data-i18n-placeholder="pubmedPh" placeholder="e.g. hippocampal plasticity, EEG sleep" />
           <button id="pubmedBtn" class="btn-primary" data-i18n="pubmedBtn">Search PubMed</button>
         </div>
         <p id="pubmedStatus" class="muted" style="margin-top:10px" data-i18n="pubmedNote">Queries live NCBI E-utilities (requires internet).</p>
@@ -301,7 +708,7 @@
               <option value="MRI / neuroimaging" data-i18n="mOpt4">MRI / neuroimaging</option>
               <option value="Computational analysis" data-i18n="mOpt5">Computational analysis</option>
             </select>
-            <div style="display:flex;gap:10px">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
               <button id="buildQuestion" class="btn-primary" data-i18n="buildBtn">Build Outline</button>
               <button id="saveQuestion" class="btn-ghost" data-i18n="saveWorkBtn">Save to Workspace</button>
             </div>
@@ -311,7 +718,7 @@
       </div>
       <div id="sub-methods" class="sub-panel card pad"><div id="methodsContent"></div></div>
       <div id="sub-sources" class="sub-panel card pad">
-        <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
           <input id="sourceFilter" class="field" style="max-width:340px" data-i18n-placeholder="filterSourcesPh" placeholder="Filter NIH / NCBI sources…" />
           <span id="sourceCountLabel" class="muted"></span>
         </div>
@@ -332,7 +739,7 @@
           <div class="card pad">
             <div class="tag" data-i18n="flashTag">Flashcards</div>
             <div class="flashcard callout"><div><h3 id="flashQ">Loading...</h3><p id="flashA" class="muted hidden" style="margin-top:10px"></p></div></div>
-            <div style="display:flex;gap:10px;margin-top:12px">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
               <button id="flipCard" class="btn-primary" data-i18n="revealAnsBtn">Reveal Answer</button>
               <button id="nextCard" class="btn-ghost" data-i18n="nextCardBtn">Next Card</button>
             </div>
@@ -347,7 +754,7 @@
       </div>
       <div id="sub-map" class="sub-panel card pad"><div id="mapGrid" class="grid-3"></div><div id="mapDetail" class="callout" style="margin-top:16px" data-i18n="mapHint">Select a concept above to inspect related chapters.</div></div>
       <div id="sub-glossary" class="sub-panel card pad">
-        <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
           <input id="glossaryFilter" class="field" style="max-width:340px" data-i18n-placeholder="filterGlossaryPh" placeholder="Filter glossary terms…" />
           <span id="glossaryCount" class="muted"></span>
         </div>
@@ -358,7 +765,7 @@
           <div style="display:flex;flex-direction:column;gap:10px">
             <input id="noteTitle" class="field" data-i18n-placeholder="noteTitlePh" placeholder="Note title" />
             <textarea id="noteBody" rows="6" data-i18n-placeholder="noteBodyPh" placeholder="Write study notes…"></textarea>
-            <div style="display:flex;gap:10px">
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
               <button id="saveNote" class="btn-primary" data-i18n="saveNoteBtn">Save Note</button>
               <button id="exportNotes" class="btn-ghost" data-i18n="exportBtn">Export JSON</button>
             </div>
@@ -380,7 +787,7 @@
         </div>
         <div>
           <div class="tag" data-i18n="aboutTag">CREATOR PROFILE · GENHACKS 2026</div>
-          <h2 style="font-size:1.85rem;font-weight:800" data-i18n="aboutName">Narges Bayat</h2>
+          <h2 style="font-family:var(--heading-font);font-size:1.85rem;font-weight:800" data-i18n="aboutName">Narges Bayat</h2>
           <p class="muted" style="margin-top:8px" data-i18n="aboutBio">Student developer exploring Python, web engineering, AI, and neuroscience.</p>
           <div class="skill-tags">
             <span class="skill-pill">Python</span>
@@ -390,15 +797,15 @@
             <span class="skill-pill">English · فارسی · Türkçe</span>
           </div>
           <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-            <a id="githubProfileBtn" class="btn-primary" href="https://github.com" target="_blank" rel="noopener" data-i18n="githubBtn">View GitHub Project</a>
+            <a id="githubProfileBtn" class="btn-primary" href="https://github.com/Shirazxbox/NEUROATLAS" target="_blank" rel="noopener" data-i18n="githubBtn">View GitHub Project</a>
             <button class="btn-ghost" onclick="switchView('contact')" data-i18n="contactMeBtn">Send a Message</button>
           </div>
         </div>
       </div>
       <div class="grid-3">
-        <article class="card pad"><div class="tag" data-i18n="ab1Tag">LEARNING JOURNEY</div><h3 data-i18n="ab1Title">Building While Learning</h3><p class="muted" data-i18n="ab1Desc">Evolved from a prototype atlas into a full-stack Python serverless platform.</p></article>
-        <article class="card pad"><div class="tag" data-i18n="ab2Tag">HACKATHON GOAL</div><h3 data-i18n="ab2Title">GenHacks 2026</h3><p class="muted" data-i18n="ab2Desc">Combines neuroscience education and general AI assistance in one lightweight interface.</p></article>
-        <article class="card pad"><div class="tag" data-i18n="ab3Tag">PRIVACY & ACCESSIBILITY</div><h3 data-i18n="ab3Title">Inclusive by Design</h3><p class="muted" data-i18n="ab3Desc">Supports English, Persian (RTL), Turkish, five themes, and anti-spam protection.</p></article>
+        <article class="card pad"><div class="tag" data-i18n="ab1Tag">LEARNING JOURNEY</div><h3 data-i18n="ab1Title">Building While Learning</h3><p class="muted" style="margin-top:6px" data-i18n="ab1Desc">Evolved from a prototype atlas into a full-stack Python serverless platform.</p></article>
+        <article class="card pad"><div class="tag" data-i18n="ab2Tag">HACKATHON GOAL</div><h3 data-i18n="ab2Title">GenHacks 2026</h3><p class="muted" style="margin-top:6px" data-i18n="ab2Desc">Combines neuroscience education and general AI assistance in one lightweight interface.</p></article>
+        <article class="card pad"><div class="tag" data-i18n="ab3Tag">PRIVACY & ACCESSIBILITY</div><h3 data-i18n="ab3Title">Inclusive by Design</h3><p class="muted" style="margin-top:6px" data-i18n="ab3Desc">Supports English, Persian (RTL), Turkish, five themes, and anti-spam protection.</p></article>
       </div>
     </section>
 
@@ -446,7 +853,7 @@
   <script src="/neuroatlas-i18n-data.js"></script>
   <script>
     const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
-    const GITHUB_REPO_URL = "https://github.com";
+    const GITHUB_REPO_URL = "https://github.com/Shirazxbox/NEUROATLAS";
     document.getElementById("githubProfileBtn").href = GITHUB_REPO_URL;
 
     const DATA = window.NEUROATLAS_DATA || {};
@@ -454,11 +861,47 @@
     const CHAPTERS = DATA.CHAPTERS || [], SOURCES = DATA.SOURCES || [], GLOSSARY = DATA.GLOSSARY || [];
     const METHODS = DATA.METHODS || [], MAP = DATA.MAP || [], FLASH = DATA.FLASH || [], QUIZ = DATA.QUIZ || [];
 
+    const SPECIMENS = [
+      {
+        img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Mouse_Tractography.jpg",
+        badge: "DTI · MRI",
+        credit: "NIH / NINDS · Public Domain",
+        en: ["White Matter Tractography", "Diffusion tensor imaging mapping long-range axonal fiber pathways."],
+        fa: ["تراکتوگرافی ماده سفید", "تصویربرداری DTI برای نمایش مسیرهای رشته‌های عصبی در مغز."],
+        tr: ["Beyaz Madde Traktografisi", "Uzun menzilli akson yolaklarını haritalayan difüzyon tensör görüntüleme."]
+      },
+      {
+        img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Confocal_image_of_spiny_neuron_-_1.jpg",
+        badge: "CONFOCAL",
+        credit: "NIH · Margaret I. Davis · Public Domain",
+        en: ["Medium Spiny Neuron", "Confocal fluorescence microscopy revealing dense dendritic spines."],
+        fa: ["نورون خاردار مخطط", "میکروسکوپ کانفوکال با نمایش دقیق شاخک‌های دندریتی و خارهای عصبی."],
+        tr: ["Orta Dikenli Nöron", "Yoğun dendritik dikenleri gösteren konfokal floresan mikroskopisi."]
+      },
+      {
+        img: "https://upload.wikimedia.org/wikipedia/commons/a/aa/Electron_micrograph_of_neuromuscular_junction_%28cross-section%29.jpg",
+        badge: "ELECTRON · EM",
+        credit: "NIMH / NIH · Public Domain",
+        en: ["Synaptic Ultrastructure", "Cross-section electron micrograph showing vesicles at a neuromuscular synapse."],
+        fa: ["فراساختار سیناپس", "تصویر میکروسکوپ الکترونی از وزیکول‌های انتقال‌دهنده در محل اتصال عصبی."],
+        tr: ["Sinaptik İnce Yapı", "Nöromüsküler sinapstaki vezikülleri gösteren elektron mikrografı."]
+      },
+      {
+        img: "https://upload.wikimedia.org/wikipedia/commons/7/77/Cajal_-_a_purkinje_neuron_from_the_human_cerebellum.jpg",
+        badge: "ARCHIVE · 1900",
+        credit: "S. Ramón y Cajal · Public Domain",
+        en: ["Human Purkinje Neuron", "Historic ink drawing of cerebellar dendritic branching by Santiago Ramón y Cajal."],
+        fa: ["نورون پورکینژ مخچه", "طراحی تاریخی سانتیاگو رامون ای کاخال (۱۹۰۰) از انشعابات دندریتی."],
+        tr: ["İnsan Purkinje Nöronu", "Santiago Ramón y Cajal'ın beyincik dendrit dallanması tarihi çizimi."]
+      }
+    ];
+
     const I18N = {
       en: {
         dir:"ltr", tabHome:"Overview & AI", tabAtlas:"Atlas (23)", tabResearch:"Research & PubMed", tabLearn:"Learn & Quiz", tabAbout:"About Narges", tabContact:"Contact",
         themeCyber:"Theme: Cyber Dark", themeObsidian:"Theme: Royal Obsidian", themeOcean:"Theme: Deep Ocean", themeLight:"Theme: Daylight", themePaper:"Theme: Editorial Paper",
         globalSearchPh:"Search 23 chapters, glossary, methods, or NIH sources…", statusChecking:"Checking Python API...", statusReady:"Python AI Online", statusNoKey:"Server Online (Add API Key)", statusOffline:"API Offline",
+        connectomeLabel:"Interactive Neural Connectome",
         heroTitle:"NEUROATLAS by Narges Bayat", heroDesc:"An evidence-led neuroscience atlas and multilingual Python AI platform built for GenHacks 2026. Ask any general, coding, or science question right here—or explore 23 anatomy chapters and PubMed research.",
         statCh:"Atlas Chapters", statSrc:"NIH/NCBI Sources", statLang:"Languages", statThemes:"Themes", tryAsking:"Try asking directly",
         chatTitle:"NEUROATLAS AI Assistant", chatSub:"Python AI · Answers all general, coding & science questions", clearBtn:"Clear", inputPlaceholder:"Ask any question here...", sendBtn:"Send",
@@ -466,6 +909,7 @@
         hm1Tag:"01 / KNOWLEDGE ATLAS", hm1Title:"23 Neuroscience Chapters", hm1Desc:"From neurons and synapses to cognition, sleep, and neuroimaging methods—with review Q&As.",
         hm2Tag:"02 / LIVE EVIDENCE", hm2Title:"PubMed & 24 NIH Sources", hm2Desc:"Search live NCBI PubMed records and explore curated government and academic references.",
         hm3Tag:"03 / CREATOR & LEARNING", hm3Title:"Narges Bayat · Student Builder", hm3Desc:"Built with Python for GenHacks 2026. Explore Narges's learning journey, skills, and secure contact.", openBtn:"Open →",
+        galHeading:"Public Domain Neuroimaging & Microscopy Archive", galSub:"Verified open-science specimens from NIH, NIMH, and historical neuroanatomy archives.",
         atlasHeading:"Neuroanatomy & Systems Atlas", atlasSub:"Evidence-led educational chapters. Not for medical diagnosis or treatment.", filterChaptersPh:"Filter 23 chapters…", chapterWord:"CHAPTER",
         keyConceptLbl:"Key concept:", distinctionLbl:"Important distinction:", reviewLbl:"Knowledge review", refsLbl:"References:", saveWorkBtn:"Save to Workspace", prevBtn:"← Previous", nextBtn:"Next Chapter →",
         translateChBtn:"Translate this chapter", showOrigBtn:"Show English Original", translatingMsg:"Translating chapter with Python AI...",
@@ -499,6 +943,7 @@
         dir:"rtl", tabHome:"خانه و چت‌بات", tabAtlas:"اطلس (۲۳ فصل)", tabResearch:"پژوهش و PubMed", tabLearn:"یادگیری و آزمون", tabAbout:"درباره نرگس", tabContact:"تماس امن",
         themeCyber:"تم: سایبری تیره", themeObsidian:"تم: مشکی طلایی", themeOcean:"تم: اقیانوس عمیق", themeLight:"تم: روشن", themePaper:"تم: کاغذی کلاسیک",
         globalSearchPh:"جستجو در ۲۳ فصل، واژه‌نامه، روش‌های پژوهش و منابع NIH…", statusChecking:"در حال بررسی سرور پایتون...", statusReady:"هوش مصنوعی پایتون آنلاین است", statusNoKey:"سرور آنلاین (کلید API تنظیم نشده)", statusOffline:"عدم اتصال به API",
+        connectomeLabel:"شبکه عصبی تعاملی (با حرکت موس)",
         heroTitle:"NEUROATLAS · ساخته نرگس بیات", heroDesc:"یک اطلس علمی علوم اعصاب و پلتفرم هوش مصنوعی چندزبانه با پایتون برای مسابقه GenHacks 2026. هر سوال علمی، کدنویسی یا عمومی دارید همین‌جا بپرسید یا ۲۳ فصل اطلس و مقالات PubMed را بررسی کنید.",
         statCh:"فصل اطلس", statSrc:"منبع NIH/NCBI", statLang:"زبان فعال", statThemes:"تم انتخابی", tryAsking:"نمونه سوال‌های سریع",
         chatTitle:"دستیار هوشمند NEUROATLAS", chatSub:"پایتون AI · پاسخ به همه سوالات علمی، کدنویسی و عمومی", clearBtn:"پاک کردن", inputPlaceholder:"سوال خود را همین‌جا بنویسید...", sendBtn:"ارسال",
@@ -506,6 +951,7 @@
         hm1Tag:"۰۱ / اطلس دانش", hm1Title:"۲۳ فصل علوم اعصاب", hm1Desc:"از سلول‌های عصبی تا حافظه، خواب و تصویربرداری مغز همراه با پرسش و پاسخ.",
         hm2Tag:"۰۲ / شواهد علمی", hm2Title:"جستجوی PubMed و ۲۴ منبع", hm2Desc:"جستجوی زنده در بانک مقالات دانشگاهی NCBI و دسترسی به ۲۴ منبع معتبر NIH.",
         hm3Tag:"۰۳ / سازنده و یادگیری", hm3Title:"نرگس بیات · توسعه‌دهنده دانش‌آموز", hm3Desc:"ساخته‌شده با پایتون برای GenHacks 2026. آشنایی با مسیر یادگیری، مهارت‌ها و تماس امن.", openBtn:"مشاهده ←",
+        galHeading:"آرشیو تصاویر علمی و تصویربرداری عصبی (بدون کپی‌رایت)", galSub:"نمونه‌های میکروسکوپی و تصویربرداری معتبر از موسسه ملی سلامت آمریکا (NIH) و آرشیو کاخال.",
         atlasHeading:"اطلس جامع علوم اعصاب", atlasSub:"محتوای آموزشی مبتنی بر شواهد علمی؛ برای تشخیص یا درمان پزشکی نیست.", filterChaptersPh:"فیلتر ۲۳ فصل اطلس…", chapterWord:"فصل",
         keyConceptLbl:"مفهوم کلیدی:", distinctionLbl:"نکته مهم:", reviewLbl:"مرور دانش و پرسش‌ها", refsLbl:"منابع علمی:", saveWorkBtn:"ذخیره در یادداشت‌ها", prevBtn:"→ فصل قبلی", nextBtn:"فصل بعدی ←",
         translateChBtn:"ترجمه کامل این فصل به فارسی (AI)", showOrigBtn:"نمایش متن اصلی انگلیسی", translatingMsg:"در حال ترجمه علمی فصل با پایتون AI...",
@@ -539,6 +985,7 @@
         dir:"ltr", tabHome:"Ana Sayfa & AI", tabAtlas:"Atlas (23)", tabResearch:"Araştırma & PubMed", tabLearn:"Öğrenme & Test", tabAbout:"Narges Hakkında", tabContact:"İletişim",
         themeCyber:"Tema: Siber Koyu", themeObsidian:"Tema: Kraliyet Altın", themeOcean:"Tema: Derin Okyanus", themeLight:"Tema: Aydınlık", themePaper:"Tema: Klasik Kâğıt",
         globalSearchPh:"23 bölüm, sözlük, yöntem veya NIH kaynaklarında ara…", statusChecking:"Python API kontrol ediliyor...", statusReady:"Python AI Çevrimiçi", statusNoKey:"Sunucu Açık (API Anahtarı Ekleyin)", statusOffline:"API Çevrimdışı",
+        connectomeLabel:"Etkileşimli Sinir Ağı",
         heroTitle:"NEUROATLAS · Narges Bayat", heroDesc:"GenHacks 2026 için Python ile geliştirilen çok dilli nörobilim atlası ve yapay zekâ platformu. Bilim, kodlama veya günlük her konuda soru sorun ya da 23 bölümü keşfedin.",
         statCh:"Atlas Bölümü", statSrc:"NIH/NCBI Kaynağı", statLang:"Dil Desteği", statThemes:"Tema", tryAsking:"Hızlı örnek sorular",
         chatTitle:"NEUROATLAS AI Asistanı", chatSub:"Python AI · Genel, kodlama ve bilim soruları", clearBtn:"Temizle", inputPlaceholder:"Sorunuzu buraya yazın...", sendBtn:"Gönder",
@@ -546,6 +993,7 @@
         hm1Tag:"01 / BİLGİ ATLASI", hm1Title:"23 Nörobilim Bölümü", hm1Desc:"Nöronlardan bilişe, uykuya ve görüntüleme yöntemlerine kadar soru-cevaplı bölümler.",
         hm2Tag:"02 / CANLI KANIT", hm2Title:"PubMed & 24 NIH Kaynağı", hm2Desc:"Canlı NCBI PubMed kayıtlarını arayın ve seçilmiş akademik kaynakları inceleyin.",
         hm3Tag:"03 / GELİŞTİRİCİ", hm3Title:"Narges Bayat · Öğrenci Geliştirici", hm3Desc:"GenHacks 2026 için Python ile geliştirildi. Öğrenme yolculuğunu ve güvenli iletişimi keşfedin.", openBtn:"Aç →",
+        galHeading:"Kamu Malı Nörogörüntüleme ve Mikroskopi Arşivi", galSub:"NIH, NIMH ve tarihi nöroanatomi arşivlerinden doğrulanmış açık bilim örnekleri.",
         atlasHeading:"Nöroanatomi ve Sistemler Atlası", atlasSub:"Kanıta dayalı eğitim bölümleri. Tıbbi tanı veya tedavi amaçlı değildir.", filterChaptersPh:"23 bölümü filtrele…", chapterWord:"BÖLÜM",
         keyConceptLbl:"Temel kavram:", distinctionLbl:"Önemli ayrım:", reviewLbl:"Bilgi tekrarı", refsLbl:"Kaynaklar:", saveWorkBtn:"Notlara Kaydet", prevBtn:"← Önceki", nextBtn:"Sonraki Bölüm →",
         translateChBtn:"Bu bölümü Türkçeye çevir (AI)", showOrigBtn:"İngilizce Aslını Göster", translatingMsg:"Bölüm Python AI ile çevriliyor...",
@@ -594,7 +1042,14 @@
       document.querySelectorAll(".view").forEach((v) => v.classList.toggle("active", v.id === "view-" + name));
       document.querySelectorAll(".nav-tab").forEach((t) => t.classList.toggle("active", t.dataset.view === name));
       document.getElementById("fabChat").classList.toggle("hidden", name === "home");
+      if (name === "home") setTimeout(initConnectome, 30);
       window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    function switchSubTab(viewName, subName) {
+      const viewEl = document.getElementById("view-" + viewName);
+      if (!viewEl) return;
+      viewEl.querySelectorAll(".sub-tab").forEach((b) => b.classList.toggle("active", b.dataset.sub === subName));
+      viewEl.querySelectorAll(".sub-panel").forEach((p) => p.classList.toggle("active", p.id === "sub-" + subName));
     }
     document.querySelectorAll(".nav-tab").forEach((t) => t.addEventListener("click", () => switchView(t.dataset.view)));
 
@@ -606,14 +1061,101 @@
       }));
     });
 
+    const neuralCanvas = document.getElementById("neuralCanvas");
+    const nCtx = neuralCanvas.getContext("2d");
+    let nNodes = [], nColors = { a: "#8b5cf6", b: "#06b6d4" }, nPointer = { x: -999, y: -999 };
+
+    function refreshCanvasColors() {
+      const st = getComputedStyle(document.documentElement);
+      nColors.a = st.getPropertyValue("--accent").trim() || "#8b5cf6";
+      nColors.b = st.getPropertyValue("--accent-2").trim() || "#06b6d4";
+    }
+    function initConnectome() {
+      const rect = neuralCanvas.parentElement.getBoundingClientRect();
+      if (rect.width < 10 || rect.height < 10) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      neuralCanvas.width = rect.width * dpr;
+      neuralCanvas.height = rect.height * dpr;
+      nCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      nNodes = Array.from({ length: 24 }, (_, idx) => ({
+        x: Math.random() * rect.width, y: Math.random() * rect.height,
+        vx: (Math.random() - 0.5) * 0.45, vy: (Math.random() - 0.5) * 0.45,
+        r: 2 + (idx % 3)
+      }));
+    }
+    function stepConnectome() {
+      const w = neuralCanvas.parentElement.clientWidth || 400;
+      const h = neuralCanvas.parentElement.clientHeight || 118;
+      nCtx.clearRect(0, 0, w, h);
+      for (let i = 0; i < nNodes.length; i++) {
+        const a = nNodes[i];
+        a.x += a.vx; a.y += a.vy;
+        if (a.x < 6 || a.x > w - 6) a.vx *= -1;
+        if (a.y < 6 || a.y > h - 6) a.vy *= -1;
+        for (let j = i + 1; j < nNodes.length; j++) {
+          const b = nNodes[j], dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 95) {
+            nCtx.strokeStyle = nColors.a;
+            nCtx.globalAlpha = (1 - dist / 95) * 0.36;
+            nCtx.lineWidth = 1;
+            nCtx.beginPath(); nCtx.moveTo(a.x, a.y); nCtx.lineTo(b.x, b.y); nCtx.stroke();
+          }
+        }
+        const mDist = Math.hypot(a.x - nPointer.x, a.y - nPointer.y);
+        if (mDist < 110) {
+          nCtx.strokeStyle = nColors.b;
+          nCtx.globalAlpha = (1 - mDist / 110) * 0.75;
+          nCtx.beginPath(); nCtx.moveTo(a.x, a.y); nCtx.lineTo(nPointer.x, nPointer.y); nCtx.stroke();
+        }
+        nCtx.globalAlpha = 0.85;
+        nCtx.fillStyle = i % 2 ? nColors.b : nColors.a;
+        nCtx.beginPath(); nCtx.arc(a.x, a.y, a.r, 0, Math.PI * 2); nCtx.fill();
+      }
+      nCtx.globalAlpha = 1;
+      requestAnimationFrame(stepConnectome);
+    }
+    neuralCanvas.parentElement.addEventListener("mousemove", (e) => {
+      const r = neuralCanvas.getBoundingClientRect();
+      nPointer.x = e.clientX - r.left; nPointer.y = e.clientY - r.top;
+    });
+    neuralCanvas.parentElement.addEventListener("mouseleave", () => { nPointer.x = -999; nPointer.y = -999; });
+    window.addEventListener("resize", initConnectome);
+
     const themeSelect = document.getElementById("themeSelect");
     function applyTheme(theme) {
       currentTheme = theme;
       document.documentElement.setAttribute("data-theme", theme);
       themeSelect.value = theme;
       localStorage.setItem("na_theme", theme);
+      setTimeout(refreshCanvasColors, 30);
     }
     themeSelect.addEventListener("change", (e) => applyTheme(e.target.value));
+
+    function renderSpecimens() {
+      const gal = document.getElementById("specimenGallery");
+      if (!gal) return;
+      gal.innerHTML = SPECIMENS.map((s) => {
+        const pair = s[currentLang] || s.en;
+        return `<article class="card gallery-card">
+          <div class="gallery-media">
+            <img src="${s.img}" alt="${escapeHtml(pair[0])}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('is-fallback')" />
+            <div class="gallery-fallback" aria-hidden="true">
+              <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="24" stroke="currentColor" stroke-width="1.6" stroke-dasharray="4 3"/>
+                <circle cx="28" cy="34" r="4" fill="currentColor"/><circle cx="52" cy="34" r="4" fill="currentColor"/><circle cx="40" cy="52" r="4.5" fill="currentColor"/>
+                <path d="M28 34L52 34L40 52Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <span class="gallery-pill">${escapeHtml(s.badge)}</span>
+          </div>
+          <div class="gallery-body">
+            <h4>${escapeHtml(pair[0])}</h4>
+            <p>${escapeHtml(pair[1])}</p>
+            <div class="gallery-credit">${escapeHtml(s.credit)}</div>
+          </div>
+        </article>`;
+      }).join("");
+    }
 
     function updateStatusText() {
       const dot = document.getElementById("statusDot"), text = document.getElementById("statusText"), d = I18N[currentLang];
@@ -642,6 +1184,7 @@
         chips.appendChild(b);
       });
       updateStatusText();
+      renderSpecimens();
       if (chatHistory.length === 0) renderMessages();
       initAtlas(true);
       initExtras();
@@ -920,14 +1463,15 @@
         const q = input.value.trim().toLowerCase(); if (!q) { box.hidden = true; return; }
         const t = trData(), idx = [];
         CHAPTERS.forEach((c, i) => { const m = getChapterMeta(c); idx.push({ type: I18N[currentLang].tabAtlas, title: m.title, desc: m.subtitle + " · " + c.intro, raw: c.title + " " + c.intro, view: "atlas", ch: i }); });
-        ((t && t.glossary) || GLOSSARY).forEach((g, i) => idx.push({ type: I18N[currentLang].subGlossary, title: g[0], desc: g[1], raw: (GLOSSARY[i] || []).join(" "), view: "learn" }));
-        SOURCES.forEach((s) => idx.push({ type: I18N[currentLang].subSources, title: s.name, desc: s.use, raw: s.id, view: "research" }));
-        ((t && t.methods) || METHODS).forEach((m, i) => idx.push({ type: I18N[currentLang].subMethods, title: m[0], desc: m[1], raw: (METHODS[i] || []).join(" "), view: "research" }));
+        ((t && t.glossary) || GLOSSARY).forEach((g, i) => idx.push({ type: I18N[currentLang].subGlossary, title: g[0], desc: g[1], raw: (GLOSSARY[i] || []).join(" "), view: "learn", sub: "glossary" }));
+        SOURCES.forEach((s) => idx.push({ type: I18N[currentLang].subSources, title: s.name, desc: s.use, raw: s.id, view: "research", sub: "sources" }));
+        ((t && t.methods) || METHODS).forEach((m, i) => idx.push({ type: I18N[currentLang].subMethods, title: m[0], desc: m[1], raw: (METHODS[i] || []).join(" "), view: "research", sub: "methods" }));
         const hits = idx.filter((x) => (x.title + " " + x.desc + " " + x.raw).toLowerCase().includes(q)).slice(0, 10);
         box.innerHTML = hits.length ? hits.map((h, k) => `<button class="search-item" data-hit="${k}"><small>${escapeHtml(h.type)}</small><strong>${escapeHtml(h.title)}</strong><span>${escapeHtml(h.desc.slice(0, 130))}…</span></button>`).join("") : `<div style="padding:12px" class="muted">${escapeHtml(I18N[currentLang].noSearchHit)}</div>`;
         box.hidden = false;
         box.querySelectorAll("[data-hit]").forEach((btn, k) => btn.addEventListener("click", () => {
           const item = hits[k]; box.hidden = true; switchView(item.view);
+          if (item.sub) switchSubTab(item.view, item.sub);
           if (item.view === "atlas" && Number.isInteger(item.ch)) { showOriginalChapter = false; renderChapter(item.ch); }
         }));
       });
@@ -969,6 +1513,8 @@
       updateStatusText();
     }
 
+    initConnectome();
+    requestAnimationFrame(stepConnectome);
     applyTheme(currentTheme);
     applyLanguage(currentLang);
     initGlobalSearch();
@@ -978,3 +1524,4 @@
   </script>
 </body>
 </html>
+```
