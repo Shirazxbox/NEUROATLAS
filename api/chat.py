@@ -17,8 +17,15 @@ Response style rules:
 3. Answer ANY general, scientific, coding, neuroscience, or everyday question accurately and to the point.
 4. Reply in the same language the user writes in (English, Persian/Farsi, or Turkish), unless asked otherwise."""
 
+TRANSLATE_SYSTEM_PROMPT = """You are a precise scientific translator for NEUROATLAS.
+Translate the provided neuroscience educational text accurately into the requested target language.
+Rules:
+1. Keep the exact structure, headings, and bullet points clear and readable.
+2. Keep standard scientific acronyms (like CNS, PNS, MRI, fMRI, EEG, CSF, GABA, BOLD, NIH) in parentheses beside the translated term when helpful.
+3. Output ONLY the clean translation without extra commentary."""
 
-def _http_post_json(url: str, headers: dict, payload: dict, timeout: int = 30) -> dict:
+
+def _http_post_json(url: str, headers: dict, payload: dict, timeout: int = 35) -> dict:
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(url, data=data, headers=headers, method="POST")
     try:
@@ -31,7 +38,7 @@ def _http_post_json(url: str, headers: dict, payload: dict, timeout: int = 30) -
         raise RuntimeError(f"Network error: {exc.reason}") from exc
 
 
-def _call_gemini(message: str, history: list, lang: str, api_key: str) -> tuple[str, str]:
+def _call_gemini(message: str, history: list, lang: str, api_key: str, system_prompt: str) -> tuple[str, str]:
     models = []
     custom_model = os.environ.get("GEMINI_MODEL", "").strip()
     if custom_model:
@@ -48,13 +55,13 @@ def _call_gemini(message: str, history: list, lang: str, api_key: str) -> tuple[
             contents.append({"role": role, "parts": [{"text": text}]})
     contents.append({"role": "user", "parts": [{"text": message}]})
 
-    lang_hint = {"fa": "Persian", "tr": "Turkish", "en": "English"}.get(lang, "English")
+    lang_hint = {"fa": "Persian (Farsi)", "tr": "Turkish", "en": "English"}.get(lang, "English")
     payload = {
         "system_instruction": {
-            "parts": [{"text": f"{SYSTEM_PROMPT}\nCurrent UI language: {lang_hint}."}]
+            "parts": [{"text": f"{system_prompt}\nTarget/UI language: {lang_hint}."}]
         },
         "contents": contents,
-        "generationConfig": {"maxOutputTokens": 1200},
+        "generationConfig": {"maxOutputTokens": 2400},
     }
     headers = {
         "Content-Type": "application/json",
@@ -78,7 +85,7 @@ def _call_gemini(message: str, history: list, lang: str, api_key: str) -> tuple[
     raise RuntimeError(f"Gemini failed: {last_error}")
 
 
-def _call_groq(message: str, history: list, lang: str, api_key: str) -> tuple[str, str]:
+def _call_groq(message: str, history: list, lang: str, api_key: str, system_prompt: str) -> tuple[str, str]:
     models = []
     custom_model = os.environ.get("GROQ_MODEL", "").strip()
     if custom_model:
@@ -87,8 +94,8 @@ def _call_groq(message: str, history: list, lang: str, api_key: str) -> tuple[st
         if m not in models:
             models.append(m)
 
-    lang_hint = {"fa": "Persian", "tr": "Turkish", "en": "English"}.get(lang, "English")
-    messages = [{"role": "system", "content": f"{SYSTEM_PROMPT}\nCurrent UI language: {lang_hint}."}]
+    lang_hint = {"fa": "Persian (Farsi)", "tr": "Turkish", "en": "English"}.get(lang, "English")
+    messages = [{"role": "system", "content": f"{system_prompt}\nTarget/UI language: {lang_hint}."}]
     for item in history[-8:]:
         role = "assistant" if item.get("role") == "assistant" else "user"
         text = str(item.get("content", "")).strip()
@@ -108,8 +115,8 @@ def _call_groq(message: str, history: list, lang: str, api_key: str) -> tuple[st
         payload = {
             "model": model,
             "messages": messages,
-            "temperature": 0.7,
-            "max_tokens": 1200,
+            "temperature": 0.4,
+            "max_tokens": 2400,
         }
         try:
             res = _http_post_json(url, headers, payload)
@@ -127,13 +134,17 @@ def process_chat_request(payload: dict) -> tuple[int, dict]:
     message = str(payload.get("message", "")).strip()
     if not message:
         return 400, {"error": "Message cannot be empty."}
-    if len(message) > 4000:
-        return 400, {"error": "Message is too long (max 4000 characters)."}
+    if len(message) > 9000:
+        return 400, {"error": "Message is too long (max 9000 characters)."}
 
     history = payload.get("history")
     if not isinstance(history, list):
         history = []
     lang = str(payload.get("lang", "en")).strip().lower()
+    mode = str(payload.get("mode", "chat")).strip().lower()
+    sys_prompt = TRANSLATE_SYSTEM_PROMPT if mode == "translate" else SYSTEM_PROMPT
+    if mode == "translate":
+        history = []
 
     gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
     groq_key = os.environ.get("GROQ_API_KEY", "").strip()
@@ -146,14 +157,14 @@ def process_chat_request(payload: dict) -> tuple[int, dict]:
     errors = []
     if gemini_key:
         try:
-            reply, provider = _call_gemini(message, history, lang, gemini_key)
+            reply, provider = _call_gemini(message, history, lang, gemini_key, sys_prompt)
             return 200, {"reply": reply, "provider": provider}
         except Exception as exc:
             errors.append(str(exc))
 
     if groq_key:
         try:
-            reply, provider = _call_groq(message, history, lang, groq_key)
+            reply, provider = _call_groq(message, history, lang, groq_key, sys_prompt)
             return 200, {"reply": reply, "provider": provider}
         except Exception as exc:
             errors.append(str(exc))
