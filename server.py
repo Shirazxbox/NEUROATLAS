@@ -41,11 +41,21 @@ class LocalHandler(BaseHTTPRequestHandler):
             if not index_file.is_file():
                 self.send_error(404, "index.html not found")
                 return
-            content = index_file.read_bytes()
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.end_headers()
-            self.wfile.write(content)
+            self.wfile.write(index_file.read_bytes())
+            return
+
+        if path == "/neuroatlas-data.js":
+            data_file = ROOT / "neuroatlas-data.js"
+            if not data_file.is_file():
+                self.send_error(404, "neuroatlas-data.js not found")
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "application/javascript; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(data_file.read_bytes())
             return
 
         if path == "/api/status":
