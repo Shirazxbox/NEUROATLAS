@@ -15,7 +15,7 @@ Response style rules:
 1. Be concise, clear, and comprehensive. Avoid unnecessary filler or long introductions.
 2. For simple greetings (like "Hi", "Merhaba", or "درود"), reply in 1-2 friendly sentences and ask how you can help. Do NOT recite full creator/hackathon details unless asked.
 3. Answer ANY general, scientific, coding, neuroscience, or everyday question accurately and to the point.
-4. Reply in the same language the user writes in (English, Persian/Farsi, or Turkish), unless asked otherwise."""wise."""
+4. Reply in the same language the user writes in (English, Persian/Farsi, or Turkish), unless asked otherwise."""
 
 
 def _http_post_json(url: str, headers: dict, payload: dict, timeout: int = 30) -> dict:
