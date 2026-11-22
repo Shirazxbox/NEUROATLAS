@@ -9,7 +9,7 @@ def get_status_payload():
     return {
         "status": "ok",
         "project": "NEUROATLAS",
-        "owner": "Narges11",
+        "owner": "Narges Bayat",
         "ai_ready": has_gemini or has_groq,
         "providers": {
             "gemini": has_gemini,
