@@ -47,15 +47,15 @@ class LocalHandler(BaseHTTPRequestHandler):
             self.wfile.write(index_file.read_bytes())
             return
 
-        if path == "/neuroatlas-data.js":
-            data_file = ROOT / "neuroatlas-data.js"
-            if not data_file.is_file():
-                self.send_error(404, "neuroatlas-data.js not found")
+        if path in ("/neuroatlas-data.js", "/neuroatlas-i18n-data.js"):
+            target_file = ROOT / path.lstrip("/")
+            if not target_file.is_file():
+                self.send_error(404, f"{target_file.name} not found")
                 return
             self.send_response(200)
             self.send_header("Content-Type", "application/javascript; charset=utf-8")
             self.end_headers()
-            self.wfile.write(data_file.read_bytes())
+            self.wfile.write(target_file.read_bytes())
             return
 
         if path == "/api/status":

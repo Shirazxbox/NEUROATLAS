@@ -10,642 +10,155 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root, [data-theme="cyber"] {
-      --bg: #070913;
-      --bg-elevated: rgba(15, 20, 38, 0.86);
-      --bg-card: rgba(20, 26, 48, 0.72);
-      --bg-input: rgba(255, 255, 255, 0.045);
-      --border: rgba(139, 92, 246, 0.24);
-      --text: #f3f6ff;
-      --text-muted: #9aa5c4;
-      --accent: #8b5cf6;
-      --accent-2: #06b6d4;
-      --accent-glow: rgba(139, 92, 246, 0.24);
-      --user-bubble: linear-gradient(135deg, #7c3aed, #0891b2);
-      --bot-bubble: rgba(255, 255, 255, 0.06);
-      --btn-text: #ffffff;
-      --code-bg: rgba(0, 0, 0, 0.42);
+      --bg:#070913; --bg-elevated:rgba(15,20,38,.86); --bg-card:rgba(20,26,48,.74);
+      --bg-input:rgba(255,255,255,.045); --border:rgba(139,92,246,.24); --text:#f3f6ff;
+      --text-muted:#9aa5c4; --accent:#8b5cf6; --accent-2:#06b6d4; --accent-glow:rgba(139,92,246,.24);
+      --user-bubble:linear-gradient(135deg,#7c3aed,#0891b2); --bot-bubble:rgba(255,255,255,.06);
+      --btn-text:#ffffff; --code-bg:rgba(0,0,0,.44);
     }
-
     [data-theme="obsidian"] {
-      --bg: #0b0b0e;
-      --bg-elevated: rgba(22, 21, 26, 0.9);
-      --bg-card: rgba(28, 26, 33, 0.78);
-      --bg-input: rgba(255, 255, 255, 0.045);
-      --border: rgba(245, 158, 11, 0.26);
-      --text: #faf7f0;
-      --text-muted: #b0a899;
-      --accent: #f59e0b;
-      --accent-2: #fbbf24;
-      --accent-glow: rgba(245, 158, 11, 0.2);
-      --user-bubble: linear-gradient(135deg, #d97706, #b45309);
-      --bot-bubble: rgba(255, 255, 255, 0.05);
-      --btn-text: #111111;
-      --code-bg: rgba(0, 0, 0, 0.45);
+      --bg:#0b0b0e; --bg-elevated:rgba(22,21,26,.9); --bg-card:rgba(28,26,33,.8);
+      --bg-input:rgba(255,255,255,.045); --border:rgba(245,158,11,.26); --text:#faf7f0;
+      --text-muted:#b0a899; --accent:#f59e0b; --accent-2:#fbbf24; --accent-glow:rgba(245,158,11,.2);
+      --user-bubble:linear-gradient(135deg,#d97706,#b45309); --bot-bubble:rgba(255,255,255,.05);
+      --btn-text:#111111; --code-bg:rgba(0,0,0,.45);
     }
-
     [data-theme="ocean"] {
-      --bg: #04101c;
-      --bg-elevated: rgba(9, 27, 46, 0.88);
-      --bg-card: rgba(12, 36, 58, 0.75);
-      --bg-input: rgba(255, 255, 255, 0.045);
-      --border: rgba(34, 211, 238, 0.24);
-      --text: #eefaff;
-      --text-muted: #8cb4cc;
-      --accent: #22d3ee;
-      --accent-2: #3b82f6;
-      --accent-glow: rgba(34, 211, 238, 0.2);
-      --user-bubble: linear-gradient(135deg, #0284c7, #0891b2);
-      --bot-bubble: rgba(255, 255, 255, 0.06);
-      --btn-text: #04101c;
-      --code-bg: rgba(0, 0, 0, 0.38);
+      --bg:#04101c; --bg-elevated:rgba(9,27,46,.88); --bg-card:rgba(12,36,58,.76);
+      --bg-input:rgba(255,255,255,.045); --border:rgba(34,211,238,.24); --text:#eefaff;
+      --text-muted:#8cb4cc; --accent:#22d3ee; --accent-2:#3b82f6; --accent-glow:rgba(34,211,238,.2);
+      --user-bubble:linear-gradient(135deg,#0284c7,#0891b2); --bot-bubble:rgba(255,255,255,.06);
+      --btn-text:#04101c; --code-bg:rgba(0,0,0,.38);
     }
-
     [data-theme="light"] {
-      --bg: #f4f7fb;
-      --bg-elevated: rgba(255, 255, 255, 0.92);
-      --bg-card: #ffffff;
-      --bg-input: #f8fafc;
-      --border: rgba(99, 102, 241, 0.22);
-      --text: #0f172a;
-      --text-muted: #475569;
-      --accent: #4f46e5;
-      --accent-2: #0ea5e9;
-      --accent-glow: rgba(79, 70, 229, 0.12);
-      --user-bubble: linear-gradient(135deg, #4f46e5, #0284c7);
-      --bot-bubble: #eef2ff;
-      --btn-text: #ffffff;
-      --code-bg: #1e293b;
+      --bg:#f4f7fb; --bg-elevated:rgba(255,255,255,.92); --bg-card:#ffffff;
+      --bg-input:#f8fafc; --border:rgba(99,102,241,.22); --text:#0f172a;
+      --text-muted:#475569; --accent:#4f46e5; --accent-2:#0ea5e9; --accent-glow:rgba(79,70,229,.12);
+      --user-bubble:linear-gradient(135deg,#4f46e5,#0284c7); --bot-bubble:#eef2ff;
+      --btn-text:#ffffff; --code-bg:#1e293b;
     }
-
     [data-theme="paper"] {
-      --bg: #f3f0e8;
-      --bg-elevated: rgba(243, 240, 232, 0.94);
-      --bg-card: #fffdf8;
-      --bg-input: #f7f4ec;
-      --border: #d6d1c5;
-      --text: #172522;
-      --text-muted: #5d6962;
-      --accent: #a94f35;
-      --accent-2: #526b5d;
-      --accent-glow: rgba(169, 79, 53, 0.1);
-      --user-bubble: linear-gradient(135deg, #172522, #526b5d);
-      --bot-bubble: #ebe7dc;
-      --btn-text: #ffffff;
-      --code-bg: #172522;
+      --bg:#f3f0e8; --bg-elevated:rgba(243,240,232,.94); --bg-card:#fffdf8;
+      --bg-input:#f7f4ec; --border:#d6d1c5; --text:#172522; --text-muted:#5d6962;
+      --accent:#a94f35; --accent-2:#526b5d; --accent-glow:rgba(169,79,53,.1);
+      --user-bubble:linear-gradient(135deg,#172522,#526b5d); --bot-bubble:#ebe7dc;
+      --btn-text:#ffffff; --code-bg:#172522;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: "Plus Jakarta Sans", "Vazirmatn", system-ui, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.68;
-      background-image:
-        radial-gradient(circle at 12% 14%, var(--accent-glow), transparent 36%),
-        radial-gradient(circle at 88% 82%, rgba(6, 182, 212, 0.12), transparent 34%);
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    html[dir="rtl"] body {
-      font-family: "Vazirmatn", "Plus Jakarta Sans", system-ui, sans-serif;
-    }
-
-    .container { width: min(1220px, 93%); margin: 0 auto; }
-
-    /* Navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      backdrop-filter: blur(16px);
-      background: var(--bg-elevated);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 0;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      font-size: 1.08rem;
-      cursor: pointer;
-    }
-
-    .brand-badge {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--accent);
-      background: var(--bg-card);
-    }
-
-    .nav-tabs {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-tab {
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 9px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .nav-tab:hover { color: var(--text); border-color: var(--border); }
-    .nav-tab.active {
-      background: var(--accent-glow);
-      color: var(--accent);
-      border-color: var(--border);
-    }
-
-    .controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-
-    .control-select, .lang-group {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 4px;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .control-select {
-      padding: 6px 10px;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.83rem;
-      font-weight: 600;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .control-select option { background: #111827; color: #f8fafc; }
-
-    .lang-btn {
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      padding: 5px 9px;
-      border-radius: 7px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-    }
-
-    .lang-btn.active { background: var(--accent); color: var(--btn-text); }
-
-    /* Global Search */
-    .search-wrap { position: relative; margin: 18px 0 6px; z-index: 40; }
-    .search-bar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 8px 14px;
-    }
-    .search-bar input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.92rem;
-      outline: none;
-    }
-    .search-bar kbd {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem;
-      padding: 2px 7px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-muted);
-    }
-    .search-results {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0; right: 0;
-      max-height: 420px;
-      overflow-y: auto;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(18px);
-      padding: 8px;
-    }
-    .search-results[hidden] { display: none; }
-    .search-item {
-      display: block;
-      width: 100%;
-      text-align: start;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid var(--border);
-      padding: 10px 12px;
-      color: var(--text);
-      font-family: inherit;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .search-item:hover { background: var(--accent-glow); }
-    .search-item small { display: block; color: var(--accent); font-size: 0.74rem; font-weight: 700; }
-    .search-item span { display: block; color: var(--text-muted); font-size: 0.82rem; }
-
-    /* Views */
-    .view { display: none; padding: 22px 0 42px; }
-    .view.active { display: block; animation: fadeIn 0.22s ease; }
-    @keyframes fadeIn { from { opacity: 0.4; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
-    }
-
-    /* Hero + Direct Chat */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .hero-info {
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 5px 13px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-    .status-dot { width: 9px; height: 9px; border-radius: 50%; background: #94a3b8; }
-    .status-dot.online { background: #22c55e; box-shadow: 0 0 10px #22c55e; }
-
-    .hero-title {
-      font-size: clamp(1.85rem, 3.4vw, 2.7rem);
-      line-height: 1.16;
-      font-weight: 800;
-      margin-top: 12px;
-      background: linear-gradient(120deg, var(--text), var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-desc { color: var(--text-muted); font-size: 0.97rem; margin-top: 12px; }
-
-    .stat-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .stat-box {
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--bg-input);
-    }
-    .stat-box strong { display: block; font-size: 1.2rem; color: var(--accent); }
-    .stat-box span { font-size: 0.74rem; color: var(--text-muted); }
-
-    .prompts-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    .prompt-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      background: var(--bg-input);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 7px 12px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.18s;
-      text-align: start;
-    }
-    .chip:hover { border-color: var(--accent); background: var(--accent-glow); }
-
-    /* Chat */
-    .chat-panel { display: flex; flex-direction: column; height: 550px; overflow: hidden; }
-    .chat-header {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-    .chat-title-wrap { display: flex; align-items: center; gap: 10px; }
-    .chat-avatar {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: var(--user-bubble);
-      display: grid; place-items: center;
-      color: #fff; font-weight: 800; font-size: 0.88rem;
-    }
-    .chat-name { font-weight: 700; font-size: 0.96rem; }
-    .chat-sub { font-size: 0.76rem; color: var(--text-muted); }
-
-    .btn-ghost {
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 9px;
-      font-size: 0.8rem;
-      font-family: inherit;
-      cursor: pointer;
-    }
-    .btn-ghost:hover { color: var(--text); border-color: var(--accent); }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--btn-text);
-      border: none;
-      border-radius: 11px;
-      padding: 10px 18px;
-      font-weight: 700;
-      font-size: 0.88rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: transform 0.15s, opacity 0.2s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .btn-primary:hover { transform: translateY(-1px); }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .msg {
-      max-width: 88%;
-      padding: 12px 15px;
-      border-radius: 16px;
-      font-size: 0.92rem;
-      word-wrap: break-word;
-      white-space: pre-wrap;
-    }
-    .msg.user { align-self: flex-end; background: var(--user-bubble); color: #fff; border-bottom-right-radius: 4px; }
-    html[dir="rtl"] .msg.user { border-bottom-right-radius: 16px; border-bottom-left-radius: 4px; }
-    .msg.bot { align-self: flex-start; background: var(--bot-bubble); border: 1px solid var(--border); color: var(--text); border-bottom-left-radius: 4px; }
-    html[dir="rtl"] .msg.bot { border-bottom-left-radius: 16px; border-bottom-right-radius: 4px; }
-    .msg-meta { margin-top: 6px; font-size: 0.72rem; opacity: 0.72; }
-
-    .msg code {
-      font-family: "JetBrains Mono", monospace;
-      background: rgba(0, 0, 0, 0.28);
-      color: #e2e8f0;
-      padding: 2px 6px;
-      border-radius: 6px;
-      font-size: 0.84em;
-    }
-    .code-wrap {
-      margin: 8px 0;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--code-bg);
-      direction: ltr;
-      text-align: left;
-    }
-    .code-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 10px;
-      font-size: 0.72rem;
-      color: #cbd5e1;
-      background: rgba(255, 255, 255, 0.06);
-      font-family: "JetBrains Mono", monospace;
-    }
-    .copy-code-btn {
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: transparent;
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 0.7rem;
-      cursor: pointer;
-    }
-    .code-wrap pre {
-      margin: 0;
-      padding: 10px 12px;
-      overflow-x: auto;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.82rem;
-      color: #f8fafc;
-      white-space: pre;
-    }
-
-    .chat-input-bar {
-      padding: 12px 14px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 10px;
-      align-items: flex-end;
-    }
-    .chat-input, .field, textarea, select.field {
-      width: 100%;
-      background: var(--bg-input);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 13px;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.92rem;
-      outline: none;
-    }
-    .chat-input { flex: 1; resize: none; min-height: 42px; max-height: 120px; }
-    .chat-input:focus, .field:focus, textarea:focus { border-color: var(--accent); }
-    select.field option { background: #111827; color: #f8fafc; }
-
-    /* Content Grids */
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 18px; }
-    .pad { padding: 24px; }
-    .section-head { margin: 26px 0 14px; }
-    .section-head h2 { font-size: 1.5rem; font-weight: 800; }
-    .section-head p { color: var(--text-muted); font-size: 0.92rem; }
-    .tag { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px; }
-    .muted { color: var(--text-muted); font-size: 0.92rem; }
-
-    /* Atlas Layout */
-    .atlas-layout { display: grid; grid-template-columns: 270px 1fr; gap: 22px; margin-top: 14px; }
-    .chapter-side { max-height: 75vh; overflow-y: auto; padding: 14px; }
-    .chapter-btn {
-      display: block;
-      width: 100%;
-      text-align: start;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid var(--border);
-      padding: 9px 6px;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 0.84rem;
-      cursor: pointer;
-    }
-    .chapter-btn:hover, .chapter-btn.active { color: var(--accent); font-weight: 700; }
-    .chapter-hidden { display: none !important; }
-    .chapter-body { padding: 28px; }
-    .chapter-body h2 { font-size: 1.75rem; margin: 6px 0 8px; }
-    .chapter-body h3 { font-size: 1.15rem; margin: 20px 0 6px; color: var(--accent); }
-    .callout {
-      border-inline-start: 3px solid var(--accent);
-      background: var(--bg-input);
-      padding: 13px 16px;
-      border-radius: 10px;
-      margin: 16px 0;
-    }
-    details.qa {
-      background: var(--bg-input);
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      padding: 10px 14px;
-      margin: 8px 0;
-    }
-    details.qa summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; }
-    details.qa p { margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; }
-
-    /* Sub-tabs inside Research & Learn */
-    .sub-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 18px; }
-    .sub-tab {
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      color: var(--text-muted);
-      padding: 7px 14px;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 0.84rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .sub-tab.active { background: var(--accent); color: var(--btn-text); border-color: var(--accent); }
-    .sub-panel { display: none; }
-    .sub-panel.active { display: block; }
-
-    .flashcard {
-      min-height: 190px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 28px;
-    }
-    .flashcard h3 { font-size: 1.35rem; margin-top: 8px; }
-    .quiz-q { padding: 14px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; background: var(--bg-input); }
-    .quiz-q label { display: block; margin-top: 6px; font-size: 0.9rem; cursor: pointer; }
-
-    /* About Narges */
-    .about-hero {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 24px;
-      align-items: center;
-      padding: 28px;
-    }
-    .avatar-ring {
-      width: 170px;
-      height: 170px;
-      border-radius: 28px;
-      border: 2px solid var(--border);
-      background: var(--bg-input);
-      display: grid;
-      place-items: center;
-      margin: 0 auto;
-    }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .skill-pill {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--bg-input);
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-
-    /* Floating Chat Jump */
-    .fab-chat {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      z-index: 55;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-    }
-    html[dir="rtl"] .fab-chat { right: auto; left: 22px; }
-
-    .hidden { display: none !important; }
-    a.ext { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
-
-    footer {
-      margin-top: 36px;
-      padding: 24px 0 36px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 0.84rem;
-      color: var(--text-muted);
-    }
-
-    @media (max-width: 960px) {
-      .hero-grid, .atlas-layout, .grid-3, .grid-2, .about-hero { grid-template-columns: 1fr; }
-      .stat-strip { grid-template-columns: repeat(2, 1fr); }
-      .chat-panel { height: 480px; }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Plus Jakarta Sans","Vazirmatn",system-ui,sans-serif;background-color:var(--bg);color:var(--text);min-height:100vh;line-height:1.68;background-image:radial-gradient(circle at 12% 14%,var(--accent-glow),transparent 36%),radial-gradient(circle at 88% 82%,rgba(6,182,212,.12),transparent 34%);transition:background-color .25s,color .25s}
+    html[dir="rtl"] body{font-family:"Vazirmatn","Plus Jakarta Sans",system-ui,sans-serif}
+    .container{width:min(1220px,93%);margin:0 auto}
+    .navbar{position:sticky;top:0;z-index:60;backdrop-filter:blur(16px);background:var(--bg-elevated);border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:800;letter-spacing:.04em;font-size:1.08rem;cursor:pointer}
+    .brand-badge{font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--border);color:var(--accent);background:var(--bg-card)}
+    .nav-tabs{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+    .nav-tab{border:1px solid transparent;background:transparent;color:var(--text-muted);padding:6px 12px;border-radius:9px;font-size:.86rem;font-weight:600;font-family:inherit;cursor:pointer;transition:.2s}
+    .nav-tab:hover{color:var(--text);border-color:var(--border)}
+    .nav-tab.active{background:var(--accent-glow);color:var(--accent);border-color:var(--border)}
+    .controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .control-select,.lang-group{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:4px;display:flex;align-items:center;gap:3px}
+    .control-select{padding:6px 10px;color:var(--text);font-family:inherit;font-size:.83rem;font-weight:600;cursor:pointer;outline:none}
+    .control-select option{background:#111827;color:#f8fafc}
+    .lang-btn{border:none;background:transparent;color:var(--text-muted);padding:5px 9px;border-radius:7px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:inherit}
+    .lang-btn.active{background:var(--accent);color:var(--btn-text)}
+    .search-wrap{position:relative;margin:18px 0 6px;z-index:40}
+    .search-bar{display:flex;align-items:center;gap:10px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:8px 14px}
+    .search-bar input{flex:1;border:none;background:transparent;color:var(--text);font-family:inherit;font-size:.92rem;outline:none}
+    .search-bar kbd{font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:2px 7px;border:1px solid var(--border);border-radius:6px;color:var(--text-muted)}
+    .search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;max-height:420px;overflow-y:auto;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.35);backdrop-filter:blur(18px);padding:8px}
+    .search-results[hidden]{display:none}
+    .search-item{display:block;width:100%;text-align:start;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 12px;color:var(--text);font-family:inherit;cursor:pointer;border-radius:8px}
+    .search-item:hover{background:var(--accent-glow)}
+    .search-item small{display:block;color:var(--accent);font-size:.74rem;font-weight:700}
+    .search-item span{display:block;color:var(--text-muted);font-size:.82rem}
+    .view{display:none;padding:22px 0 42px}
+    .view.active{display:block;animation:fadeIn .22s ease}
+    @keyframes fadeIn{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(14px);box-shadow:0 14px 40px rgba(0,0,0,.16)}
+    .hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:stretch}
+    .hero-info{padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+    .status-pill{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:5px 13px;border-radius:999px;border:1px solid var(--border);font-size:.8rem;font-weight:600;color:var(--text-muted)}
+    .status-dot{width:9px;height:9px;border-radius:50%;background:#94a3b8}
+    .status-dot.online{background:#22c55e;box-shadow:0 0 10px #22c55e}
+    .hero-title{font-size:clamp(1.85rem,3.4vw,2.7rem);line-height:1.16;font-weight:800;margin-top:12px;background:linear-gradient(120deg,var(--text),var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-desc{color:var(--text-muted);font-size:.97rem;margin-top:12px}
+    .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+    .stat-box{padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg-input)}
+    .stat-box strong{display:block;font-size:1.2rem;color:var(--accent)}
+    .stat-box span{font-size:.74rem;color:var(--text-muted)}
+    .prompts-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px}
+    .prompt-chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:var(--bg-input);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:10px;font-size:.82rem;font-family:inherit;cursor:pointer;transition:.18s;text-align:start}
+    .chip:hover{border-color:var(--accent);background:var(--accent-glow)}
+    .chat-panel{display:flex;flex-direction:column;height:550px;overflow:hidden}
+    .chat-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .chat-title-wrap{display:flex;align-items:center;gap:10px}
+    .chat-avatar{width:36px;height:36px;border-radius:10px;background:var(--user-bubble);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.88rem}
+    .chat-name{font-weight:700;font-size:.96rem}
+    .chat-sub{font-size:.76rem;color:var(--text-muted)}
+    .btn-ghost{border:1px solid var(--border);background:transparent;color:var(--text-muted);padding:6px 12px;border-radius:9px;font-size:.8rem;font-family:inherit;cursor:pointer}
+    .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
+    .btn-primary{background:var(--accent);color:var(--btn-text);border:none;border-radius:11px;padding:10px 18px;font-weight:700;font-size:.88rem;font-family:inherit;cursor:pointer;transition:.15s;text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-primary:disabled{opacity:.5;cursor:not-allowed}
+    .chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+    .msg{max-width:88%;padding:12px 15px;border-radius:16px;font-size:.92rem;word-wrap:break-word;white-space:pre-wrap}
+    .msg.user{align-self:flex-end;background:var(--user-bubble);color:#fff;border-bottom-right-radius:4px}
+    html[dir="rtl"] .msg.user{border-bottom-right-radius:16px;border-bottom-left-radius:4px}
+    .msg.bot{align-self:flex-start;background:var(--bot-bubble);border:1px solid var(--border);color:var(--text);border-bottom-left-radius:4px}
+    html[dir="rtl"] .msg.bot{border-bottom-left-radius:16px;border-bottom-right-radius:4px}
+    .msg-meta{margin-top:6px;font-size:.72rem;opacity:.72}
+    .msg code{font-family:"JetBrains Mono",monospace;background:rgba(0,0,0,.28);color:#e2e8f0;padding:2px 6px;border-radius:6px;font-size:.84em}
+    .code-wrap{margin:8px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:var(--code-bg);direction:ltr;text-align:left}
+    .code-head{display:flex;justify-content:space-between;align-items:center;padding:5px 10px;font-size:.72rem;color:#cbd5e1;background:rgba(255,255,255,.06);font-family:"JetBrains Mono",monospace}
+    .copy-code-btn{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:2px 8px;border-radius:6px;font-size:.7rem;cursor:pointer}
+    .code-wrap pre{margin:0;padding:10px 12px;overflow-x:auto;font-family:"JetBrains Mono",monospace;font-size:.82rem;color:#f8fafc;white-space:pre}
+    .chat-input-bar{padding:12px 14px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:flex-end}
+    .chat-input,.field,textarea,select.field{width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:12px;padding:10px 13px;color:var(--text);font-family:inherit;font-size:.92rem;outline:none}
+    .chat-input{flex:1;resize:none;min-height:42px;max-height:120px}
+    .chat-input:focus,.field:focus,textarea:focus{border-color:var(--accent)}
+    select.field option{background:#111827;color:#f8fafc}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+    .pad{padding:24px}
+    .section-head{margin:26px 0 14px}
+    .section-head h2{font-size:1.5rem;font-weight:800}
+    .section-head p{color:var(--text-muted);font-size:.92rem}
+    .tag{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+    .muted{color:var(--text-muted);font-size:.92rem}
+    .atlas-layout{display:grid;grid-template-columns:270px 1fr;gap:22px;margin-top:14px}
+    .chapter-side{max-height:75vh;overflow-y:auto;padding:14px}
+    .chapter-btn{display:block;width:100%;text-align:start;background:transparent;border:none;border-bottom:1px solid var(--border);padding:9px 6px;color:var(--text-muted);font-family:inherit;font-size:.84rem;cursor:pointer}
+    .chapter-btn:hover,.chapter-btn.active{color:var(--accent);font-weight:700}
+    .chapter-hidden{display:none!important}
+    .chapter-body{padding:28px}
+    .chapter-body h2{font-size:1.75rem;margin:6px 0 8px}
+    .chapter-body h3{font-size:1.15rem;margin:20px 0 6px;color:var(--accent)}
+    .callout{border-inline-start:3px solid var(--accent);background:var(--bg-input);padding:13px 16px;border-radius:10px;margin:16px 0}
+    details.qa{background:var(--bg-input);border:1px solid var(--border);border-radius:11px;padding:10px 14px;margin:8px 0}
+    details.qa summary{cursor:pointer;font-weight:600;font-size:.9rem}
+    details.qa p{margin-top:8px;color:var(--text-muted);font-size:.88rem}
+    .sub-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}
+    .sub-tab{border:1px solid var(--border);background:var(--bg-card);color:var(--text-muted);padding:7px 14px;border-radius:10px;font-family:inherit;font-size:.84rem;font-weight:600;cursor:pointer}
+    .sub-tab.active{background:var(--accent);color:var(--btn-text);border-color:var(--accent)}
+    .sub-panel{display:none}
+    .sub-panel.active{display:block}
+    .flashcard{min-height:190px;display:grid;place-items:center;text-align:center;padding:28px}
+    .flashcard h3{font-size:1.35rem;margin-top:8px}
+    .quiz-q{padding:14px;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;background:var(--bg-input)}
+    .quiz-q label{display:block;margin-top:6px;font-size:.9rem;cursor:pointer}
+    .about-hero{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;padding:28px}
+    .avatar-ring{width:170px;height:170px;border-radius:28px;border:2px solid var(--border);background:var(--bg-input);display:grid;place-items:center;margin:0 auto}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .skill-pill{padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg-input);font-size:.82rem;font-weight:600}
+    .fab-chat{position:fixed;bottom:22px;right:22px;z-index:55;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+    html[dir="rtl"] .fab-chat{right:auto;left:22px}
+    .hidden{display:none!important}
+    a.ext{color:var(--accent);text-decoration:none;border-bottom:1px dashed var(--accent)}
+    footer{margin-top:36px;padding:24px 0 36px;border-top:1px solid var(--border);text-align:center;font-size:.84rem;color:var(--text-muted)}
+    @media(max-width:960px){.hero-grid,.atlas-layout,.grid-3,.grid-2,.about-hero{grid-template-columns:1fr}.stat-strip{grid-template-columns:repeat(2,1fr)}.chat-panel{height:480px}}
   </style>
 </head>
 <body>
@@ -658,12 +171,7 @@
           <circle cx="22" cy="11" r="2.2" fill="#fff" />
           <circle cx="16" cy="22" r="2.5" fill="#fff" />
           <path d="M10 11L22 11M10 11L16 22M22 11L16 22" stroke="#fff" stroke-width="1.7" stroke-linecap="round" />
-          <defs>
-            <linearGradient id="na-grad" x1="0" y1="0" x2="32" y2="32">
-              <stop stop-color="#8b5cf6" />
-              <stop offset="1" stop-color="#06b6d4" />
-            </linearGradient>
-          </defs>
+          <defs><linearGradient id="na-grad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
         </svg>
         <span>NEUROATLAS</span>
         <span class="brand-badge">Narges Bayat</span>
@@ -686,7 +194,6 @@
           <option value="light" data-i18n="themeLight">Theme: Daylight</option>
           <option value="paper" data-i18n="themePaper">Theme: Editorial Paper</option>
         </select>
-
         <div class="lang-group" role="group" aria-label="Language selector">
           <button class="lang-btn active" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="fa">فا</button>
@@ -697,7 +204,6 @@
   </header>
 
   <div class="container">
-    <!-- Global Search -->
     <div class="search-wrap" id="globalSearchWrap">
       <div class="search-bar">
         <span>⌕</span>
@@ -707,19 +213,13 @@
       <div id="globalSearchResults" class="search-results" hidden></div>
     </div>
 
-    <!-- VIEW 1: HOME + DIRECT CHAT -->
     <section id="view-home" class="view active">
       <div class="hero-grid">
         <div class="card hero-info">
           <div>
-            <div class="status-pill">
-              <span id="statusDot" class="status-dot"></span>
-              <span id="statusText" data-i18n="statusChecking">Checking Python API...</span>
-            </div>
+            <div class="status-pill"><span id="statusDot" class="status-dot"></span><span id="statusText" data-i18n="statusChecking">Checking Python API...</span></div>
             <h1 class="hero-title" data-i18n="heroTitle">NEUROATLAS by Narges Bayat</h1>
-            <p class="hero-desc" data-i18n="heroDesc">
-              An evidence-led neuroscience atlas and multilingual Python AI platform built for GenHacks 2026. Ask any general, coding, or science question right here—or explore 23 anatomy chapters and PubMed research.
-            </p>
+            <p class="hero-desc" data-i18n="heroDesc">An evidence-led neuroscience atlas and multilingual Python AI platform built for GenHacks 2026.</p>
             <div class="stat-strip">
               <div class="stat-box"><strong id="statChapters">23</strong><span data-i18n="statCh">Atlas Chapters</span></div>
               <div class="stat-box"><strong id="statSources">24</strong><span data-i18n="statSrc">NIH/NCBI Sources</span></div>
@@ -727,7 +227,6 @@
               <div class="stat-box"><strong>5</strong><span data-i18n="statThemes">Themes</span></div>
             </div>
           </div>
-
           <div>
             <div class="prompts-label" data-i18n="tryAsking">Try asking directly</div>
             <div class="prompt-chips" id="promptChips"></div>
@@ -754,35 +253,16 @@
       </div>
 
       <div class="grid-3">
-        <article class="card pad">
-          <div class="tag" data-i18n="hm1Tag">01 / KNOWLEDGE ATLAS</div>
-          <h3 data-i18n="hm1Title">23 Neuroscience Chapters</h3>
-          <p class="muted" data-i18n="hm1Desc">From neurons and synapses to cognition, sleep, and neuroimaging methods—with review Q&As.</p>
-          <div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('atlas')" data-i18n="openBtn">Open →</button></div>
-        </article>
-        <article class="card pad">
-          <div class="tag" data-i18n="hm2Tag">02 / LIVE EVIDENCE</div>
-          <h3 data-i18n="hm2Title">PubMed & 24 NIH Sources</h3>
-          <p class="muted" data-i18n="hm2Desc">Search live NCBI PubMed records and explore curated government and academic references.</p>
-          <div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('research')" data-i18n="openBtn">Open →</button></div>
-        </article>
-        <article class="card pad">
-          <div class="tag" data-i18n="hm3Tag">03 / CREATOR & LEARNING</div>
-          <h3 data-i18n="hm3Title">Narges Bayat · Student Builder</h3>
-          <p class="muted" data-i18n="hm3Desc">Built with Python for GenHacks 2026. Explore Narges's learning journey, skills, and secure contact.</p>
-          <div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('about')" data-i18n="openBtn">Open →</button></div>
-        </article>
+        <article class="card pad"><div class="tag" data-i18n="hm1Tag">01 / KNOWLEDGE ATLAS</div><h3 data-i18n="hm1Title">23 Neuroscience Chapters</h3><p class="muted" data-i18n="hm1Desc">From neurons to cognition, sleep, and neuroimaging.</p><div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('atlas')" data-i18n="openBtn">Open →</button></div></article>
+        <article class="card pad"><div class="tag" data-i18n="hm2Tag">02 / LIVE EVIDENCE</div><h3 data-i18n="hm2Title">PubMed & 24 NIH Sources</h3><p class="muted" data-i18n="hm2Desc">Search live NCBI PubMed records and academic references.</p><div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('research')" data-i18n="openBtn">Open →</button></div></article>
+        <article class="card pad"><div class="tag" data-i18n="hm3Tag">03 / CREATOR & LEARNING</div><h3 data-i18n="hm3Title">Narges Bayat · Student Builder</h3><p class="muted" data-i18n="hm3Desc">Built with Python for GenHacks 2026.</p><div style="margin-top:12px"><button class="btn-ghost" onclick="switchView('about')" data-i18n="openBtn">Open →</button></div></article>
       </div>
     </section>
 
-    <!-- VIEW 2: ANATOMY ATLAS (23 CHAPTERS) -->
     <section id="view-atlas" class="view">
-      <div class="section-head">
-        <h2 data-i18n="atlasHeading">Neuroanatomy & Systems Atlas</h2>
-        <p data-i18n="atlasSub">Evidence-led educational chapters. Not for medical diagnosis or treatment.</p>
-      </div>
+      <div class="section-head"><h2 data-i18n="atlasHeading">Neuroanatomy & Systems Atlas</h2><p data-i18n="atlasSub">Evidence-led educational chapters. Not for medical diagnosis or treatment.</p></div>
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-        <input id="chapterFilter" class="field" style="max-width:340px" type="search" placeholder="Filter 23 chapters…" />
+        <input id="chapterFilter" class="field" style="max-width:340px" type="search" data-i18n-placeholder="filterChaptersPh" placeholder="Filter 23 chapters…" />
         <span id="chapterFilterCount" class="muted"></span>
       </div>
       <div class="atlas-layout">
@@ -791,140 +271,109 @@
       </div>
     </section>
 
-    <!-- VIEW 3: RESEARCH, PUBMED, METHODS, SOURCES -->
     <section id="view-research" class="view">
-      <div class="section-head">
-        <h2 data-i18n="resHeading">Literature Search, Methods & Sources</h2>
-        <p data-i18n="resSub">Explore live NCBI PubMed studies, design testable research questions, and inspect 24 curated sources.</p>
-      </div>
+      <div class="section-head"><h2 data-i18n="resHeading">Literature Search, Methods & Sources</h2><p data-i18n="resSub">Explore live NCBI PubMed studies, design research questions, and inspect 24 sources.</p></div>
       <div class="sub-tabs">
-        <button class="sub-tab active" data-sub="pubmed">PubMed Search</button>
-        <button class="sub-tab" data-sub="discover">Research Question Builder</button>
-        <button class="sub-tab" data-sub="methods">Research Methods</button>
-        <button class="sub-tab" data-sub="sources">24 Curated Sources</button>
+        <button class="sub-tab active" data-sub="pubmed" data-i18n="subPubmed">PubMed Search</button>
+        <button class="sub-tab" data-sub="discover" data-i18n="subDiscover">Research Question Builder</button>
+        <button class="sub-tab" data-sub="methods" data-i18n="subMethods">Research Methods</button>
+        <button class="sub-tab" data-sub="sources" data-i18n="subSources">24 Curated Sources</button>
       </div>
-
       <div id="sub-pubmed" class="sub-panel active card pad">
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <input id="pubmedQuery" class="field" style="flex:1" placeholder="e.g. hippocampal plasticity, EEG sleep, visual cortex" />
-          <button id="pubmedBtn" class="btn-primary">Search PubMed</button>
+          <input id="pubmedQuery" class="field" style="flex:1" data-i18n-placeholder="pubmedPh" placeholder="e.g. hippocampal plasticity, EEG sleep" />
+          <button id="pubmedBtn" class="btn-primary" data-i18n="pubmedBtn">Search PubMed</button>
         </div>
-        <p id="pubmedStatus" class="muted" style="margin-top:10px">Queries live NCBI E-utilities (requires internet).</p>
+        <p id="pubmedStatus" class="muted" style="margin-top:10px" data-i18n="pubmedNote">Queries live NCBI E-utilities (requires internet).</p>
         <div id="pubmedResults" style="margin-top:14px"></div>
       </div>
-
       <div id="sub-discover" class="sub-panel card pad">
         <div class="grid-2">
           <div style="display:flex;flex-direction:column;gap:10px">
-            <input id="rdTopic" class="field" placeholder="Topic (e.g. sleep and memory consolidation)" />
-            <input id="rdPopulation" class="field" placeholder="Population / model (e.g. adolescents, adults)" />
-            <input id="rdExposure" class="field" placeholder="Comparison / factor (e.g. sleep duration)" />
-            <input id="rdOutcome" class="field" placeholder="Measurement (e.g. recall accuracy, EEG)" />
+            <input id="rdTopic" class="field" data-i18n-placeholder="rdTopicPh" placeholder="Topic" />
+            <input id="rdPopulation" class="field" data-i18n-placeholder="rdPopPh" placeholder="Population / model" />
+            <input id="rdExposure" class="field" data-i18n-placeholder="rdExpPh" placeholder="Comparison / factor" />
+            <input id="rdOutcome" class="field" data-i18n-placeholder="rdOutPh" placeholder="Measurement" />
             <select id="rdMethod" class="field">
-              <option>Literature review</option>
-              <option>Behavioral experiment</option>
-              <option>EEG / electrophysiology</option>
-              <option>MRI / neuroimaging</option>
-              <option>Computational analysis</option>
+              <option value="Literature review" data-i18n="mOpt1">Literature review</option>
+              <option value="Behavioral experiment" data-i18n="mOpt2">Behavioral experiment</option>
+              <option value="EEG / electrophysiology" data-i18n="mOpt3">EEG / electrophysiology</option>
+              <option value="MRI / neuroimaging" data-i18n="mOpt4">MRI / neuroimaging</option>
+              <option value="Computational analysis" data-i18n="mOpt5">Computational analysis</option>
             </select>
             <div style="display:flex;gap:10px">
-              <button id="buildQuestion" class="btn-primary">Build Outline</button>
-              <button id="saveQuestion" class="btn-ghost">Save to Workspace</button>
+              <button id="buildQuestion" class="btn-primary" data-i18n="buildBtn">Build Outline</button>
+              <button id="saveQuestion" class="btn-ghost" data-i18n="saveWorkBtn">Save to Workspace</button>
             </div>
           </div>
-          <div>
-            <div class="tag">Structured Outline</div>
-            <pre id="researchOutline" class="callout" style="white-space:pre-wrap;font-family:inherit">Fill in a topic to generate a structured research outline.</pre>
-          </div>
+          <div><div class="tag" data-i18n="outlineTag">Structured Outline</div><pre id="researchOutline" class="callout" style="white-space:pre-wrap;font-family:inherit" data-i18n="outlineEmpty">Fill in a topic to generate a structured research outline.</pre></div>
         </div>
       </div>
-
       <div id="sub-methods" class="sub-panel card pad"><div id="methodsContent"></div></div>
-
       <div id="sub-sources" class="sub-panel card pad">
         <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
-          <input id="sourceFilter" class="field" style="max-width:340px" placeholder="Filter NIH / NCBI sources…" />
+          <input id="sourceFilter" class="field" style="max-width:340px" data-i18n-placeholder="filterSourcesPh" placeholder="Filter NIH / NCBI sources…" />
           <span id="sourceCountLabel" class="muted"></span>
         </div>
         <div id="sourceList" class="grid-2"></div>
       </div>
     </section>
 
-    <!-- VIEW 4: LEARN (MAP, FLASHCARDS, QUIZ, GLOSSARY, WORKSPACE) -->
     <section id="view-learn" class="view">
-      <div class="section-head">
-        <h2 data-i18n="learnHeading">Active Learning Lab & Workspace</h2>
-        <p data-i18n="learnSub">Concept map, retrieval flashcards, mini quiz, neuroscience glossary, and local study notes.</p>
-      </div>
+      <div class="section-head"><h2 data-i18n="learnHeading">Active Learning Lab & Workspace</h2><p data-i18n="learnSub">Concept map, retrieval flashcards, mini quiz, glossary, and local notes.</p></div>
       <div class="sub-tabs">
-        <button class="sub-tab active" data-sub="flashquiz">Flashcards & Quiz</button>
-        <button class="sub-tab" data-sub="map">Concept Map</button>
-        <button class="sub-tab" data-sub="glossary">Glossary</button>
-        <button class="sub-tab" data-sub="workspace">Local Workspace</button>
+        <button class="sub-tab active" data-sub="flashquiz" data-i18n="subFlashQuiz">Flashcards & Quiz</button>
+        <button class="sub-tab" data-sub="map" data-i18n="subMap">Concept Map</button>
+        <button class="sub-tab" data-sub="glossary" data-i18n="subGlossary">Glossary</button>
+        <button class="sub-tab" data-sub="workspace" data-i18n="subWorkspace">Local Workspace</button>
       </div>
-
       <div id="sub-flashquiz" class="sub-panel active">
         <div class="grid-2">
           <div class="card pad">
-            <div class="tag">Flashcards</div>
-            <div class="flashcard callout">
-              <div>
-                <h3 id="flashQ">Loading...</h3>
-                <p id="flashA" class="muted hidden" style="margin-top:10px"></p>
-              </div>
-            </div>
+            <div class="tag" data-i18n="flashTag">Flashcards</div>
+            <div class="flashcard callout"><div><h3 id="flashQ">Loading...</h3><p id="flashA" class="muted hidden" style="margin-top:10px"></p></div></div>
             <div style="display:flex;gap:10px;margin-top:12px">
-              <button id="flipCard" class="btn-primary">Reveal Answer</button>
-              <button id="nextCard" class="btn-ghost">Next Card</button>
+              <button id="flipCard" class="btn-primary" data-i18n="revealAnsBtn">Reveal Answer</button>
+              <button id="nextCard" class="btn-ghost" data-i18n="nextCardBtn">Next Card</button>
             </div>
           </div>
           <div class="card pad">
-            <div class="tag">Knowledge Check</div>
+            <div class="tag" data-i18n="quizTag">Knowledge Check</div>
             <div id="quizArea"></div>
-            <button id="gradeQuiz" class="btn-primary">Check Answers</button>
+            <button id="gradeQuiz" class="btn-primary" data-i18n="checkAnsBtn">Check Answers</button>
             <div id="quizScore" class="callout hidden"></div>
           </div>
         </div>
       </div>
-
-      <div id="sub-map" class="sub-panel card pad">
-        <div id="mapGrid" class="grid-3"></div>
-        <div id="mapDetail" class="callout" style="margin-top:16px">Select a concept above to inspect related chapters.</div>
-      </div>
-
+      <div id="sub-map" class="sub-panel card pad"><div id="mapGrid" class="grid-3"></div><div id="mapDetail" class="callout" style="margin-top:16px" data-i18n="mapHint">Select a concept above to inspect related chapters.</div></div>
       <div id="sub-glossary" class="sub-panel card pad">
         <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px">
-          <input id="glossaryFilter" class="field" style="max-width:340px" placeholder="Filter glossary terms…" />
+          <input id="glossaryFilter" class="field" style="max-width:340px" data-i18n-placeholder="filterGlossaryPh" placeholder="Filter glossary terms…" />
           <span id="glossaryCount" class="muted"></span>
         </div>
         <div id="glossaryList" class="grid-2"></div>
       </div>
-
       <div id="sub-workspace" class="sub-panel card pad">
         <div class="grid-2">
           <div style="display:flex;flex-direction:column;gap:10px">
-            <input id="noteTitle" class="field" placeholder="Note title" />
-            <textarea id="noteBody" rows="6" placeholder="Write study notes or research ideas (saved in your browser)…"></textarea>
+            <input id="noteTitle" class="field" data-i18n-placeholder="noteTitlePh" placeholder="Note title" />
+            <textarea id="noteBody" rows="6" data-i18n-placeholder="noteBodyPh" placeholder="Write study notes…"></textarea>
             <div style="display:flex;gap:10px">
-              <button id="saveNote" class="btn-primary">Save Note</button>
-              <button id="exportNotes" class="btn-ghost">Export JSON</button>
+              <button id="saveNote" class="btn-primary" data-i18n="saveNoteBtn">Save Note</button>
+              <button id="exportNotes" class="btn-ghost" data-i18n="exportBtn">Export JSON</button>
             </div>
           </div>
-          <div>
-            <div class="tag">Saved Notes</div>
-            <div id="notesList"></div>
-          </div>
+          <div><div class="tag" data-i18n="savedNotesTag">Saved Notes</div><div id="notesList"></div></div>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 5: ABOUT NARGES BAYAT -->
     <section id="view-about" class="view">
       <div class="card about-hero">
         <div class="avatar-ring">
           <svg width="108" height="108" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-            <circle cx="60" cy="44" r="22" stroke="currentColor" stroke-width="4" opacity="0.9" />
-            <path d="M24 98C24 78 40 68 60 68C80 68 96 78 96 98" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity="0.9" />
+            <circle cx="60" cy="44" r="22" stroke="currentColor" stroke-width="4" opacity=".9" />
+            <path d="M24 98C24 78 40 68 60 68C80 68 96 78 96 98" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".9" />
             <circle cx="90" cy="30" r="8" fill="var(--accent)" />
             <circle cx="28" cy="34" r="5" fill="var(--accent-2)" />
           </svg>
@@ -932,14 +381,12 @@
         <div>
           <div class="tag" data-i18n="aboutTag">CREATOR PROFILE · GENHACKS 2026</div>
           <h2 style="font-size:1.85rem;font-weight:800" data-i18n="aboutName">Narges Bayat</h2>
-          <p class="muted" style="margin-top:8px" data-i18n="aboutBio">
-            Student developer and curious learner exploring Python programming, web engineering, artificial intelligence, and neuroscience. NEUROATLAS combines structured scientific education with an accessible, multilingual Python AI assistant.
-          </p>
+          <p class="muted" style="margin-top:8px" data-i18n="aboutBio">Student developer exploring Python, web engineering, AI, and neuroscience.</p>
           <div class="skill-tags">
             <span class="skill-pill">Python</span>
             <span class="skill-pill">HTML / CSS / JS</span>
             <span class="skill-pill">AI APIs (Gemini & Groq)</span>
-            <span class="skill-pill">Neuroscience Research</span>
+            <span class="skill-pill" data-i18n="skillNeuro">Neuroscience Research</span>
             <span class="skill-pill">English · فارسی · Türkçe</span>
           </div>
           <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
@@ -948,33 +395,15 @@
           </div>
         </div>
       </div>
-
       <div class="grid-3">
-        <article class="card pad">
-          <div class="tag" data-i18n="ab1Tag">LEARNING JOURNEY</div>
-          <h3 data-i18n="ab1Title">Building While Learning</h3>
-          <p class="muted" data-i18n="ab1Desc">Started with a prototype HTML atlas and Python launcher, then evolved it into a full-stack serverless web application.</p>
-        </article>
-        <article class="card pad">
-          <div class="tag" data-i18n="ab2Tag">HACKATHON GOAL</div>
-          <h3 data-i18n="ab2Title">GenHacks 2026</h3>
-          <p class="muted" data-i18n="ab2Desc">Designed to make both neuroscience reference materials and general AI assistance available in one lightweight, inclusive interface.</p>
-        </article>
-        <article class="card pad">
-          <div class="tag" data-i18n="ab3Tag">PRIVACY & ACCESSIBILITY</div>
-          <h3 data-i18n="ab3Title">Inclusive by Design</h3>
-          <p class="muted" data-i18n="ab3Desc">Supports English, right-to-left Persian, Turkish, five color themes, and anti-spam contact protection.</p>
-        </article>
+        <article class="card pad"><div class="tag" data-i18n="ab1Tag">LEARNING JOURNEY</div><h3 data-i18n="ab1Title">Building While Learning</h3><p class="muted" data-i18n="ab1Desc">Evolved from a prototype atlas into a full-stack Python serverless platform.</p></article>
+        <article class="card pad"><div class="tag" data-i18n="ab2Tag">HACKATHON GOAL</div><h3 data-i18n="ab2Title">GenHacks 2026</h3><p class="muted" data-i18n="ab2Desc">Combines neuroscience education and general AI assistance in one lightweight interface.</p></article>
+        <article class="card pad"><div class="tag" data-i18n="ab3Tag">PRIVACY & ACCESSIBILITY</div><h3 data-i18n="ab3Title">Inclusive by Design</h3><p class="muted" data-i18n="ab3Desc">Supports English, Persian (RTL), Turkish, five themes, and anti-spam protection.</p></article>
       </div>
     </section>
 
-    <!-- VIEW 6: SECURE CONTACT -->
     <section id="view-contact" class="view">
-      <div class="section-head">
-        <h2 data-i18n="contactHeading">Secure Contact</h2>
-        <p data-i18n="contactSub">Send feedback or questions safely without exposing any personal email address to spam bots.</p>
-      </div>
-
+      <div class="section-head"><h2 data-i18n="contactHeading">Secure Contact</h2><p data-i18n="contactSub">Send feedback or questions safely without exposing any personal email address to spam bots.</p></div>
       <div class="grid-2">
         <div class="card pad">
           <div class="tag" data-i18n="formTag">ENCRYPTED FORM DELIVERY</div>
@@ -982,9 +411,9 @@
           <form id="contactForm" style="display:flex;flex-direction:column;gap:10px">
             <input type="checkbox" name="botcheck" id="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
             <select id="contactCategory" class="field" required>
-              <option value="General / Hackathon Feedback">General / Hackathon Feedback</option>
-              <option value="Science / Atlas Question">Science / Atlas Question</option>
-              <option value="Bug Report / Suggestion">Bug Report / Suggestion</option>
+              <option value="General / Hackathon Feedback" data-i18n="cOpt1">General / Hackathon Feedback</option>
+              <option value="Science / Atlas Question" data-i18n="cOpt2">Science / Atlas Question</option>
+              <option value="Bug Report / Suggestion" data-i18n="cOpt3">Bug Report / Suggestion</option>
             </select>
             <input id="contactName" class="field" type="text" required data-i18n-placeholder="cNamePh" placeholder="Your name" />
             <input id="contactEmail" class="field" type="email" data-i18n-placeholder="cEmailPh" placeholder="Your email (optional, for a reply)" />
@@ -993,193 +422,174 @@
             <p id="contactStatus" class="muted"></p>
           </form>
         </div>
-
         <div class="card pad" style="display:flex;flex-direction:column;justify-content:space-between;gap:16px">
           <div>
             <div class="tag" data-i18n="shieldTag">ANTI-SPAM EMAIL SHIELD</div>
             <h3 style="margin-bottom:8px" data-i18n="shieldTitle">Human-Only Email Protection</h3>
-            <p class="muted" data-i18n="shieldDesc">
-              To protect against automated spam scrapers, the owner's email is never written inside the page HTML. Humans can click below to reveal a protected version.
-            </p>
-            <div id="emailRevealBox" class="callout hidden" style="direction:ltr;font-family:'JetBrains Mono',monospace;font-size:0.9rem"></div>
+            <p class="muted" data-i18n="shieldDesc">To protect against spam bots, the owner's email is never written inside raw HTML. Humans can reveal a protected version below.</p>
+            <div id="emailRevealBox" class="callout hidden" style="direction:ltr;font-family:'JetBrains Mono',monospace;font-size:.9rem"></div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
               <button id="revealEmailBtn" type="button" class="btn-primary" data-i18n="revealBtn">Reveal Human-Only Email</button>
               <button id="copyEmailBtn" type="button" class="btn-ghost hidden" data-i18n="copyEmailBtn">Copy Email</button>
             </div>
           </div>
-          <div class="callout muted" style="font-size:0.84rem" data-i18n="disclaimerNote">
-            NEUROATLAS is an independent educational platform and is not intended for medical diagnosis or treatment.
-          </div>
+          <div class="callout muted" style="font-size:.84rem" data-i18n="disclaimerNote">NEUROATLAS is an independent educational platform and is not intended for medical diagnosis or treatment.</div>
         </div>
       </div>
     </section>
   </div>
 
   <button id="fabChat" class="btn-primary fab-chat hidden" onclick="switchView('home');document.getElementById('chatInput').focus();" data-i18n="fabBtn">Ask AI</button>
-
-  <footer>
-    <div class="container" data-i18n="footerText">NEUROATLAS · Built with Python by Narges Bayat for GenHacks 2026 · Educational Resource Only</div>
-  </footer>
+  <footer><div class="container" data-i18n="footerText">NEUROATLAS · Built with Python by Narges Bayat for GenHacks 2026 · Educational Resource Only</div></footer>
 
   <script src="/neuroatlas-data.js"></script>
+  <script src="/neuroatlas-i18n-data.js"></script>
   <script>
-    // === تنظیمات اختیاری شما ===
-    // 1) کلید رایگان گرفته شده از web3forms.com را این پایین بگذارید:
-const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
-    // 2) لینک مخزن گیت‌هاب خودتان را اگر خواستید دقیق‌تر بگذارید:
+    const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
     const GITHUB_REPO_URL = "https://github.com";
-
     document.getElementById("githubProfileBtn").href = GITHUB_REPO_URL;
 
     const DATA = window.NEUROATLAS_DATA || {};
-    const CHAPTERS = DATA.CHAPTERS || [];
-    const SOURCES = DATA.SOURCES || [];
-    const GLOSSARY = DATA.GLOSSARY || [];
-    const METHODS = DATA.METHODS || [];
-    const MAP = DATA.MAP || [];
-    const FLASH = DATA.FLASH || [];
-    const QUIZ = DATA.QUIZ || [];
+    const TRANS = window.NEUROATLAS_I18N_DATA || {};
+    const CHAPTERS = DATA.CHAPTERS || [], SOURCES = DATA.SOURCES || [], GLOSSARY = DATA.GLOSSARY || [];
+    const METHODS = DATA.METHODS || [], MAP = DATA.MAP || [], FLASH = DATA.FLASH || [], QUIZ = DATA.QUIZ || [];
 
     const I18N = {
       en: {
-        dir: "ltr",
-        tabHome: "Overview & AI", tabAtlas: "Atlas (23)", tabResearch: "Research & PubMed",
-        tabLearn: "Learn & Quiz", tabAbout: "About Narges", tabContact: "Contact",
-        themeCyber: "Theme: Cyber Dark", themeObsidian: "Theme: Royal Obsidian",
-        themeOcean: "Theme: Deep Ocean", themeLight: "Theme: Daylight", themePaper: "Theme: Editorial Paper",
-        globalSearchPh: "Search 23 chapters, glossary, methods, or NIH sources…",
-        statusChecking: "Checking Python API...", statusReady: "Python AI Online",
-        statusNoKey: "Server Online (Add API Key)", statusOffline: "API Offline",
-        heroTitle: "NEUROATLAS by Narges Bayat",
-        heroDesc: "An evidence-led neuroscience atlas and multilingual Python AI platform built for GenHacks 2026. Ask any general, coding, or science question right here—or explore 23 anatomy chapters and PubMed research.",
-        statCh: "Atlas Chapters", statSrc: "NIH/NCBI Sources", statLang: "Languages", statThemes: "Themes",
-        tryAsking: "Try asking directly",
-        chatTitle: "NEUROATLAS AI Assistant",
-        chatSub: "Python AI · Answers all general, coding & science questions",
-        clearBtn: "Clear", inputPlaceholder: "Ask any question here...", sendBtn: "Send",
-        welcomeMsg: "Hi! I am NEUROATLAS, Narges Bayat's Python AI assistant. Ask me anything—science, coding, or everyday questions!",
-        thinking: "Thinking...",
-        hm1Tag: "01 / KNOWLEDGE ATLAS", hm1Title: "23 Neuroscience Chapters", hm1Desc: "From neurons and synapses to cognition, sleep, and neuroimaging methods—with review Q&As.",
-        hm2Tag: "02 / LIVE EVIDENCE", hm2Title: "PubMed & 24 NIH Sources", hm2Desc: "Search live NCBI PubMed records and explore curated government and academic references.",
-        hm3Tag: "03 / CREATOR & LEARNING", hm3Title: "Narges Bayat · Student Builder", hm3Desc: "Built with Python for GenHacks 2026. Explore Narges's learning journey, skills, and secure contact.",
-        openBtn: "Open →",
-        atlasHeading: "Neuroanatomy & Systems Atlas", atlasSub: "Evidence-led educational chapters. Not for medical diagnosis or treatment.",
-        resHeading: "Literature Search, Methods & Sources", resSub: "Explore live NCBI PubMed studies, design testable research questions, and inspect 24 curated sources.",
-        learnHeading: "Active Learning Lab & Workspace", learnSub: "Concept map, retrieval flashcards, mini quiz, neuroscience glossary, and local study notes.",
-        aboutTag: "CREATOR PROFILE · GENHACKS 2026", aboutName: "Narges Bayat",
-        aboutBio: "Student developer and curious learner exploring Python programming, web engineering, artificial intelligence, and neuroscience. NEUROATLAS combines structured scientific education with an accessible, multilingual Python AI assistant.",
-        githubBtn: "View GitHub Project", contactMeBtn: "Send a Message",
-        ab1Tag: "LEARNING JOURNEY", ab1Title: "Building While Learning", ab1Desc: "Started with a prototype HTML atlas and Python launcher, then evolved it into a full-stack serverless web application.",
-        ab2Tag: "HACKATHON GOAL", ab2Title: "GenHacks 2026", ab2Desc: "Designed to make both neuroscience reference materials and general AI assistance available in one lightweight, inclusive interface.",
-        ab3Tag: "PRIVACY & ACCESSIBILITY", ab3Title: "Inclusive by Design", ab3Desc: "Supports English, right-to-left Persian, Turkish, five color themes, and anti-spam contact protection.",
-        contactHeading: "Secure Contact", contactSub: "Send feedback or questions safely without exposing any personal email address to spam bots.",
-        formTag: "ENCRYPTED FORM DELIVERY", formTitle: "Send a Message to Narges Bayat",
-        cNamePh: "Your name", cEmailPh: "Your email (optional, for a reply)", cMsgPh: "Write your message here...", cSendBtn: "Send Securely",
-        shieldTag: "ANTI-SPAM EMAIL SHIELD", shieldTitle: "Human-Only Email Protection",
-        shieldDesc: "To protect against automated spam scrapers, the owner's email is never written inside the page HTML. Humans can click below to reveal a protected version.",
-        revealBtn: "Reveal Human-Only Email", copyEmailBtn: "Copy Email",
-        disclaimerNote: "NEUROATLAS is an independent educational platform and is not intended for medical diagnosis or treatment.",
-        fabBtn: "Ask AI",
-        footerText: "NEUROATLAS · Built with Python by Narges Bayat for GenHacks 2026 · Educational Resource Only",
-        prompts: ["Explain neuroplasticity simply", "Write a Python function example", "What is NEUROATLAS?"]
+        dir:"ltr", tabHome:"Overview & AI", tabAtlas:"Atlas (23)", tabResearch:"Research & PubMed", tabLearn:"Learn & Quiz", tabAbout:"About Narges", tabContact:"Contact",
+        themeCyber:"Theme: Cyber Dark", themeObsidian:"Theme: Royal Obsidian", themeOcean:"Theme: Deep Ocean", themeLight:"Theme: Daylight", themePaper:"Theme: Editorial Paper",
+        globalSearchPh:"Search 23 chapters, glossary, methods, or NIH sources…", statusChecking:"Checking Python API...", statusReady:"Python AI Online", statusNoKey:"Server Online (Add API Key)", statusOffline:"API Offline",
+        heroTitle:"NEUROATLAS by Narges Bayat", heroDesc:"An evidence-led neuroscience atlas and multilingual Python AI platform built for GenHacks 2026. Ask any general, coding, or science question right here—or explore 23 anatomy chapters and PubMed research.",
+        statCh:"Atlas Chapters", statSrc:"NIH/NCBI Sources", statLang:"Languages", statThemes:"Themes", tryAsking:"Try asking directly",
+        chatTitle:"NEUROATLAS AI Assistant", chatSub:"Python AI · Answers all general, coding & science questions", clearBtn:"Clear", inputPlaceholder:"Ask any question here...", sendBtn:"Send",
+        welcomeMsg:"Hi! I am NEUROATLAS, Narges Bayat's Python AI assistant. Ask me anything—science, coding, or everyday questions!", thinking:"Thinking...",
+        hm1Tag:"01 / KNOWLEDGE ATLAS", hm1Title:"23 Neuroscience Chapters", hm1Desc:"From neurons and synapses to cognition, sleep, and neuroimaging methods—with review Q&As.",
+        hm2Tag:"02 / LIVE EVIDENCE", hm2Title:"PubMed & 24 NIH Sources", hm2Desc:"Search live NCBI PubMed records and explore curated government and academic references.",
+        hm3Tag:"03 / CREATOR & LEARNING", hm3Title:"Narges Bayat · Student Builder", hm3Desc:"Built with Python for GenHacks 2026. Explore Narges's learning journey, skills, and secure contact.", openBtn:"Open →",
+        atlasHeading:"Neuroanatomy & Systems Atlas", atlasSub:"Evidence-led educational chapters. Not for medical diagnosis or treatment.", filterChaptersPh:"Filter 23 chapters…", chapterWord:"CHAPTER",
+        keyConceptLbl:"Key concept:", distinctionLbl:"Important distinction:", reviewLbl:"Knowledge review", refsLbl:"References:", saveWorkBtn:"Save to Workspace", prevBtn:"← Previous", nextBtn:"Next Chapter →",
+        translateChBtn:"Translate this chapter", showOrigBtn:"Show English Original", translatingMsg:"Translating chapter with Python AI...",
+        resHeading:"Literature Search, Methods & Sources", resSub:"Explore live NCBI PubMed studies, design testable research questions, and inspect 24 curated sources.",
+        subPubmed:"PubMed Search", subDiscover:"Research Question Builder", subMethods:"Research Methods", subSources:"24 Curated Sources",
+        pubmedPh:"e.g. hippocampal plasticity, EEG sleep, visual cortex", pubmedBtn:"Search PubMed", pubmedNote:"Queries live NCBI E-utilities (requires internet).",
+        pubmedSearching:"Searching NCBI PubMed…", pubmedNone:"No PubMed records found.", pubmedDone:"records retrieved from NCBI.", pubmedErr:"PubMed search unavailable right now.", openPubmed:"Open PubMed record ↗", translateStudyBtn:"Translate title",
+        rdTopicPh:"Topic (e.g. sleep and memory consolidation)", rdPopPh:"Population / model (e.g. adolescents, adults)", rdExpPh:"Comparison / factor (e.g. sleep duration)", rdOutPh:"Measurement (e.g. recall accuracy, EEG)",
+        mOpt1:"Literature review", mOpt2:"Behavioral experiment", mOpt3:"EEG / electrophysiology", mOpt4:"MRI / neuroimaging", mOpt5:"Computational analysis",
+        buildBtn:"Build Outline", outlineTag:"Structured Outline", outlineEmpty:"Fill in a topic to generate a structured research outline.",
+        methodWord:"METHOD", limitLbl:"Interpretation limit:", filterSourcesPh:"Filter NIH / NCBI sources…", openSource:"Open original source ↗",
+        learnHeading:"Active Learning Lab & Workspace", learnSub:"Concept map, retrieval flashcards, mini quiz, neuroscience glossary, and local study notes.",
+        subFlashQuiz:"Flashcards & Quiz", subMap:"Concept Map", subGlossary:"Glossary", subWorkspace:"Local Workspace",
+        flashTag:"Flashcards", revealAnsBtn:"Reveal Answer", hideAnsBtn:"Hide Answer", nextCardBtn:"Next Card", quizTag:"Knowledge Check", checkAnsBtn:"Check Answers", scoreLbl:"Score:",
+        mapHint:"Select a concept above to inspect related chapters.", filterGlossaryPh:"Filter glossary terms…", noteTitlePh:"Note title", noteBodyPh:"Write study notes or research ideas (saved in your browser)…",
+        saveNoteBtn:"Save Note", exportBtn:"Export JSON", savedNotesTag:"Saved Notes", noNotes:"No saved notes yet.", deleteBtn:"Delete", savedAlert:"Saved to Workspace!",
+        aboutTag:"CREATOR PROFILE · GENHACKS 2026", aboutName:"Narges Bayat", aboutBio:"Student developer and curious learner exploring Python programming, web engineering, artificial intelligence, and neuroscience. NEUROATLAS combines structured scientific education with an accessible, multilingual Python AI assistant.",
+        skillNeuro:"Neuroscience Research", githubBtn:"View GitHub Project", contactMeBtn:"Send a Message",
+        ab1Tag:"LEARNING JOURNEY", ab1Title:"Building While Learning", ab1Desc:"Started with a prototype HTML atlas and Python launcher, then evolved it into a full-stack serverless web application.",
+        ab2Tag:"HACKATHON GOAL", ab2Title:"GenHacks 2026", ab2Desc:"Designed to make both neuroscience reference materials and general AI assistance available in one lightweight, inclusive interface.",
+        ab3Tag:"PRIVACY & ACCESSIBILITY", ab3Title:"Inclusive by Design", ab3Desc:"Supports English, right-to-left Persian, Turkish, five color themes, and anti-spam contact protection.",
+        contactHeading:"Secure Contact", contactSub:"Send feedback or questions safely without exposing any personal email address to spam bots.",
+        formTag:"ENCRYPTED FORM DELIVERY", formTitle:"Send a Message to Narges Bayat", cOpt1:"General / Hackathon Feedback", cOpt2:"Science / Atlas Question", cOpt3:"Bug Report / Suggestion",
+        cNamePh:"Your name", cEmailPh:"Your email (optional, for a reply)", cMsgPh:"Write your message here...", cSendBtn:"Send Securely", cSending:"Sending...", cSent:"Message sent securely! Thank you.", cNetErr:"Network error while sending.",
+        shieldTag:"ANTI-SPAM EMAIL SHIELD", shieldTitle:"Human-Only Email Protection", shieldDesc:"To protect against automated spam scrapers, the owner's email is never written inside the page HTML. Humans can click below to reveal a protected version.",
+        revealBtn:"Reveal Human-Only Email", copyEmailBtn:"Copy Email", copiedWord:"Copied!", disclaimerNote:"NEUROATLAS is an independent educational platform and is not intended for medical diagnosis or treatment.",
+        fabBtn:"Ask AI", footerText:"NEUROATLAS · Built with Python by Narges Bayat for GenHacks 2026 · Educational Resource Only", noSearchHit:"No local matches.",
+        prompts:["Explain neuroplasticity simply","Write a Python function example","What is NEUROATLAS?"]
       },
       fa: {
-        dir: "rtl",
-        tabHome: "خانه و چت‌بات", tabAtlas: "اطلس (۲۳ فصل)", tabResearch: "پژوهش و PubMed",
-        tabLearn: "یادگیری و آزمون", tabAbout: "درباره نرگس", tabContact: "تماس امن",
-        themeCyber: "تم: سایبری تیره", themeObsidian: "تم: مشکی طلایی",
-        themeOcean: "تم: اقیانوس عمیق", themeLight: "تم: روشن", themePaper: "تم: کاغذی کلاسیک",
-        globalSearchPh: "جستجو در ۲۳ فصل، واژه‌نامه، روش‌های پژوهش و منابع NIH…",
-        statusChecking: "در حال بررسی سرور پایتون...", statusReady: "هوش مصنوعی پایتون آنلاین است",
-        statusNoKey: "سرور آنلاین (کلید API تنظیم نشده)", statusOffline: "عدم اتصال به API",
-        heroTitle: "NEUROATLAS · ساخته نرگس بیات",
-        heroDesc: "یک اطلس علمی علوم اعصاب و پلتفرم هوش مصنوعی چندزبانه با پایتون برای مسابقه GenHacks 2026. هر سوال علمی، کدنویسی یا عمومی دارید همین‌جا بپرسید یا ۲۳ فصل اطلس و مقالات PubMed را بررسی کنید.",
-        statCh: "فصل اطلس", statSrc: "منبع NIH/NCBI", statLang: "زبان فعال", statThemes: "تم انتخابی",
-        tryAsking: "نمونه سوال‌های سریع",
-        chatTitle: "دستیار هوشمند NEUROATLAS",
-        chatSub: "پایتون AI · پاسخ به همه سوالات علمی، کدنویسی و عمومی",
-        clearBtn: "پاک کردن", inputPlaceholder: "سوال خود را همین‌جا بنویسید...", sendBtn: "ارسال",
-        welcomeMsg: "سلام! من دستیار هوشمند NEUROATLAS ساخته نرگس بیات هستم. هر سوال علمی، برنامه‌نویسی یا روزمره‌ای دارید مستقیم از من بپرسید!",
-        thinking: "در حال فکر کردن...",
-        hm1Tag: "۰۱ / اطلس دانش", hm1Title: "۲۳ فصل علوم اعصاب", hm1Desc: "از سلول‌های عصبی تا حافظه، خواب و تصویربرداری مغز همراه با پرسش و پاسخ.",
-        hm2Tag: "۰۲ / شواهد علمی", hm2Title: "جستجوی PubMed و ۲۴ منبع", hm2Desc: "جستجوی زنده در بانک مقالات دانشگاهی NCBI و دسترسی به ۲۴ منبع معتبر NIH.",
-        hm3Tag: "۰۳ / سازنده و یادگیری", hm3Title: "نرگس بیات · توسعه‌دهنده دانش‌آموز", hm3Desc: "ساخته‌شده با پایتون برای GenHacks 2026. آشنایی با مسیر یادگیری، مهارت‌ها و تماس امن.",
-        openBtn: "مشاهده ←",
-        atlasHeading: "اطلس جامع علوم اعصاب", atlasSub: "محتوای آموزشی مبتنی بر شواهد علمی؛ برای تشخیص یا درمان پزشکی نیست.",
-        resHeading: "جستجوی مقالات، روش‌ها و منابع", resSub: "جستجوی زنده در PubMed، طراحی سوال پژوهش و بررسی ۲۴ منبع علمی.",
-        learnHeading: "آزمایشگاه یادگیری و یادداشت‌ها", learnSub: "نقشه مفهومی مغز، فلش‌کارت، آزمون کوتاه، واژه‌نامه و دفتر یادداشت شخصی.",
-        aboutTag: "پروفایل سازنده · هکاتون GENHACKS 2026", aboutName: "نرگس بیات",
-        aboutBio: "دانش‌آموز و برنامه‌نویس در حال یادگیریِ پایتون، طراحی وب، هوش مصنوعی و علوم اعصاب. پروژه NEUROATLAS آموزش علمی معتبر را با یک دستیار هوشمند چندزبانه پایتونی ترکیب می‌کند.",
-        githubBtn: "مشاهده پروژه در GitHub", contactMeBtn: "ارسال پیام",
-        ab1Tag: "مسیر یادگیری", ab1Title: "یادگیری همراه با ساختن", ab1Desc: "از یک نمونه اولیه HTML و لانچر پایتون شروع شد و به یک وب‌اپلیکیشن ابری کامل تبدیل گردید.",
-        ab2Tag: "هدف مسابقه", ab2Title: "مسابقه GenHacks 2026", ab2Desc: "طراحی‌شده برای دسترسی آسان و رایگان به آموزش علوم اعصاب و هوش مصنوعی در یک محیط یکپارچه.",
-        ab3Tag: "امنیت و دسترسی‌پذیری", ab3Title: "طراحی فراگیر", ab3Desc: "پشتیبانی کامل از سه زبان (با راست‌چین فارسی)، ۵ تم انتخابی و محافظت از ایمیل در برابر ربات‌های اسپم.",
-        contactHeading: "تماس امن", contactSub: "بدون لو رفتن ایمیل شخصی در کدهای سایت برای ربات‌های هرزنامه، با خیال راحت پیام بفرستید.",
-        formTag: "ارسال امن از طریق فرم", formTitle: "ارسال پیام برای نرگس بیات",
-        cNamePh: "نام شما", cEmailPh: "ایمیل شما (اختیاری، برای دریافت پاسخ)", cMsgPh: "پیام خود را بنویسید...", cSendBtn: "ارسال امن پیام",
-        shieldTag: "سپر ضدربات ایمیل", shieldTitle: "محافظت هوشمند از ایمیل",
-        shieldDesc: "برای جلوگیری از هرزنامه، ایمیل اصلی در HTML سایت نوشته نشده است. کاربران واقعی با کلیک زیر می‌توانند نسخه محافظت‌شده را ببینند.",
-        revealBtn: "نمایش ایمیل (ویژه انسان)", copyEmailBtn: "کپی ایمیل",
-        disclaimerNote: "NEUROATLAS یک پلتفرم آموزشی مستقل است و جایگزین مشاوره یا تشخیص پزشکی نیست.",
-        fabBtn: "سوال از هوش مصنوعی",
-        footerText: "NEUROATLAS · ساخته‌شده با پایتون توسط نرگس بیات برای GenHacks 2026 · صرفاً آموزشی",
-        prompts: ["انعطاف‌پذیری عصبی چیست؟", "یک مثال تابع در پایتون بنویس", "پروژه NEUROATLAS چیست؟"]
+        dir:"rtl", tabHome:"خانه و چت‌بات", tabAtlas:"اطلس (۲۳ فصل)", tabResearch:"پژوهش و PubMed", tabLearn:"یادگیری و آزمون", tabAbout:"درباره نرگس", tabContact:"تماس امن",
+        themeCyber:"تم: سایبری تیره", themeObsidian:"تم: مشکی طلایی", themeOcean:"تم: اقیانوس عمیق", themeLight:"تم: روشن", themePaper:"تم: کاغذی کلاسیک",
+        globalSearchPh:"جستجو در ۲۳ فصل، واژه‌نامه، روش‌های پژوهش و منابع NIH…", statusChecking:"در حال بررسی سرور پایتون...", statusReady:"هوش مصنوعی پایتون آنلاین است", statusNoKey:"سرور آنلاین (کلید API تنظیم نشده)", statusOffline:"عدم اتصال به API",
+        heroTitle:"NEUROATLAS · ساخته نرگس بیات", heroDesc:"یک اطلس علمی علوم اعصاب و پلتفرم هوش مصنوعی چندزبانه با پایتون برای مسابقه GenHacks 2026. هر سوال علمی، کدنویسی یا عمومی دارید همین‌جا بپرسید یا ۲۳ فصل اطلس و مقالات PubMed را بررسی کنید.",
+        statCh:"فصل اطلس", statSrc:"منبع NIH/NCBI", statLang:"زبان فعال", statThemes:"تم انتخابی", tryAsking:"نمونه سوال‌های سریع",
+        chatTitle:"دستیار هوشمند NEUROATLAS", chatSub:"پایتون AI · پاسخ به همه سوالات علمی، کدنویسی و عمومی", clearBtn:"پاک کردن", inputPlaceholder:"سوال خود را همین‌جا بنویسید...", sendBtn:"ارسال",
+        welcomeMsg:"سلام! من دستیار هوشمند NEUROATLAS ساخته نرگس بیات هستم. هر سوال علمی، برنامه‌نویسی یا روزمره‌ای دارید مستقیم از من بپرسید!", thinking:"در حال فکر کردن...",
+        hm1Tag:"۰۱ / اطلس دانش", hm1Title:"۲۳ فصل علوم اعصاب", hm1Desc:"از سلول‌های عصبی تا حافظه، خواب و تصویربرداری مغز همراه با پرسش و پاسخ.",
+        hm2Tag:"۰۲ / شواهد علمی", hm2Title:"جستجوی PubMed و ۲۴ منبع", hm2Desc:"جستجوی زنده در بانک مقالات دانشگاهی NCBI و دسترسی به ۲۴ منبع معتبر NIH.",
+        hm3Tag:"۰۳ / سازنده و یادگیری", hm3Title:"نرگس بیات · توسعه‌دهنده دانش‌آموز", hm3Desc:"ساخته‌شده با پایتون برای GenHacks 2026. آشنایی با مسیر یادگیری، مهارت‌ها و تماس امن.", openBtn:"مشاهده ←",
+        atlasHeading:"اطلس جامع علوم اعصاب", atlasSub:"محتوای آموزشی مبتنی بر شواهد علمی؛ برای تشخیص یا درمان پزشکی نیست.", filterChaptersPh:"فیلتر ۲۳ فصل اطلس…", chapterWord:"فصل",
+        keyConceptLbl:"مفهوم کلیدی:", distinctionLbl:"نکته مهم:", reviewLbl:"مرور دانش و پرسش‌ها", refsLbl:"منابع علمی:", saveWorkBtn:"ذخیره در یادداشت‌ها", prevBtn:"→ فصل قبلی", nextBtn:"فصل بعدی ←",
+        translateChBtn:"ترجمه کامل این فصل به فارسی (AI)", showOrigBtn:"نمایش متن اصلی انگلیسی", translatingMsg:"در حال ترجمه علمی فصل با پایتون AI...",
+        resHeading:"جستجوی مقالات، روش‌ها و منابع", resSub:"جستجوی زنده در PubMed، طراحی سوال پژوهش و بررسی ۲۴ منبع علمی.",
+        subPubmed:"جستجوی PubMed", subDiscover:"طراحی سوال پژوهش", subMethods:"روش‌های پژوهش", subSources:"۲۴ منبع علمی معتبر",
+        pubmedPh:"مثال: hippocampal plasticity, EEG sleep", pubmedBtn:"جستجو در PubMed", pubmedNote:"متصل به بانک زنده NCBI E-utilities (نیازمند اینترنت).",
+        pubmedSearching:"در حال جستجو در PubMed…", pubmedNone:"مقاله‌ای یافت نشد.", pubmedDone:"مقاله از NCBI بازیابی شد.", pubmedErr:"جستجوی PubMed در حال حاضر در دسترس نیست.", openPubmed:"مشاهده در PubMed ↗", translateStudyBtn:"ترجمه عنوان به فارسی (AI)",
+        rdTopicPh:"موضوع پژوهش (مثلاً خواب و تثبیت حافظه)", rdPopPh:"جامعه یا مدل (مثلاً نوجوانان، بزرگسالان)", rdExpPh:"عامل مورد مقایسه (مثلاً مدت خواب)", rdOutPh:"معیار سنجش (مثلاً دقت یادآوری، EEG)",
+        mOpt1:"مرور ادبیات علمی", mOpt2:"آزمایش رفتاری", mOpt3:"نوار مغزی / الکتروفیزیولوژی", mOpt4:"MRI / تصویربرداری عصبی", mOpt5:"تحلیل محاسباتی",
+        buildBtn:"ساخت چارچوب پژوهش", outlineTag:"چارچوب پیشنهادی پژوهش", outlineEmpty:"موضوع را بنویسید تا پیش‌نویس سوال پژوهش ساخته شود.",
+        methodWord:"روش پژوهش", limitLbl:"محدودیت تفسیر:", filterSourcesPh:"جستجو در ۲۴ منبع NIH / NCBI…", openSource:"باز کردن منبع اصلی ↗",
+        learnHeading:"آزمایشگاه یادگیری و یادداشت‌ها", learnSub:"نقشه مفهومی مغز، فلش‌کارت، آزمون کوتاه، واژه‌نامه و دفتر یادداشت شخصی.",
+        subFlashQuiz:"فلش‌کارت و آزمون", subMap:"نقشه مفهومی", subGlossary:"واژه‌نامه تخصصی", subWorkspace:"دفتر یادداشت من",
+        flashTag:"فلش‌کارت مرور سریع", revealAnsBtn:"نمایش پاسخ", hideAnsBtn:"مخفی کردن پاسخ", nextCardBtn:"کارت بعدی", quizTag:"آزمون کوتاه دانش", checkAnsBtn:"بررسی پاسخ‌ها", scoreLbl:"امتیاز شما:",
+        mapHint:"یکی از مفاهیم بالا را انتخاب کنید تا فصل‌های مرتبط نمایش داده شوند.", filterGlossaryPh:"جستجو در واژه‌نامه…", noteTitlePh:"عنوان یادداشت", noteBodyPh:"یادداشت‌های مطالعه یا ایده‌های پژوهشی خود را بنویسید (ذخیره در مرورگر شما)…",
+        saveNoteBtn:"ذخیره یادداشت", exportBtn:"خروجی JSON", savedNotesTag:"یادداشت‌های ذخیره‌شده", noNotes:"هنوز یادداشتی ذخیره نشده است.", deleteBtn:"حذف", savedAlert:"در دفتر یادداشت ذخیره شد!",
+        aboutTag:"پروفایل سازنده · هکاتون GENHACKS 2026", aboutName:"نرگس بیات", aboutBio:"دانش‌آموز و برنامه‌نویس در حال یادگیریِ پایتون، طراحی وب، هوش مصنوعی و علوم اعصاب. پروژه NEUROATLAS آموزش علمی معتبر را با یک دستیار هوشمند چندزبانه پایتونی ترکیب می‌کند.",
+        skillNeuro:"پژوهش علوم اعصاب", githubBtn:"مشاهده پروژه در GitHub", contactMeBtn:"ارسال پیام",
+        ab1Tag:"مسیر یادگیری", ab1Title:"یادگیری همراه با ساختن", ab1Desc:"از یک نمونه اولیه HTML و لانچر پایتون شروع شد و به یک وب‌اپلیکیشن ابری کامل تبدیل گردید.",
+        ab2Tag:"هدف مسابقه", ab2Title:"مسابقه GenHacks 2026", ab2Desc:"طراحی‌شده برای دسترسی آسان و رایگان به آموزش علوم اعصاب و هوش مصنوعی در یک محیط یکپارچه.",
+        ab3Tag:"امنیت و دسترسی‌پذیری", ab3Title:"طراحی فراگیر", ab3Desc:"پشتیبانی کامل از سه زبان (با راست‌چین فارسی)، ۵ تم انتخابی و محافظت از ایمیل در برابر ربات‌های اسپم.",
+        contactHeading:"تماس امن", contactSub:"بدون لو رفتن ایمیل شخصی در کدهای سایت برای ربات‌های هرزنامه، با خیال راحت پیام بفرستید.",
+        formTag:"ارسال امن از طریق فرم", formTitle:"ارسال پیام برای نرگس بیات", cOpt1:"بازخورد عمومی / هکاتون", cOpt2:"سوال علمی / اطلس", cOpt3:"گزارش خطا / پیشنهاد",
+        cNamePh:"نام شما", cEmailPh:"ایمیل شما (اختیاری، برای دریافت پاسخ)", cMsgPh:"پیام خود را بنویسید...", cSendBtn:"ارسال امن پیام", cSending:"در حال ارسال...", cSent:"پیام شما با امنیت کامل ارسال شد! سپاسگزاریم.", cNetErr:"خطا در اتصال هنگام ارسال.",
+        shieldTag:"سپر ضدربات ایمیل", shieldTitle:"محافظت هوشمند از ایمیل", shieldDesc:"برای جلوگیری از هرزنامه، ایمیل اصلی در HTML سایت نوشته نشده است. کاربران واقعی با کلیک زیر می‌توانند نسخه محافظت‌شده را ببینند.",
+        revealBtn:"نمایش ایمیل (ویژه انسان)", copyEmailBtn:"کپی ایمیل", copiedWord:"کپی شد!", disclaimerNote:"NEUROATLAS یک پلتفرم آموزشی مستقل است و جایگزین مشاوره یا تشخیص پزشکی نیست.",
+        fabBtn:"سوال از هوش مصنوعی", footerText:"NEUROATLAS · ساخته‌شده با پایتون توسط نرگس بیات برای GenHacks 2026 · صرفاً آموزشی", noSearchHit:"موردی یافت نشد.",
+        prompts:["انعطاف‌پذیری عصبی چیست؟","یک مثال تابع در پایتون بنویس","پروژه NEUROATLAS چیست؟"]
       },
       tr: {
-        dir: "ltr",
-        tabHome: "Ana Sayfa & AI", tabAtlas: "Atlas (23)", tabResearch: "Araştırma & PubMed",
-        tabLearn: "Öğrenme & Test", tabAbout: "Narges Hakkında", tabContact: "İletişim",
-        themeCyber: "Tema: Siber Koyu", themeObsidian: "Tema: Kraliyet Altın",
-        themeOcean: "Tema: Derin Okyanus", themeLight: "Tema: Aydınlık", themePaper: "Tema: Klasik Kâğıt",
-        globalSearchPh: "23 bölüm, sözlük, yöntem veya NIH kaynaklarında ara…",
-        statusChecking: "Python API kontrol ediliyor...", statusReady: "Python AI Çevrimiçi",
-        statusNoKey: "Sunucu Açık (API Anahtarı Ekleyin)", statusOffline: "API Çevrimdışı",
-        heroTitle: "NEUROATLAS · Narges Bayat",
-        heroDesc: "GenHacks 2026 için Python ile geliştirilen çok dilli nörobilim atlası ve yapay zekâ platformu. Bilim, kodlama veya günlük her konuda soru sorun ya da 23 bölümü keşfedin.",
-        statCh: "Atlas Bölümü", statSrc: "NIH/NCBI Kaynağı", statLang: "Dil Desteği", statThemes: "Tema",
-        tryAsking: "Hızlı örnek sorular",
-        chatTitle: "NEUROATLAS AI Asistanı",
-        chatSub: "Python AI · Genel, kodlama ve bilim soruları",
-        clearBtn: "Temizle", inputPlaceholder: "Sorunuzu buraya yazın...", sendBtn: "Gönder",
-        welcomeMsg: "Merhaba! Ben Narges Bayat'ın Python tabanlı yapay zekâ asistanı NEUROATLAS. Bilim, kodlama veya günlük her konuda soru sorabilirsiniz!",
-        thinking: "Düşünüyor...",
-        hm1Tag: "01 / BİLGİ ATLASI", hm1Title: "23 Nörobilim Bölümü", hm1Desc: "Nöronlardan bilişe, uykuya ve görüntüleme yöntemlerine kadar soru-cevaplı bölümler.",
-        hm2Tag: "02 / CANLI KANIT", hm2Title: "PubMed & 24 NIH Kaynağı", hm2Desc: "Canlı NCBI PubMed kayıtlarını arayın ve seçilmiş akademik kaynakları inceleyin.",
-        hm3Tag: "03 / GELİŞTİRİCİ", hm3Title: "Narges Bayat · Öğrenci Geliştirici", hm3Desc: "GenHacks 2026 için Python ile geliştirildi. Öğrenme yolculuğunu ve güvenli iletişimi keşfedin.",
-        openBtn: "Aç →",
-        atlasHeading: "Nöroanatomi ve Sistemler Atlası", atlasSub: "Kanıta dayalı eğitim bölümleri. Tıbbi tanı veya tedavi amaçlı değildir.",
-        resHeading: "Literatür Arama, Yöntemler ve Kaynaklar", resSub: "Canlı NCBI PubMed çalışmalarını arayın ve 24 akademik kaynağı inceleyin.",
-        learnHeading: "Aktif Öğrenme Laboratuvarı", learnSub: "Kavram haritası, bilgi kartları, mini test, sözlük ve yerel not alanı.",
-        aboutTag: "GELİŞTİRİCİ PROFİLİ · GENHACKS 2026", aboutName: "Narges Bayat",
-        aboutBio: "Python programlama, web geliştirme, yapay zekâ ve nörobilim alanlarında öğrenmeye devam eden öğrenci geliştirici. NEUROATLAS, yapılandırılmış bilimsel eğitimi çok dilli bir Python AI asistanıyla birleştirir.",
-        githubBtn: "GitHub Projesini Gör", contactMeBtn: "Mesaj Gönder",
-        ab1Tag: "ÖĞRENME YOLCULUĞU", ab1Title: "Üreterek Öğrenme", ab1Desc: "Bir HTML prototipi ve Python başlatıcı ile başlayıp tam kapsamlı sunucusuz bir web uygulamasına dönüştü.",
-        ab2Tag: "YARIŞMA HEDEFİ", ab2Title: "GenHacks 2026", ab2Desc: "Hem nörobilim kaynaklarını hem de genel yapay zekâ desteğini tek bir hafif arayüzde sunmak için tasarlandı.",
-        ab3Tag: "GİZLİLİK VE ERİŞİM", ab3Title: "Kapsayıcı Tasarım", ab3Desc: "İngilizce, sağdan sola Farsça, Türkçe, 5 seçilebilir tema ve spam korumalı iletişim sunar.",
-        contactHeading: "Güvenli İletişim", contactSub: "E-posta adresini spam botlarına açmadan güvenle mesaj gönderin.",
-        formTag: "ŞİFRELİ FORM İLETİMİ", formTitle: "Narges Bayat'a Mesaj Gönder",
-        cNamePh: "Adınız", cEmailPh: "E-postanız (isteğe bağlı)", cMsgPh: "Mesajınızı buraya yazın...", cSendBtn: "Güvenle Gönder",
-        shieldTag: "SPAM KORUMA KALKANI", shieldTitle: "Yalnızca İnsanlar İçin E-posta",
-        shieldDesc: "Otomatik spam botlarına karşı e-posta adresi HTML içine yazılmaz. Gerçek ziyaretçiler aşağıdaki düğmeye tıklayarak görebilir.",
-        revealBtn: "E-postayı Göster (Bot Korumalı)", copyEmailBtn: "E-postayı Kopyala",
-        disclaimerNote: "NEUROATLAS bağımsız bir eğitim platformudur; tıbbi tanı veya tedavi amacı taşımaz.",
-        fabBtn: "AI'ya Sor",
-        footerText: "NEUROATLAS · GenHacks 2026 için Narges Bayat tarafından Python ile geliştirildi · Eğitim Amaçlıdır",
-        prompts: ["Nöroplastisite nedir?", "Basit bir Python fonksiyonu yaz", "NEUROATLAS nedir?"]
+        dir:"ltr", tabHome:"Ana Sayfa & AI", tabAtlas:"Atlas (23)", tabResearch:"Araştırma & PubMed", tabLearn:"Öğrenme & Test", tabAbout:"Narges Hakkında", tabContact:"İletişim",
+        themeCyber:"Tema: Siber Koyu", themeObsidian:"Tema: Kraliyet Altın", themeOcean:"Tema: Derin Okyanus", themeLight:"Tema: Aydınlık", themePaper:"Tema: Klasik Kâğıt",
+        globalSearchPh:"23 bölüm, sözlük, yöntem veya NIH kaynaklarında ara…", statusChecking:"Python API kontrol ediliyor...", statusReady:"Python AI Çevrimiçi", statusNoKey:"Sunucu Açık (API Anahtarı Ekleyin)", statusOffline:"API Çevrimdışı",
+        heroTitle:"NEUROATLAS · Narges Bayat", heroDesc:"GenHacks 2026 için Python ile geliştirilen çok dilli nörobilim atlası ve yapay zekâ platformu. Bilim, kodlama veya günlük her konuda soru sorun ya da 23 bölümü keşfedin.",
+        statCh:"Atlas Bölümü", statSrc:"NIH/NCBI Kaynağı", statLang:"Dil Desteği", statThemes:"Tema", tryAsking:"Hızlı örnek sorular",
+        chatTitle:"NEUROATLAS AI Asistanı", chatSub:"Python AI · Genel, kodlama ve bilim soruları", clearBtn:"Temizle", inputPlaceholder:"Sorunuzu buraya yazın...", sendBtn:"Gönder",
+        welcomeMsg:"Merhaba! Ben Narges Bayat'ın Python tabanlı yapay zekâ asistanı NEUROATLAS. Bilim, kodlama veya günlük her konuda soru sorabilirsiniz!", thinking:"Düşünüyor...",
+        hm1Tag:"01 / BİLGİ ATLASI", hm1Title:"23 Nörobilim Bölümü", hm1Desc:"Nöronlardan bilişe, uykuya ve görüntüleme yöntemlerine kadar soru-cevaplı bölümler.",
+        hm2Tag:"02 / CANLI KANIT", hm2Title:"PubMed & 24 NIH Kaynağı", hm2Desc:"Canlı NCBI PubMed kayıtlarını arayın ve seçilmiş akademik kaynakları inceleyin.",
+        hm3Tag:"03 / GELİŞTİRİCİ", hm3Title:"Narges Bayat · Öğrenci Geliştirici", hm3Desc:"GenHacks 2026 için Python ile geliştirildi. Öğrenme yolculuğunu ve güvenli iletişimi keşfedin.", openBtn:"Aç →",
+        atlasHeading:"Nöroanatomi ve Sistemler Atlası", atlasSub:"Kanıta dayalı eğitim bölümleri. Tıbbi tanı veya tedavi amaçlı değildir.", filterChaptersPh:"23 bölümü filtrele…", chapterWord:"BÖLÜM",
+        keyConceptLbl:"Temel kavram:", distinctionLbl:"Önemli ayrım:", reviewLbl:"Bilgi tekrarı", refsLbl:"Kaynaklar:", saveWorkBtn:"Notlara Kaydet", prevBtn:"← Önceki", nextBtn:"Sonraki Bölüm →",
+        translateChBtn:"Bu bölümü Türkçeye çevir (AI)", showOrigBtn:"İngilizce Aslını Göster", translatingMsg:"Bölüm Python AI ile çevriliyor...",
+        resHeading:"Literatür Arama, Yöntemler ve Kaynaklar", resSub:"Canlı NCBI PubMed çalışmalarını arayın ve 24 akademik kaynağı inceleyin.",
+        subPubmed:"PubMed Arama", subDiscover:"Araştırma Sorusu Oluşturucu", subMethods:"Araştırma Yöntemleri", subSources:"24 Seçilmiş Kaynak",
+        pubmedPh:"örn. hippocampal plasticity, EEG sleep", pubmedBtn:"PubMed'de Ara", pubmedNote:"Canlı NCBI E-utilities üzerinden sorgular (internet gerekir).",
+        pubmedSearching:"NCBI PubMed aranıyor…", pubmedNone:"PubMed kaydı bulunamadı.", pubmedDone:"kayıt NCBI'dan getirildi.", pubmedErr:"PubMed araması şu an kullanılamıyor.", openPubmed:"PubMed kaydını aç ↗", translateStudyBtn:"Başlığı Türkçeye çevir (AI)",
+        rdTopicPh:"Konu (örn. uyku ve bellek pekiştirme)", rdPopPh:"Örneklem / model (örn. ergenler, yetişkinler)", rdExpPh:"Karşılaştırma / etken (örn. uyku süresi)", rdOutPh:"Ölçüm (örn. hatırlama doğruluğu, EEG)",
+        mOpt1:"Literatür taraması", mOpt2:"Davranışsal deney", mOpt3:"EEG / elektrofizyoloji", mOpt4:"MRI / nörogörüntüleme", mOpt5:"Hesaplamalı analiz",
+        buildBtn:"Taslak Oluştur", outlineTag:"Yapılandırılmış Taslak", outlineEmpty:"Araştırma taslağı oluşturmak için bir konu girin.",
+        methodWord:"YÖNTEM", limitLbl:"Yorumlama sınırı:", filterSourcesPh:"NIH / NCBI kaynaklarını filtrele…", openSource:"Orijinal kaynağı aç ↗",
+        learnHeading:"Aktif Öğrenme Laboratuvarı", learnSub:"Kavram haritası, bilgi kartları, mini test, sözlük ve yerel not alanı.",
+        subFlashQuiz:"Bilgi Kartları & Test", subMap:"Kavram Haritası", subGlossary:"Sözlük", subWorkspace:"Çalışma Alanım",
+        flashTag:"Bilgi Kartları", revealAnsBtn:"Yanıtı Göster", hideAnsBtn:"Yanıtı Gizle", nextCardBtn:"Sonraki Kart", quizTag:"Bilgi Kontrolü", checkAnsBtn:"Yanıtları Kontrol Et", scoreLbl:"Puan:",
+        mapHint:"İlgili bölümleri görmek için yukarıdan bir kavram seçin.", filterGlossaryPh:"Sözlük terimlerini filtrele…", noteTitlePh:"Not başlığı", noteBodyPh:"Çalışma notlarınızı veya fikirlerinizi yazın (tarayıcınızda saklanır)…",
+        saveNoteBtn:"Notu Kaydet", exportBtn:"JSON Dışa Aktar", savedNotesTag:"Kaydedilen Notlar", noNotes:"Henüz kayıtlı not yok.", deleteBtn:"Sil", savedAlert:"Notlara kaydedildi!",
+        aboutTag:"GELİŞTİRİCİ PROFİLİ · GENHACKS 2026", aboutName:"Narges Bayat", aboutBio:"Python programlama, web geliştirme, yapay zekâ ve nörobilim alanlarında öğrenmeye devam eden öğrenci geliştirici. NEUROATLAS, yapılandırılmış bilimsel eğitimi çok dilli bir Python AI asistanıyla birleştirir.",
+        skillNeuro:"Nörobilim Araştırmaları", githubBtn:"GitHub Projesini Gör", contactMeBtn:"Mesaj Gönder",
+        ab1Tag:"ÖĞRENME YOLCULUĞU", ab1Title:"Üreterek Öğrenme", ab1Desc:"Bir HTML prototipi ve Python başlatıcı ile başlayıp tam kapsamlı sunucusuz bir web uygulamasına dönüştü.",
+        ab2Tag:"YARIŞMA HEDEFİ", ab2Title:"GenHacks 2026", ab2Desc:"Hem nörobilim kaynaklarını hem de genel yapay zekâ desteğini tek bir hafif arayüzde sunmak için tasarlandı.",
+        ab3Tag:"GİZLİLİK VE ERİŞİM", ab3Title:"Kapsayıcı Tasarım", ab3Desc:"İngilizce, sağdan sola Farsça, Türkçe, 5 seçilebilir tema ve spam korumalı iletişim sunar.",
+        contactHeading:"Güvenli İletişim", contactSub:"E-posta adresini spam botlarına açmadan güvenle mesaj gönderin.",
+        formTag:"ŞİFRELİ FORM İLETİMİ", formTitle:"Narges Bayat'a Mesaj Gönder", cOpt1:"Genel / Hackathon Geri Bildirimi", cOpt2:"Bilim / Atlas Sorusu", cOpt3:"Hata Bildirimi / Öneri",
+        cNamePh:"Adınız", cEmailPh:"E-postanız (isteğe bağlı)", cMsgPh:"Mesajınızı buraya yazın...", cSendBtn:"Güvenle Gönder", cSending:"Gönderiliyor...", cSent:"Mesajınız güvenle gönderildi! Teşekkürler.", cNetErr:"Gönderim sırasında ağ hatası.",
+        shieldTag:"SPAM KORUMA KALKANI", shieldTitle:"Yalnızca İnsanlar İçin E-posta", shieldDesc:"Otomatik spam botlarına karşı e-posta adresi HTML içine yazılmaz. Gerçek ziyaretçiler aşağıdaki düğmeye tıklayarak görebilir.",
+        revealBtn:"E-postayı Göster (Bot Korumalı)", copyEmailBtn:"E-postayı Kopyala", copiedWord:"Kopyalandı!", disclaimerNote:"NEUROATLAS bağımsız bir eğitim platformudur; tıbbi tanı veya tedavi amacı taşımaz.",
+        fabBtn:"AI'ya Sor", footerText:"NEUROATLAS · GenHacks 2026 için Narges Bayat tarafından Python ile geliştirildi · Eğitim Amaçlıdır", noSearchHit:"Sonuç bulunamadı.",
+        prompts:["Nöroplastisite nedir?","Basit bir Python fonksiyonu yaz","NEUROATLAS nedir?"]
       }
     };
 
     let currentLang = localStorage.getItem("na_lang") || "en";
     if (!I18N[currentLang]) currentLang = "en";
     let currentTheme = localStorage.getItem("na_theme") || "cyber";
-    let chatHistory = [];
-    let lastStatusState = "checking";
+    let chatHistory = [], lastStatusState = "checking", activeChapterIdx = 0, showOriginalChapter = false, flashIdx = 0, flashShown = false;
 
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const trData = () => TRANS[currentLang] || null;
+
+    function getChapterMeta(c) {
+      const t = trData(), ch = t && t.chapters && t.chapters[c.id];
+      return { category: (t && t.categories && t.categories[c.category]) || c.category, title: ch ? ch[0] : c.title, subtitle: ch ? ch[1] : c.subtitle };
     }
 
-    // View Switching
     function switchView(name) {
       document.querySelectorAll(".view").forEach((v) => v.classList.toggle("active", v.id === "view-" + name));
       document.querySelectorAll(".nav-tab").forEach((t) => t.classList.toggle("active", t.dataset.view === name));
@@ -1188,18 +598,14 @@ const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
     }
     document.querySelectorAll(".nav-tab").forEach((t) => t.addEventListener("click", () => switchView(t.dataset.view)));
 
-    // Sub-tabs
     document.querySelectorAll(".sub-tabs").forEach((group) => {
-      const parentView = group.closest(".view");
-      group.querySelectorAll(".sub-tab").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          group.querySelectorAll(".sub-tab").forEach((b) => b.classList.toggle("active", b === btn));
-          parentView.querySelectorAll(".sub-panel").forEach((p) => p.classList.toggle("active", p.id === "sub-" + btn.dataset.sub));
-        });
-      });
+      const pv = group.closest(".view");
+      group.querySelectorAll(".sub-tab").forEach((btn) => btn.addEventListener("click", () => {
+        group.querySelectorAll(".sub-tab").forEach((b) => b.classList.toggle("active", b === btn));
+        pv.querySelectorAll(".sub-panel").forEach((p) => p.classList.toggle("active", p.id === "sub-" + btn.dataset.sub));
+      }));
     });
 
-    // Theme & Language
     const themeSelect = document.getElementById("themeSelect");
     function applyTheme(theme) {
       currentTheme = theme;
@@ -1210,92 +616,64 @@ const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
     themeSelect.addEventListener("change", (e) => applyTheme(e.target.value));
 
     function updateStatusText() {
-      const dot = document.getElementById("statusDot");
-      const text = document.getElementById("statusText");
-      const d = I18N[currentLang];
+      const dot = document.getElementById("statusDot"), text = document.getElementById("statusText"), d = I18N[currentLang];
       dot.classList.remove("online");
       if (lastStatusState === "ready") { dot.classList.add("online"); text.textContent = d.statusReady; }
       else if (lastStatusState === "nokey") { dot.classList.add("online"); text.textContent = d.statusNoKey; }
-      else if (lastStatusState === "offline") { text.textContent = d.statusOffline; }
-      else { text.textContent = d.statusChecking; }
+      else if (lastStatusState === "offline") text.textContent = d.statusOffline;
+      else text.textContent = d.statusChecking;
     }
 
     function applyLanguage(lang) {
       currentLang = I18N[lang] ? lang : "en";
       localStorage.setItem("na_lang", currentLang);
+      showOriginalChapter = false;
       const d = I18N[currentLang];
       document.documentElement.lang = currentLang;
       document.documentElement.dir = d.dir;
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const k = el.getAttribute("data-i18n");
-        if (d[k]) el.textContent = d[k];
-      });
-      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-        const k = el.getAttribute("data-i18n-placeholder");
-        if (d[k]) el.setAttribute("placeholder", d[k]);
-      });
+      document.querySelectorAll("[data-i18n]").forEach((el) => { const k = el.getAttribute("data-i18n"); if (d[k]) el.textContent = d[k]; });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => { const k = el.getAttribute("data-i18n-placeholder"); if (d[k]) el.setAttribute("placeholder", d[k]); });
       document.querySelectorAll(".lang-btn").forEach((b) => b.classList.toggle("active", b.dataset.lang === currentLang));
-
       const chips = document.getElementById("promptChips");
       chips.innerHTML = "";
       d.prompts.forEach((p) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "chip";
-        b.textContent = p;
-        b.addEventListener("click", () => {
-          document.getElementById("chatInput").value = p;
-          document.getElementById("chatForm").dispatchEvent(new Event("submit"));
-        });
+        const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = p;
+        b.addEventListener("click", () => { document.getElementById("chatInput").value = p; document.getElementById("chatForm").dispatchEvent(new Event("submit")); });
         chips.appendChild(b);
       });
       updateStatusText();
       if (chatHistory.length === 0) renderMessages();
+      initAtlas(true);
+      initExtras();
+      renderNotes();
     }
     document.querySelectorAll(".lang-btn").forEach((b) => b.addEventListener("click", () => applyLanguage(b.dataset.lang)));
 
-    // Chat formatting with code blocks & Copy
-    const chatMessages = document.getElementById("chatMessages");
-    const chatForm = document.getElementById("chatForm");
-    const chatInput = document.getElementById("chatInput");
-    const sendBtn = document.getElementById("sendBtn");
+    const chatMessages = document.getElementById("chatMessages"), chatForm = document.getElementById("chatForm"), chatInput = document.getElementById("chatInput"), sendBtn = document.getElementById("sendBtn");
 
     function formatChatMessage(raw) {
       const blocks = [];
       let text = String(raw).replace(/```([a-zA-Z0-9_-]*)\n?([\s\S]*?)```/g, (_, lang, code) => {
-        const id = blocks.length;
-        blocks.push({ lang: lang || "code", code: code.replace(/\n$/, "") });
-        return `@@CODEBLOCK_${id}@@`;
+        const id = blocks.length; blocks.push({ lang: lang || "code", code: code.replace(/\n$/, "") }); return `@@CODEBLOCK_${id}@@`;
       });
-      text = escapeHtml(text)
-        .replace(/`([^`]+)`/g, "<code>$1</code>")
-        .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-      text = text.replace(/@@CODEBLOCK_(\d+)@@/g, (_, i) => {
+      text = escapeHtml(text).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      return text.replace(/@@CODEBLOCK_(\d+)@@/g, (_, i) => {
         const b = blocks[+i];
         return `<div class="code-wrap"><div class="code-head"><span>${escapeHtml(b.lang)}</span><button type="button" class="copy-code-btn" data-code="${escapeHtml(b.code)}">Copy</button></div><pre>${escapeHtml(b.code)}</pre></div>`;
       });
-      return text;
     }
 
     chatMessages.addEventListener("click", (e) => {
       const btn = e.target.closest(".copy-code-btn");
       if (!btn) return;
-      navigator.clipboard.writeText(btn.dataset.code).then(() => {
-        btn.textContent = "Copied!";
-        setTimeout(() => (btn.textContent = "Copy"), 1400);
-      });
+      navigator.clipboard.writeText(btn.dataset.code).then(() => { btn.textContent = I18N[currentLang].copiedWord; setTimeout(() => (btn.textContent = "Copy"), 1400); });
     });
 
     function appendMessage(role, content, meta = "") {
       const box = document.createElement("div");
       box.className = `msg ${role === "user" ? "user" : "bot"}`;
       box.innerHTML = formatChatMessage(content);
-      if (meta) {
-        const m = document.createElement("div");
-        m.className = "msg-meta";
-        m.textContent = meta;
-        box.appendChild(m);
-      }
+      if (meta) { const m = document.createElement("div"); m.className = "msg-meta"; m.textContent = meta; box.appendChild(m); }
       chatMessages.appendChild(box);
       chatMessages.scrollTop = chatMessages.scrollHeight;
       return box;
@@ -1303,10 +681,7 @@ const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
 
     function renderMessages() {
       chatMessages.innerHTML = "";
-      if (chatHistory.length === 0) {
-        appendMessage("bot", I18N[currentLang].welcomeMsg);
-        return;
-      }
+      if (chatHistory.length === 0) { appendMessage("bot", I18N[currentLang].welcomeMsg); return; }
       chatHistory.forEach((m) => appendMessage(m.role, m.content, m.meta || ""));
     }
 
@@ -1315,46 +690,27 @@ const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
       const text = chatInput.value.trim();
       if (!text || sendBtn.disabled) return;
       if (chatHistory.length === 0) chatMessages.innerHTML = "";
-
       chatHistory.push({ role: "user", content: text });
       appendMessage("user", text);
-      chatInput.value = "";
-      sendBtn.disabled = true;
+      chatInput.value = ""; sendBtn.disabled = true;
       const typingEl = appendMessage("bot", I18N[currentLang].thinking);
-
       try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text, history: chatHistory.slice(-10, -1), lang: currentLang })
-        });
+        const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text, history: chatHistory.slice(-10, -1), lang: currentLang }) });
         const data = await res.json();
         typingEl.remove();
         if (!res.ok) appendMessage("bot", data.error || "Request failed.");
         else {
-          const reply = data.reply || "";
-          const meta = data.provider ? `NEUROATLAS · ${data.provider}` : "";
+          const reply = data.reply || "", meta = data.provider ? `NEUROATLAS · ${data.provider}` : "";
           chatHistory.push({ role: "assistant", content: reply, meta });
           appendMessage("bot", reply, meta);
         }
-      } catch (err) {
-        typingEl.remove();
-        appendMessage("bot", "Connection error: " + err.message);
-      } finally {
-        sendBtn.disabled = false;
-        chatInput.focus();
-      }
+      } catch (err) { typingEl.remove(); appendMessage("bot", "Connection error: " + err.message); }
+      finally { sendBtn.disabled = false; chatInput.focus(); }
     });
 
-    chatInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        chatForm.dispatchEvent(new Event("submit"));
-      }
-    });
+    chatInput.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); chatForm.dispatchEvent(new Event("submit")); } });
     document.getElementById("clearChatBtn").addEventListener("click", () => { chatHistory = []; renderMessages(); });
 
-    // Atlas Chapters
     function sourceNames(ids) {
       return ids.map((id) => {
         const s = SOURCES.find((x) => x.id === id);
@@ -1364,299 +720,258 @@ const WEB3FORMS_KEY = "35999110-eef8-4007-8e28-a1307dcf5439";
 
     function answerForQuestion(chapter, question) {
       const stop = new Set(["what","which","when","where","why","how","does","are","is","the","and","for","from","with","into","about","name","give","one","two","three"]);
-      const terms = question.toLowerCase().match(/[a-z0-9]+/g) || [];
-      const kws = terms.filter((w) => w.length > 2 && !stop.has(w));
-      const ranked = chapter.sections.map((s) => {
-        const t = (s[0] + " " + s[1]).toLowerCase();
-        return { s, score: kws.reduce((n, w) => n + (t.includes(w) ? 1 : 0), 0) };
-      }).sort((a, b) => b.score - a.score);
+      const kws = (question.toLowerCase().match(/[a-z0-9]+/g) || []).filter((w) => w.length > 2 && !stop.has(w));
+      const ranked = chapter.sections.map((s) => ({ s, score: kws.reduce((n, w) => n + ((s[0] + " " + s[1]).toLowerCase().includes(w) ? 1 : 0), 0) })).sort((a, b) => b.score - a.score);
       if (!ranked.length || ranked[0].score === 0) return chapter.takeaway + " " + chapter.intro;
       return ranked.slice(0, 2).map((x) => x.s[1]).join(" ");
     }
 
+    const chCacheKey = (id, lang) => `na_ch_tr_${lang}_${id}`;
+
+    async function translateActiveChapter(i) {
+      const c = CHAPTERS[i];
+      if (!c || currentLang === "en") return;
+      const key = chCacheKey(c.id, currentLang);
+      if (localStorage.getItem(key)) { showOriginalChapter = false; renderChapter(i); return; }
+      const btn = document.getElementById("translateChBtn"), st = document.getElementById("chTranslateStatus");
+      if (btn) btn.disabled = true;
+      if (st) { st.classList.remove("hidden"); st.textContent = I18N[currentLang].translatingMsg; }
+      const sourceText = [`Title: ${c.title}`, `Subtitle: ${c.subtitle}`, `Intro: ${c.intro}`, ...c.sections.map((s) => `## ${s[0]}\n${s[1]}`), `Key Concept: ${c.takeaway}`, `Important Distinction: ${c.misconception}`, `Review Questions:\n` + c.questions.map((q, j) => `${j + 1}. ${q} -> ${answerForQuestion(c, q)}`).join("\n")].join("\n\n");
+      try {
+        const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: sourceText, lang: currentLang, mode: "translate" }) });
+        const data = await res.json();
+        if (!res.ok || !data.reply) throw new Error(data.error || "Translation failed");
+        localStorage.setItem(key, data.reply); showOriginalChapter = false; renderChapter(i);
+      } catch (err) { if (st) st.textContent = err.message; if (btn) btn.disabled = false; }
+    }
+
     function renderChapter(i) {
       if (!CHAPTERS[i]) return;
-      const c = CHAPTERS[i];
-      document.getElementById("chapterContent").innerHTML = `
-        <div class="tag">${escapeHtml(c.category)} · CHAPTER ${escapeHtml(c.id)}</div>
-        <h2>${escapeHtml(c.title)}</h2>
-        <p class="muted">${escapeHtml(c.subtitle)}</p>
-        <p style="margin:14px 0">${escapeHtml(c.intro)}</p>
-        ${c.sections.map((s) => `<h3>${escapeHtml(s[0])}</h3><p>${escapeHtml(s[1])}</p>`).join("")}
-        <div class="callout"><strong>Key concept:</strong> ${escapeHtml(c.takeaway)}</div>
-        <div class="callout"><strong>Important distinction:</strong> ${escapeHtml(c.misconception)}</div>
-        <h3>Knowledge review</h3>
-        ${c.questions.map((q, j) => `<details class="qa"><summary>${String(j + 1).padStart(2, "0")} · ${escapeHtml(q)}</summary><p>${escapeHtml(answerForQuestion(c, q))}</p></details>`).join("")}
-        <p class="muted" style="margin-top:16px">References: ${sourceNames(c.sources)}</p>
-        <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
-          <button class="btn-ghost" onclick="saveChapterNote(${i})">Save to Workspace</button>
-          ${i > 0 ? `<button class="btn-ghost" onclick="renderChapter(${i - 1})">← Previous</button>` : ""}
-          ${i < CHAPTERS.length - 1 ? `<button class="btn-primary" onclick="renderChapter(${i + 1})">Next Chapter →</button>` : ""}
-        </div>`;
+      activeChapterIdx = i;
+      const c = CHAPTERS[i], d = I18N[currentLang], meta = getChapterMeta(c);
+      const cached = currentLang !== "en" ? localStorage.getItem(chCacheKey(c.id, currentLang)) : null;
+      let trCtrl = "";
+      if (currentLang !== "en") {
+        if (cached && !showOriginalChapter) trCtrl = `<div style="margin:10px 0 14px"><button type="button" class="btn-ghost" onclick="showOriginalChapter=true;renderChapter(${i})">${escapeHtml(d.showOrigBtn)}</button></div>`;
+        else if (cached && showOriginalChapter) trCtrl = `<div style="margin:10px 0 14px"><button type="button" class="btn-primary" onclick="showOriginalChapter=false;renderChapter(${i})">${escapeHtml(d.translateChBtn)}</button></div>`;
+        else trCtrl = `<div style="margin:10px 0 14px"><button id="translateChBtn" type="button" class="btn-primary" onclick="translateActiveChapter(${i})">${escapeHtml(d.translateChBtn)}</button><div id="chTranslateStatus" class="callout hidden"></div></div>`;
+      }
+      const bodyHtml = (cached && !showOriginalChapter && currentLang !== "en")
+        ? `<div class="callout" style="white-space:pre-wrap">${escapeHtml(cached)}</div>`
+        : `<p style="margin:14px 0">${escapeHtml(c.intro)}</p>${c.sections.map((s) => `<h3>${escapeHtml(s[0])}</h3><p>${escapeHtml(s[1])}</p>`).join("")}<div class="callout"><strong>${escapeHtml(d.keyConceptLbl)}</strong> ${escapeHtml(c.takeaway)}</div><div class="callout"><strong>${escapeHtml(d.distinctionLbl)}</strong> ${escapeHtml(c.misconception)}</div><h3>${escapeHtml(d.reviewLbl)}</h3>${c.questions.map((q, j) => `<details class="qa"><summary>${String(j + 1).padStart(2, "0")} · ${escapeHtml(q)}</summary><p>${escapeHtml(answerForQuestion(c, q))}</p></details>`).join("")}`;
+      document.getElementById("chapterContent").innerHTML = `<div class="tag">${escapeHtml(meta.category)} · ${escapeHtml(d.chapterWord)} ${escapeHtml(c.id)}</div><h2>${escapeHtml(meta.title)}</h2><p class="muted">${escapeHtml(meta.subtitle)}</p>${trCtrl}${bodyHtml}<p class="muted" style="margin-top:16px">${escapeHtml(d.refsLbl)} ${sourceNames(c.sources)}</p><div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><button class="btn-ghost" onclick="saveChapterNote(${i})">${escapeHtml(d.saveWorkBtn)}</button>${i > 0 ? `<button class="btn-ghost" onclick="showOriginalChapter=false;renderChapter(${i - 1})">${escapeHtml(d.prevBtn)}</button>` : ""}${i < CHAPTERS.length - 1 ? `<button class="btn-primary" onclick="showOriginalChapter=false;renderChapter(${i + 1})">${escapeHtml(d.nextBtn)}</button>` : ""}</div>`;
       document.querySelectorAll("#chapterNav .chapter-btn").forEach((b, j) => b.classList.toggle("active", j === i));
     }
 
-    function initAtlas() {
+    function initAtlas(keepActive = false) {
       const nav = document.getElementById("chapterNav");
-      if (!CHAPTERS.length) { nav.innerHTML = "<p class='muted'>Atlas data loading...</p>"; return; }
-      const cats = [...new Set(CHAPTERS.map((c) => c.category))];
-      nav.innerHTML = cats.map((cat) => `
-        <div class="chapter-group">
-          <div class="tag" style="margin-top:10px">${escapeHtml(cat)}</div>
-          ${CHAPTERS.map((c, i) => c.category === cat ? `<button class="chapter-btn" data-i="${i}">${c.id} · ${escapeHtml(c.title)}</button>` : "").join("")}
-        </div>`).join("");
-      nav.querySelectorAll(".chapter-btn").forEach((b) => b.addEventListener("click", () => renderChapter(+b.dataset.i)));
+      if (!CHAPTERS.length) { nav.innerHTML = "<p class='muted'>Atlas data missing.</p>"; return; }
+      const cats = [...new Set(CHAPTERS.map((c) => c.category))], t = trData();
+      nav.innerHTML = cats.map((cat) => `<div class="chapter-group"><div class="tag" style="margin-top:10px">${escapeHtml((t && t.categories && t.categories[cat]) || cat)}</div>${CHAPTERS.map((c, i) => c.category === cat ? `<button class="chapter-btn" data-i="${i}">${c.id} · ${escapeHtml(getChapterMeta(c).title)}</button>` : "").join("")}</div>`).join("");
+      nav.querySelectorAll(".chapter-btn").forEach((b) => b.addEventListener("click", () => { showOriginalChapter = false; renderChapter(+b.dataset.i); }));
       const filter = document.getElementById("chapterFilter");
-      document.getElementById("chapterFilterCount").textContent = CHAPTERS.length + " chapters";
-      filter.addEventListener("input", () => {
-        const q = filter.value.trim().toLowerCase();
-        let shown = 0;
+      document.getElementById("chapterFilterCount").textContent = `${CHAPTERS.length}`;
+      filter.oninput = () => {
+        const q = filter.value.trim().toLowerCase(); let shown = 0;
         nav.querySelectorAll(".chapter-group").forEach((g) => {
           let any = false;
           g.querySelectorAll(".chapter-btn").forEach((b) => {
-            const c = CHAPTERS[+b.dataset.i];
-            const ok = !q || [c.title, c.category, c.subtitle, c.intro, ...c.key].join(" ").toLowerCase().includes(q);
-            b.classList.toggle("chapter-hidden", !ok);
-            if (ok) { any = true; shown++; }
+            const c = CHAPTERS[+b.dataset.i], m = getChapterMeta(c);
+            const ok = !q || [c.title, m.title, c.category, m.category, c.intro, ...c.key].join(" ").toLowerCase().includes(q);
+            b.classList.toggle("chapter-hidden", !ok); if (ok) { any = true; shown++; }
           });
           g.classList.toggle("chapter-hidden", !any);
         });
-        document.getElementById("chapterFilterCount").textContent = shown + " / " + CHAPTERS.length;
-      });
-      renderChapter(0);
+        document.getElementById("chapterFilterCount").textContent = `${shown} / ${CHAPTERS.length}`;
+      };
+      renderChapter(keepActive ? activeChapterIdx : 0);
     }
 
-    // PubMed
-    document.getElementById("pubmedBtn").addEventListener("click", async () => {
-      const q = document.getElementById("pubmedQuery").value.trim();
-      const st = document.getElementById("pubmedStatus");
-      const out = document.getElementById("pubmedResults");
-      if (!q) return;
-      st.textContent = "Searching NCBI PubMed…";
-      out.innerHTML = "";
+    window.translatePubMedTitle = async (btn, titleText) => {
+      const target = btn.nextElementSibling; btn.disabled = true; target.classList.remove("hidden"); target.textContent = "...";
       try {
-        const d = await (await fetch("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=8&term=" + encodeURIComponent(q))).json();
-        const ids = d.esearchresult.idlist || [];
-        if (!ids.length) { st.textContent = "No PubMed records found."; return; }
-        const res = (await (await fetch("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id=" + ids.join(","))).json()).result;
+        const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: titleText, lang: currentLang, mode: "translate" }) });
+        const d = await r.json(); target.textContent = d.reply || d.error || "Error";
+      } catch { target.textContent = "Error"; } finally { btn.disabled = false; }
+    };
+
+    document.getElementById("pubmedBtn").addEventListener("click", async () => {
+      const d = I18N[currentLang], q = document.getElementById("pubmedQuery").value.trim(), st = document.getElementById("pubmedStatus"), out = document.getElementById("pubmedResults");
+      if (!q) return;
+      st.textContent = d.pubmedSearching; out.innerHTML = "";
+      try {
+        const r1 = await (await fetch("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=8&term=" + encodeURIComponent(q))).json();
+        const ids = r1.esearchresult.idlist || [];
+        if (!ids.length) { st.textContent = d.pubmedNone; return; }
+        const r2 = (await (await fetch("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id=" + ids.join(","))).json()).result;
         out.innerHTML = ids.map((id) => {
-          const x = res[id];
-          return `<div class="callout"><div class="tag">PMID ${id}</div><strong>${escapeHtml(x.title || "Untitled")}</strong><p class="muted">${escapeHtml((x.fulljournalname || x.source || "") + " · " + (x.pubdate || ""))}</p><a class="ext" href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" rel="noopener">Open PubMed record ↗</a></div>`;
+          const x = r2[id], title = x.title || "Untitled";
+          const trBtn = currentLang !== "en" ? ` <button type="button" class="btn-ghost" style="margin-inline-start:8px" onclick="translatePubMedTitle(this, ${JSON.stringify(title)})">${escapeHtml(d.translateStudyBtn)}</button><div class="muted hidden" style="margin-top:6px"></div>` : "";
+          return `<div class="callout"><div class="tag">PMID ${id}</div><strong>${escapeHtml(title)}</strong><p class="muted">${escapeHtml((x.fulljournalname || x.source || "") + " · " + (x.pubdate || ""))}</p><a class="ext" href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" rel="noopener">${escapeHtml(d.openPubmed)}</a>${trBtn}</div>`;
         }).join("");
-        st.textContent = `${ids.length} records retrieved from NCBI.`;
-      } catch {
-        st.textContent = "PubMed search unavailable right now. Check connection.";
-      }
+        st.textContent = `${ids.length} ${d.pubmedDone}`;
+      } catch { st.textContent = d.pubmedErr; }
     });
 
-    // Research Builder & Workspace
-    function getNotes() { try { return JSON.parse(localStorage.getItem("neuroatlas_notes") || "[]"); } catch { return []; } }
+    const getNotes = () => { try { return JSON.parse(localStorage.getItem("neuroatlas_notes") || "[]"); } catch { return []; } };
     function renderNotes() {
-      const ns = getNotes();
-      document.getElementById("notesList").innerHTML = ns.length ? ns.map((n, i) => `
-        <div class="callout"><div class="tag">${new Date(n.date).toLocaleDateString()}</div><strong>${escapeHtml(n.title)}</strong><p class="muted" style="white-space:pre-wrap;margin:6px 0">${escapeHtml(n.body)}</p><button class="btn-ghost" onclick="deleteNote(${i})">Delete</button></div>`).join("") : "<p class='muted'>No saved notes yet.</p>";
+      const d = I18N[currentLang], ns = getNotes();
+      document.getElementById("notesList").innerHTML = ns.length ? ns.map((n, i) => `<div class="callout"><div class="tag">${new Date(n.date).toLocaleDateString()}</div><strong>${escapeHtml(n.title)}</strong><p class="muted" style="white-space:pre-wrap;margin:6px 0">${escapeHtml(n.body)}</p><button class="btn-ghost" onclick="deleteNote(${i})">${escapeHtml(d.deleteBtn)}</button></div>`).join("") : `<p class='muted'>${escapeHtml(d.noNotes)}</p>`;
     }
     window.deleteNote = (i) => { const ns = getNotes(); ns.splice(i, 1); localStorage.setItem("neuroatlas_notes", JSON.stringify(ns)); renderNotes(); };
-    window.saveChapterNote = (i) => {
-      const c = CHAPTERS[i], ns = getNotes();
-      ns.unshift({ title: c.title, body: c.intro + "\n\nKey takeaway: " + c.takeaway, date: new Date().toISOString() });
-      localStorage.setItem("neuroatlas_notes", JSON.stringify(ns));
-      renderNotes();
-      alert("Saved to Workspace!");
-    };
+    window.saveChapterNote = (i) => { const c = CHAPTERS[i], ns = getNotes(); ns.unshift({ title: getChapterMeta(c).title, body: c.intro + "\n\nKey takeaway: " + c.takeaway, date: new Date().toISOString() }); localStorage.setItem("neuroatlas_notes", JSON.stringify(ns)); renderNotes(); alert(I18N[currentLang].savedAlert); };
     document.getElementById("saveNote").addEventListener("click", () => {
       const title = document.getElementById("noteTitle").value.trim(), body = document.getElementById("noteBody").value.trim();
       if (!title || !body) return;
       const ns = getNotes(); ns.unshift({ title, body, date: new Date().toISOString() });
       localStorage.setItem("neuroatlas_notes", JSON.stringify(ns));
-      document.getElementById("noteTitle").value = ""; document.getElementById("noteBody").value = "";
-      renderNotes();
+      document.getElementById("noteTitle").value = ""; document.getElementById("noteBody").value = ""; renderNotes();
     });
     document.getElementById("exportNotes").addEventListener("click", () => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(new Blob([JSON.stringify(getNotes(), null, 2)], { type: "application/json" }));
-      a.download = "neuroatlas-notes.json"; a.click();
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(getNotes(), null, 2)], { type: "application/json" })); a.download = "neuroatlas-notes.json"; a.click();
     });
 
     let lastOutline = "";
     document.getElementById("buildQuestion").addEventListener("click", () => {
-      const t = document.getElementById("rdTopic").value.trim();
-      if (!t) return;
-      const p = document.getElementById("rdPopulation").value.trim() || "[population]";
-      const ex = document.getElementById("rdExposure").value.trim() || "[factor]";
-      const o = document.getElementById("rdOutcome").value.trim() || "[outcome]";
-      const m = document.getElementById("rdMethod").value;
-      lastOutline = `Topic: ${t}\nMethod: ${m}\nDraft Question: In ${p}, how is ${ex} related to ${o} in the context of ${t}?`;
+      const t = document.getElementById("rdTopic").value.trim(); if (!t) return;
+      const p = document.getElementById("rdPopulation").value.trim() || "[population]", ex = document.getElementById("rdExposure").value.trim() || "[factor]", o = document.getElementById("rdOutcome").value.trim() || "[outcome]";
+      const m = document.getElementById("rdMethod").options[document.getElementById("rdMethod").selectedIndex].text;
+      lastOutline = currentLang === "fa" ? `موضوع: ${t}\nروش پیشنهادی: ${m}\nسوال پژوهش: در ${p}، چگونه ${ex} با ${o} در زمینه «${t}» ارتباط دارد؟`
+        : currentLang === "tr" ? `Konu: ${t}\nYöntem: ${m}\nAraştırma Sorusu: ${p} grubunda, ${t} bağlamında ${ex} ile ${o} arasındaki ilişki nasıldır?`
+        : `Topic: ${t}\nMethod: ${m}\nDraft Question: In ${p}, how is ${ex} related to ${o} in the context of ${t}?`;
       document.getElementById("researchOutline").textContent = lastOutline;
     });
     document.getElementById("saveQuestion").addEventListener("click", () => {
       if (!lastOutline) return;
-      const ns = getNotes(); ns.unshift({ title: "Research Question Outline", body: lastOutline, date: new Date().toISOString() });
-      localStorage.setItem("neuroatlas_notes", JSON.stringify(ns)); renderNotes(); alert("Saved!");
+      const ns = getNotes(); ns.unshift({ title: I18N[currentLang].outlineTag, body: lastOutline, date: new Date().toISOString() });
+      localStorage.setItem("neuroatlas_notes", JSON.stringify(ns)); renderNotes(); alert(I18N[currentLang].savedAlert);
     });
 
-    // Methods, Sources, Map, Glossary, Flashcards, Quiz
     function initExtras() {
-      document.getElementById("methodsContent").innerHTML = METHODS.map((m, i) => `
-        <div class="callout"><div class="tag">METHOD ${String(i + 1).padStart(2, "0")}</div><h3>${escapeHtml(m[0])}</h3><p>${escapeHtml(m[1])}</p><p class="muted" style="margin-top:6px"><strong>Limit:</strong> ${escapeHtml(m[2])}</p><div style="margin-top:6px">${sourceNames([m[3]])}</div></div>`).join("");
+      const d = I18N[currentLang], t = trData();
+      const methodsList = (t && t.methods) || METHODS;
+      document.getElementById("methodsContent").innerHTML = METHODS.map((orig, i) => {
+        const m = methodsList[i] || orig;
+        return `<div class="callout"><div class="tag">${escapeHtml(d.methodWord)} ${String(i + 1).padStart(2, "0")}</div><h3>${escapeHtml(m[0])}</h3><p>${escapeHtml(m[1])}</p><p class="muted" style="margin-top:6px"><strong>${escapeHtml(d.limitLbl)}</strong> ${escapeHtml(m[2])}</p><div style="margin-top:6px">${sourceNames([orig[3]])}</div></div>`;
+      }).join("");
 
       const renderSources = () => {
         const q = (document.getElementById("sourceFilter").value || "").toLowerCase();
         const list = SOURCES.filter((s) => (s.id + s.name + s.use).toLowerCase().includes(q));
         document.getElementById("sourceCountLabel").textContent = `${list.length} / ${SOURCES.length}`;
-        document.getElementById("sourceList").innerHTML = list.map((s) => `
-          <div class="callout"><div class="tag">${escapeHtml(s.id)} · ${escapeHtml(s.type)}</div><strong>${escapeHtml(s.name)}</strong><p class="muted">${escapeHtml(s.use)}</p><a class="ext" href="${s.url}" target="_blank" rel="noopener">Open source ↗</a></div>`).join("");
+        document.getElementById("sourceList").innerHTML = list.map((s) => `<div class="callout"><div class="tag">${escapeHtml(s.id)} · ${escapeHtml((t && t.sourceTypes && t.sourceTypes[s.type]) || s.type)}</div><strong>${escapeHtml(s.name)}</strong><p class="muted">${escapeHtml(s.use)}</p><a class="ext" href="${s.url}" target="_blank" rel="noopener">${escapeHtml(d.openSource)}</a></div>`).join("");
       };
-      document.getElementById("sourceFilter").addEventListener("input", renderSources);
-      renderSources();
+      document.getElementById("sourceFilter").oninput = renderSources; renderSources();
 
-      document.getElementById("mapGrid").innerHTML = MAP.map((m, i) => `
-        <button class="chip" style="padding:14px" data-map="${i}"><div class="tag">${escapeHtml(m[1])}</div><strong>${escapeHtml(m[0])}</strong><div class="muted">${escapeHtml(m[2])}</div></button>`).join("");
-      document.querySelectorAll("[data-map]").forEach((b) => b.addEventListener("click", () => {
-        const m = MAP[+b.dataset.map];
-        document.getElementById("mapDetail").innerHTML = `<strong>${escapeHtml(m[0])}:</strong> ${escapeHtml(m[2])}<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${m[3].map((id) => {
-          const idx = CHAPTERS.findIndex((c) => c.id === id);
-          return idx >= 0 ? `<button class="chip" onclick="switchView('atlas');renderChapter(${idx})">${id} · ${escapeHtml(CHAPTERS[idx].title)}</button>` : "";
+      const mapList = (t && t.map) || MAP;
+      document.getElementById("mapGrid").innerHTML = MAP.map((orig, i) => {
+        const m = mapList[i] || orig;
+        return `<button class="chip" style="padding:14px" data-map="${i}"><div class="tag">${escapeHtml(m[1])}</div><strong>${escapeHtml(m[0])}</strong><div class="muted">${escapeHtml(m[2])}</div></button>`;
+      }).join("");
+      document.querySelectorAll("[data-map]").forEach((b) => b.onclick = () => {
+        const idx = +b.dataset.map, orig = MAP[idx], m = mapList[idx] || orig;
+        document.getElementById("mapDetail").innerHTML = `<strong>${escapeHtml(m[0])}:</strong> ${escapeHtml(m[2])}<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${orig[3].map((id) => {
+          const ci = CHAPTERS.findIndex((c) => c.id === id);
+          return ci >= 0 ? `<button class="chip" onclick="switchView('atlas');showOriginalChapter=false;renderChapter(${ci})">${id} · ${escapeHtml(getChapterMeta(CHAPTERS[ci]).title)}</button>` : "";
         }).join("")}</div>`;
-      }));
+      });
 
+      const glossList = (t && t.glossary) || GLOSSARY;
       const renderGlossary = () => {
         const q = (document.getElementById("glossaryFilter").value || "").toLowerCase();
-        const list = GLOSSARY.filter((g) => (g[0] + g[1]).toLowerCase().includes(q));
-        document.getElementById("glossaryCount").textContent = `${list.length} / ${GLOSSARY.length}`;
-        document.getElementById("glossaryList").innerHTML = list.map((g) => `<div class="callout"><strong>${escapeHtml(g[0])}</strong><p class="muted">${escapeHtml(g[1])}</p></div>`).join("");
+        const filtered = glossList.filter((g, i) => (g[0] + " " + g[1] + " " + (GLOSSARY[i] ? GLOSSARY[i][0] : "")).toLowerCase().includes(q));
+        document.getElementById("glossaryCount").textContent = `${filtered.length} / ${glossList.length}`;
+        document.getElementById("glossaryList").innerHTML = filtered.map((g) => `<div class="callout"><strong>${escapeHtml(g[0])}</strong><p class="muted">${escapeHtml(g[1])}</p></div>`).join("");
       };
-      document.getElementById("glossaryFilter").addEventListener("input", renderGlossary);
-      renderGlossary();
+      document.getElementById("glossaryFilter").oninput = renderGlossary; renderGlossary();
 
-      if (FLASH.length) {
-        let fIdx = 0, shown = false;
+      const flashList = (t && t.flash) || FLASH;
+      if (flashList.length) {
         const drawF = () => {
-          document.getElementById("flashQ").textContent = FLASH[fIdx][0];
-          document.getElementById("flashA").textContent = FLASH[fIdx][1];
-          document.getElementById("flashA").classList.toggle("hidden", !shown);
+          document.getElementById("flashQ").textContent = flashList[flashIdx][0];
+          document.getElementById("flashA").textContent = flashList[flashIdx][1];
+          document.getElementById("flashA").classList.toggle("hidden", !flashShown);
+          document.getElementById("flipCard").textContent = flashShown ? d.hideAnsBtn : d.revealAnsBtn;
         };
-        document.getElementById("flipCard").addEventListener("click", () => { shown = !shown; drawF(); });
-        document.getElementById("nextCard").addEventListener("click", () => { fIdx = (fIdx + 1) % FLASH.length; shown = false; drawF(); });
+        document.getElementById("flipCard").onclick = () => { flashShown = !flashShown; drawF(); };
+        document.getElementById("nextCard").onclick = () => { flashIdx = (flashIdx + 1) % flashList.length; flashShown = false; drawF(); };
         drawF();
       }
 
-      document.getElementById("quizArea").innerHTML = QUIZ.map((q, i) => `
-        <div class="quiz-q"><strong>${i + 1}. ${escapeHtml(q.q)}</strong>${q.a.map((opt, j) => `<label><input type="radio" name="qz${i}" value="${j}"> ${escapeHtml(opt)}</label>`).join("")}</div>`).join("");
-      document.getElementById("gradeQuiz").addEventListener("click", () => {
+      const quizList = (t && t.quiz) || QUIZ;
+      document.getElementById("quizArea").innerHTML = quizList.map((q, i) => `<div class="quiz-q"><strong>${i + 1}. ${escapeHtml(q.q)}</strong>${q.a.map((opt, j) => `<label><input type="radio" name="qz${i}" value="${j}"> ${escapeHtml(opt)}</label>`).join("")}</div>`).join("");
+      document.getElementById("quizScore").classList.add("hidden");
+      document.getElementById("gradeQuiz").onclick = () => {
         let score = 0;
-        const notes = QUIZ.map((q, i) => {
-          const v = document.querySelector(`input[name="qz${i}"]:checked`);
-          const ok = v && +v.value === q.c;
+        const notes = quizList.map((q, i) => {
+          const v = document.querySelector(`input[name="qz${i}"]:checked`), ok = v && +v.value === QUIZ[i].c;
           if (ok) score++;
           return `${i + 1}. ${ok ? "✓" : "✗"} ${q.why}`;
         });
         const box = document.getElementById("quizScore");
         box.classList.remove("hidden");
-        box.innerHTML = `<strong>Score: ${score}/${QUIZ.length}</strong><br>${notes.map(escapeHtml).join("<br>")}`;
-      });
+        box.innerHTML = `<strong>${escapeHtml(d.scoreLbl)} ${score}/${quizList.length}</strong><br>${notes.map(escapeHtml).join("<br>")}`;
+      };
     }
 
-    // Global Search
     function initGlobalSearch() {
-      const idx = [];
-      CHAPTERS.forEach((c, i) => idx.push({ type: "Atlas", title: c.title, desc: c.intro, view: "atlas", ch: i }));
-      GLOSSARY.forEach((g) => idx.push({ type: "Glossary", title: g[0], desc: g[1], view: "learn" }));
-      SOURCES.forEach((s) => idx.push({ type: "Source", title: s.name, desc: s.use, view: "research" }));
-      METHODS.forEach((m) => idx.push({ type: "Method", title: m[0], desc: m[1], view: "research" }));
-
-      const input = document.getElementById("globalSearchInput");
-      const box = document.getElementById("globalSearchResults");
+      const input = document.getElementById("globalSearchInput"), box = document.getElementById("globalSearchResults");
       input.addEventListener("input", () => {
-        const q = input.value.trim().toLowerCase();
-        if (!q) { box.hidden = true; return; }
-        const hits = idx.filter((x) => (x.title + " " + x.desc).toLowerCase().includes(q)).slice(0, 10);
-        box.innerHTML = hits.length ? hits.map((h, k) => `<button class="search-item" data-hit="${k}"><small>${escapeHtml(h.type)}</small><strong>${escapeHtml(h.title)}</strong><span>${escapeHtml(h.desc.slice(0, 130))}…</span></button>`).join("") : `<div style="padding:12px" class="muted">No local matches.</div>`;
+        const q = input.value.trim().toLowerCase(); if (!q) { box.hidden = true; return; }
+        const t = trData(), idx = [];
+        CHAPTERS.forEach((c, i) => { const m = getChapterMeta(c); idx.push({ type: I18N[currentLang].tabAtlas, title: m.title, desc: m.subtitle + " · " + c.intro, raw: c.title + " " + c.intro, view: "atlas", ch: i }); });
+        ((t && t.glossary) || GLOSSARY).forEach((g, i) => idx.push({ type: I18N[currentLang].subGlossary, title: g[0], desc: g[1], raw: (GLOSSARY[i] || []).join(" "), view: "learn" }));
+        SOURCES.forEach((s) => idx.push({ type: I18N[currentLang].subSources, title: s.name, desc: s.use, raw: s.id, view: "research" }));
+        ((t && t.methods) || METHODS).forEach((m, i) => idx.push({ type: I18N[currentLang].subMethods, title: m[0], desc: m[1], raw: (METHODS[i] || []).join(" "), view: "research" }));
+        const hits = idx.filter((x) => (x.title + " " + x.desc + " " + x.raw).toLowerCase().includes(q)).slice(0, 10);
+        box.innerHTML = hits.length ? hits.map((h, k) => `<button class="search-item" data-hit="${k}"><small>${escapeHtml(h.type)}</small><strong>${escapeHtml(h.title)}</strong><span>${escapeHtml(h.desc.slice(0, 130))}…</span></button>`).join("") : `<div style="padding:12px" class="muted">${escapeHtml(I18N[currentLang].noSearchHit)}</div>`;
         box.hidden = false;
         box.querySelectorAll("[data-hit]").forEach((btn, k) => btn.addEventListener("click", () => {
-          const item = hits[k];
-          box.hidden = true;
-          switchView(item.view);
-          if (item.view === "atlas" && Number.isInteger(item.ch)) renderChapter(item.ch);
+          const item = hits[k]; box.hidden = true; switchView(item.view);
+          if (item.view === "atlas" && Number.isInteger(item.ch)) { showOriginalChapter = false; renderChapter(item.ch); }
         }));
       });
       document.addEventListener("click", (e) => { if (!document.getElementById("globalSearchWrap").contains(e.target)) box.hidden = true; });
       document.addEventListener("keydown", (e) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); input.focus(); } });
     }
 
-    // Secure Contact (Web3Forms + Human-Only Anti-Bot Email Reveal)
     document.getElementById("contactForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const st = document.getElementById("contactStatus");
+      const d = I18N[currentLang], st = document.getElementById("contactStatus");
       if (document.getElementById("botcheck").checked) return;
-      if (!WEB3FORMS_KEY || WEB3FORMS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
-        st.textContent = "Contact form needs a free Web3Forms key in index.html (or use the Human-Only Email button).";
-        return;
-      }
-      const btn = document.getElementById("contactSubmitBtn");
-      btn.disabled = true;
-      st.textContent = "Sending...";
+      const btn = document.getElementById("contactSubmitBtn"); btn.disabled = true; st.textContent = d.cSending;
       try {
         const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_KEY,
-            subject: "NEUROATLAS: " + document.getElementById("contactCategory").value,
-            name: document.getElementById("contactName").value.trim(),
-            email: document.getElementById("contactEmail").value.trim() || "no-reply@neuroatlas.local",
-            message: document.getElementById("contactMsg").value.trim()
-          })
+          method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: "NEUROATLAS: " + document.getElementById("contactCategory").value, name: document.getElementById("contactName").value.trim(), email: document.getElementById("contactEmail").value.trim() || "noreply@web3forms.com", message: document.getElementById("contactMsg").value.trim() })
         });
         const data = await res.json();
-        if (data.success) {
-          st.textContent = "Message sent securely! Thank you.";
-          e.target.reset();
-        } else {
-          st.textContent = "Could not send: " + (data.message || "Error");
-        }
-      } catch {
-        st.textContent = "Network error while sending.";
-      } finally {
-        btn.disabled = false;
-      }
+        if (data.success) { st.textContent = d.cSent; e.target.reset(); } else st.textContent = "Error: " + (data.message || "");
+      } catch { st.textContent = d.cNetErr; } finally { btn.disabled = false; }
     });
 
-    // Email is split and reconstructed ONLY on human click (never inside raw HTML)
     const _emParts = ["nargesbayat2012", "gmail", "com"];
     document.getElementById("revealEmailBtn").addEventListener("click", () => {
       const box = document.getElementById("emailRevealBox");
       box.textContent = `${_emParts[0]} [at] ${_emParts[1]} [dot] ${_emParts[2]}`;
-      box.classList.remove("hidden");
-      document.getElementById("copyEmailBtn").classList.remove("hidden");
+      box.classList.remove("hidden"); document.getElementById("copyEmailBtn").classList.remove("hidden");
     });
     document.getElementById("copyEmailBtn").addEventListener("click", () => {
-      const real = `${_emParts[0]}@${_emParts[1]}.${_emParts[2]}`;
-      navigator.clipboard.writeText(real).then(() => {
-        document.getElementById("copyEmailBtn").textContent = "Copied!";
+      navigator.clipboard.writeText(`${_emParts[0]}@${_emParts[1]}.${_emParts[2]}`).then(() => {
+        document.getElementById("copyEmailBtn").textContent = I18N[currentLang].copiedWord;
         setTimeout(() => (document.getElementById("copyEmailBtn").textContent = I18N[currentLang].copyEmailBtn), 1500);
       });
     });
 
     async function checkApiStatus() {
-      try {
-        const r = await fetch("/api/status");
-        if (!r.ok) throw new Error();
-        const d = await r.json();
-        lastStatusState = d.ai_ready ? "ready" : "nokey";
-      } catch {
-        lastStatusState = "offline";
-      }
+      try { const r = await fetch("/api/status"); if (!r.ok) throw new Error(); const d = await r.json(); lastStatusState = d.ai_ready ? "ready" : "nokey"; }
+      catch { lastStatusState = "offline"; }
       updateStatusText();
     }
 
-    // Init
     applyTheme(currentTheme);
     applyLanguage(currentLang);
-    initAtlas();
-    initExtras();
     initGlobalSearch();
-    renderNotes();
     checkApiStatus();
     if (CHAPTERS.length) document.getElementById("statChapters").textContent = CHAPTERS.length;
     if (SOURCES.length) document.getElementById("statSources").textContent = SOURCES.length;
