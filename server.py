@@ -13,6 +13,17 @@ if str(ROOT) not in sys.path:
 from api.chat import process_chat_request
 from api.status import get_status_payload
 
+STATIC_MIME_TYPES = {
+    ".css": "text/css; charset=utf-8",
+    ".js": "application/javascript; charset=utf-8",
+    ".json": "application/json; charset=utf-8",
+    ".svg": "image/svg+xml",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".webp": "image/webp",
+}
+
 
 def load_local_env():
     env_file = ROOT / ".env"
@@ -25,6 +36,21 @@ def load_local_env():
             os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
+def resolve_safe_static(url_path: str):
+    rel = url_path.lstrip("/")
+    if not rel or any(part.startswith(".") for part in Path(rel).parts):
+        return None
+    target = (ROOT / rel).resolve()
+    try:
+        if os.path.commonpath([str(ROOT), str(target)]) != str(ROOT):
+            return None
+    except ValueError:
+        return None
+    if target.suffix.lower() not in STATIC_MIME_TYPES or not target.is_file():
+        return None
+    return target
+
+
 class LocalHandler(BaseHTTPRequestHandler):
     def _send_json(self, status_code: int, data: dict):
         body = json.dumps(data, ensure_ascii=False).encode("utf-8")
@@ -34,28 +60,30 @@ class LocalHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _send_file(self, file_path: Path, content_type: str):
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(file_path.read_bytes())
+
     def do_GET(self):
         path = self.path.split("?", 1)[0]
+
         if path in ("/", "/index.html"):
             index_file = ROOT / "index.html"
             if not index_file.is_file():
                 self.send_error(404, "index.html not found")
                 return
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(index_file.read_bytes())
+            self._send_file(index_file, "text/html; charset=utf-8")
             return
 
-        if path in ("/neuroatlas-data.js", "/neuroatlas-i18n-data.js"):
-            target_file = ROOT / path.lstrip("/")
-            if not target_file.is_file():
-                self.send_error(404, f"{target_file.name} not found")
+        if path in ("/neuroatlas-data.js", "/neuroatlas-i18n-data.js") or path.startswith(("/css/", "/js/", "/assets/")):
+            target_file = resolve_safe_static(path)
+            if not target_file:
+                self.send_error(404, "Static asset not found")
                 return
-            self.send_response(200)
-            self.send_header("Content-Type", "application/javascript; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(target_file.read_bytes())
+            self._send_file(target_file, STATIC_MIME_TYPES[target_file.suffix.lower()])
             return
 
         if path == "/api/status":
