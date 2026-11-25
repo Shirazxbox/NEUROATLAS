@@ -13,47 +13,64 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="container nav-inner">
-      <button type="button" class="brand" onclick="switchView('home')">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect width="32" height="32" rx="9" fill="url(#na-grad)" />
-          <circle cx="10" cy="11" r="2.2" fill="#fff" />
-          <circle cx="22" cy="11" r="2.2" fill="#fff" />
-          <circle cx="16" cy="22" r="2.5" fill="#fff" />
-          <path d="M10 11L22 11M10 11L16 22M22 11L16 22" stroke="#fff" stroke-width="1.7" stroke-linecap="round" />
-          <defs><linearGradient id="na-grad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#0891b2"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
-        </svg>
-        <span>NEUROATLAS</span>
-        <span class="brand-badge">Narges Bayat</span>
-      </button>
+    <div class="container">
+      <div class="nav-inner">
+        <button type="button" class="brand" onclick="switchView('home')">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect width="32" height="32" rx="9" fill="url(#na-grad)" />
+            <circle cx="10" cy="11" r="2.2" fill="#fff" />
+            <circle cx="22" cy="11" r="2.2" fill="#fff" />
+            <circle cx="16" cy="22" r="2.5" fill="#fff" />
+            <path d="M10 11L22 11M10 11L16 22M22 11L16 22" stroke="#fff" stroke-width="1.7" stroke-linecap="round" />
+            <defs><linearGradient id="na-grad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#0891b2"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
+          </svg>
+          <span>NEUROATLAS</span>
+          <span class="brand-badge">Narges Bayat</span>
+        </button>
 
-      <nav class="nav-tabs" aria-label="Main Navigation">
-        <button type="button" class="nav-tab active" data-view="home" data-i18n="tabHome">Overview & AI</button>
-        <button type="button" class="nav-tab" data-view="atlas" data-i18n="tabAtlas">Atlas (23)</button>
-        <button type="button" class="nav-tab" data-view="research" data-i18n="tabResearch">Research & PubMed</button>
-        <button type="button" class="nav-tab" data-view="learn" data-i18n="tabLearn">Learn & Quiz</button>
-        <button type="button" class="nav-tab" data-view="about" data-i18n="tabAbout">About Narges</button>
-        <button type="button" class="nav-tab" data-view="contact" data-i18n="tabContact">Contact</button>
-      </nav>
+        <nav class="nav-tabs" aria-label="Main Navigation">
+          <button type="button" class="nav-tab active" data-view="home" data-i18n="tabHome">Overview & AI</button>
+          <button type="button" class="nav-tab" data-view="atlas" data-i18n="tabAtlas">Atlas (23)</button>
+          <button type="button" class="nav-tab" data-view="research" data-i18n="tabResearch">Research & PubMed</button>
+          <button type="button" class="nav-tab" data-view="learn" data-i18n="tabLearn">Learn & Quiz</button>
+          <button type="button" class="nav-tab" data-view="about" data-i18n="tabAbout">About Narges</button>
+          <button type="button" class="nav-tab" data-view="contact" data-i18n="tabContact">Contact</button>
+        </nav>
 
-      <div class="controls">
-        <select id="themeSelect" class="control-select" aria-label="Theme selector">
+        <div class="controls">
+          <select id="themeSelect" class="control-select" aria-label="Theme selector">
+            <option value="cyber" data-i18n="themeCyber">Cyber Terminal</option>
+            <option value="obsidian" data-i18n="themeObsidian">Obsidian Cinema</option>
+            <option value="ocean" data-i18n="themeOcean">Ocean Glass</option>
+            <option value="light" data-i18n="themeLight">Daylight Lab</option>
+            <option value="paper" data-i18n="themePaper">Editorial Paper</option>
+          </select>
+          <div class="lang-group" role="group" aria-label="Language selector">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="fa">فا</button>
+            <button type="button" class="lang-btn" data-lang="tr">TR</button>
+          </div>
+        </div>
+
+        <div class="nav-mobile-actions">
+          <button id="mobileSearchBtn" type="button" class="icon-btn" aria-label="Search">⌕</button>
+          <button id="hamburgerBtn" type="button" class="icon-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">☰</button>
+        </div>
+      </div>
+
+      <div class="mobile-lang-strip" aria-label="Quick Language and Theme">
+        <div class="lang-group" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="fa">فا</button>
+          <button type="button" class="lang-btn" data-lang="tr">TR</button>
+        </div>
+        <select id="mobileThemeSelect" class="control-select mobile-theme-select" aria-label="Theme selector">
           <option value="cyber" data-i18n="themeCyber">Cyber Terminal</option>
           <option value="obsidian" data-i18n="themeObsidian">Obsidian Cinema</option>
           <option value="ocean" data-i18n="themeOcean">Ocean Glass</option>
           <option value="light" data-i18n="themeLight">Daylight Lab</option>
           <option value="paper" data-i18n="themePaper">Editorial Paper</option>
         </select>
-        <div class="lang-group" role="group" aria-label="Language selector">
-          <button type="button" class="lang-btn active" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="fa">فا</button>
-          <button type="button" class="lang-btn" data-lang="tr">TR</button>
-        </div>
-      </div>
-
-      <div class="nav-mobile-actions">
-        <button id="mobileSearchBtn" type="button" class="icon-btn" aria-label="Search">⌕</button>
-        <button id="hamburgerBtn" type="button" class="icon-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">☰</button>
       </div>
     </div>
   </header>
@@ -84,14 +101,6 @@
           <option value="light" data-i18n="themeLight">Daylight Lab</option>
           <option value="paper" data-i18n="themePaper">Editorial Paper</option>
         </select>
-      </div>
-      <div>
-        <div class="tag" data-i18n="langLabel">Language</div>
-        <div class="lang-group" role="group" aria-label="Language selector">
-          <button type="button" class="lang-btn active" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="fa">فا</button>
-          <button type="button" class="lang-btn" data-lang="tr">TR</button>
-        </div>
       </div>
     </div>
   </aside>
@@ -374,7 +383,17 @@
     </section>
   </div>
 
-  <button id="fabChat" type="button" class="btn-primary fab-chat hidden" onclick="jumpToChat()" data-i18n="fabBtn">Ask AI</button>
+  <button id="fabChat" type="button" class="btn-primary fab-chat" onclick="jumpToChat()" aria-label="Ask NeuroAI">
+    <span class="fab-pulse" aria-hidden="true"></span>
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3C6.48 3 2 6.92 2 11.75c0 2.34 1.05 4.46 2.76 6.02-.17 1.37-.78 2.66-1.41 3.48a.5.5 0 0 0 .45.8c1.73-.18 3.55-.83 4.75-1.58 1.09.32 2.25.53 3.45.53 5.52 0 10-3.92 10-8.75S17.52 3 12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="8.5" cy="11.75" r="1.2" fill="currentColor"/>
+      <circle cx="12" cy="11.75" r="1.2" fill="currentColor"/>
+      <circle cx="15.5" cy="11.75" r="1.2" fill="currentColor"/>
+    </svg>
+    <span class="fab-label" data-i18n="fabBtn">Ask AI</span>
+  </button>
+
   <footer><div class="container" data-i18n="footerText">NEUROATLAS · Built with Python by Narges Bayat for GenHacks 2026 · Educational Resource Only</div></footer>
 
   <script src="/neuroatlas-data.js"></script>
