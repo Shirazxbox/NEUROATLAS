@@ -1,6 +1,6 @@
 /* ==========================================================================
    NEUROATLAS — Core Application Features
-   Chat AI, 23-Chapter Atlas, PubMed Search, Learning Lab & Secure Contact
+   Chat AI, Auto-Translated 23-Chapter Atlas, PubMed, Learning Lab & Contact
    ========================================================================== */
 
 (function () {
@@ -25,7 +25,15 @@
 
   let chatHistory = [];
   let activeChapterIdx = 0;
-  let showOriginalChapter = false;
+  let chapterDisplayLang = lang();
+  let chapterCompareOriginal = false;
+  let chapterAutoError = "";
+  const translatingChapters = new Set();
+
+  let pubmedItems = [];
+  let pubmedTranslating = false;
+  const pubmedTrCache = {};
+
   let flashIdx = 0;
   let flashShown = false;
   let lastOutline = "";
@@ -162,7 +170,7 @@
   }
 
   /* ========================================================================
-     2. 23-Chapter Neuroscience Atlas & AI Translation
+     2. 23-Chapter Neuroscience Atlas (Auto-Translation + 3-Lang Compare)
      ======================================================================== */
 
   function sourceNames(ids) {
@@ -211,23 +219,51 @@
     });
   }
 
-  async function translateActiveChapter(i) {
+  function formatTranslatedChapter(raw) {
+    return escapeHtml(raw)
+      .split(/\n{2,}/)
+      .map((block) => {
+        const trimmed = block.trim();
+        if (!trimmed) return "";
+        if (trimmed.startsWith("## ")) {
+          return `<h3>${trimmed.slice(3).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")}</h3>`;
+        }
+        return `<p>${trimmed
+          .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+          .replace(/\n/g, "<br>")}</p>`;
+      })
+      .join("");
+  }
+
+  function renderEnglishChapterBody(c, d) {
+    return `<p style="margin:14px 0">${escapeHtml(c.intro)}</p>${c.sections
+      .map((s) => `<h3>${escapeHtml(s[0])}</h3><p>${escapeHtml(s[1])}</p>`)
+      .join("")}<div class="callout"><strong>${escapeHtml(d.keyConceptLbl)}</strong> ${escapeHtml(
+      c.takeaway
+    )}</div><div class="callout"><strong>${escapeHtml(d.distinctionLbl)}</strong> ${escapeHtml(
+      c.misconception
+    )}</div><h3>${escapeHtml(d.reviewLbl)}</h3>${c.questions
+      .map(
+        (q, j) =>
+          `<details class="qa"><summary>${String(j + 1).padStart(2, "0")} · ${escapeHtml(
+            q
+          )}</summary><p>${escapeHtml(answerForQuestion(c, q))}</p></details>`
+      )
+      .join("")}`;
+  }
+
+  async function ensureChapterTranslation(i, targetLang) {
     const c = CHAPTERS[i];
-    const l = lang();
-    if (!c || l === "en") return;
-    const key = chCacheKey(c.id, l);
-    if (localStorage.getItem(key)) {
-      showOriginalChapter = false;
-      renderChapter(i);
-      return;
+    if (!c || targetLang === "en") return;
+    const cacheKey = chCacheKey(c.id, targetLang);
+    if (localStorage.getItem(cacheKey) || translatingChapters.has(cacheKey)) return;
+
+    translatingChapters.add(cacheKey);
+    chapterAutoError = "";
+    if (activeChapterIdx === i && chapterDisplayLang === targetLang) {
+      renderChapter(i, false);
     }
-    const btn = document.getElementById("translateChBtn");
-    const st = document.getElementById("chTranslateStatus");
-    if (btn) btn.disabled = true;
-    if (st) {
-      st.classList.remove("hidden");
-      st.textContent = I18N[l].translatingMsg;
-    }
+
     const sourceText = [
       `Title: ${c.title}`,
       `Subtitle: ${c.subtitle}`,
@@ -242,72 +278,97 @@
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: sourceText, lang: l, mode: "translate" })
+        body: JSON.stringify({ message: sourceText, lang: targetLang, mode: "translate" })
       });
       const data = await res.json();
       if (!res.ok || !data.reply) throw new Error(data.error || "Translation failed");
-      localStorage.setItem(key, data.reply);
-      showOriginalChapter = false;
-      renderChapter(i);
-    } catch (err) {
-      if (st) st.textContent = err.message;
-      if (btn) btn.disabled = false;
+      localStorage.setItem(cacheKey, data.reply);
+      chapterAutoError = "";
+    } catch {
+      chapterAutoError = I18N[lang()].autoTrErr;
+    } finally {
+      translatingChapters.delete(cacheKey);
+      if (activeChapterIdx === i && chapterDisplayLang === targetLang) {
+        renderChapter(i, false);
+      }
     }
   }
 
-  function renderChapter(i) {
+  function renderChapter(i, triggerAuto = true) {
     if (!CHAPTERS[i]) return;
     activeChapterIdx = i;
-    const l = lang();
+    const siteLang = lang();
+    const d = I18N[siteLang];
     const c = CHAPTERS[i];
-    const d = I18N[l];
-    const meta = getChapterMeta(c);
-    const cached = l !== "en" ? localStorage.getItem(chCacheKey(c.id, l)) : null;
+    const viewLang = chapterDisplayLang;
+    const meta = getChapterMeta(c, viewLang);
+    const cacheKey = chCacheKey(c.id, viewLang);
+    const cached = viewLang !== "en" ? localStorage.getItem(cacheKey) : null;
+    const isTranslating = viewLang !== "en" && translatingChapters.has(cacheKey);
 
-    let trCtrl = "";
-    if (l !== "en") {
-      if (cached && !showOriginalChapter) {
-        trCtrl = `<div style="margin:10px 0 14px"><button type="button" class="btn-ghost" onclick="setShowOriginalChapter(true,${i})">${escapeHtml(d.showOrigBtn)}</button></div>`;
-      } else if (cached && showOriginalChapter) {
-        trCtrl = `<div style="margin:10px 0 14px"><button type="button" class="btn-primary" onclick="setShowOriginalChapter(false,${i})">${escapeHtml(d.translateChBtn)}</button></div>`;
-      } else {
-        trCtrl = `<div style="margin:10px 0 14px"><button id="translateChBtn" type="button" class="btn-primary" onclick="translateActiveChapter(${i})">${escapeHtml(d.translateChBtn)}</button><div id="chTranslateStatus" class="callout hidden"></div></div>`;
-      }
+    if (
+      triggerAuto &&
+      viewLang !== "en" &&
+      !cached &&
+      !isTranslating &&
+      UI.getActiveView() === "atlas"
+    ) {
+      ensureChapterTranslation(i, viewLang);
     }
 
-    const bodyHtml =
-      cached && !showOriginalChapter && l !== "en"
-        ? `<div class="callout" style="white-space:pre-wrap">${escapeHtml(cached)}</div>`
-        : `<p style="margin:14px 0">${escapeHtml(c.intro)}</p>${c.sections
-            .map((s) => `<h3>${escapeHtml(s[0])}</h3><p>${escapeHtml(s[1])}</p>`)
-            .join("")}<div class="callout"><strong>${escapeHtml(d.keyConceptLbl)}</strong> ${escapeHtml(
-            c.takeaway
-          )}</div><div class="callout"><strong>${escapeHtml(d.distinctionLbl)}</strong> ${escapeHtml(
-            c.misconception
-          )}</div><h3>${escapeHtml(d.reviewLbl)}</h3>${c.questions
-            .map(
-              (q, j) =>
-                `<details class="qa"><summary>${String(j + 1).padStart(2, "0")} · ${escapeHtml(
-                  q
-                )}</summary><p>${escapeHtml(answerForQuestion(c, q))}</p></details>`
-            )
-            .join("")}`;
+    const langDir = viewLang === "fa" ? "rtl" : "ltr";
+    const langBar = `<div class="article-lang-bar">
+      <span class="article-lang-label">${escapeHtml(d.articleLangLabel)}</span>
+      <div class="article-lang-pills">
+        <button type="button" class="article-lang-btn ${viewLang === "en" ? "active" : ""}" onclick="setChapterLang('en', ${i})">EN</button>
+        <button type="button" class="article-lang-btn ${viewLang === "fa" ? "active" : ""}" onclick="setChapterLang('fa', ${i})">فا</button>
+        <button type="button" class="article-lang-btn ${viewLang === "tr" ? "active" : ""}" onclick="setChapterLang('tr', ${i})">TR</button>
+        ${
+          viewLang !== "en"
+            ? `<button type="button" class="article-lang-btn ${chapterCompareOriginal ? "active" : ""}" onclick="toggleChapterCompare(${i})">${escapeHtml(
+                chapterCompareOriginal ? d.hideCompareBtn : d.sideCompareBtn
+              )}</button>`
+            : ""
+        }
+      </div>
+    </div>`;
+
+    let statusBanner = "";
+    if (isTranslating) {
+      statusBanner = `<div class="callout">${escapeHtml(I18N[viewLang].translatingMsg || d.translatingMsg)}</div>`;
+    } else if (viewLang !== "en" && !cached && chapterAutoError) {
+      statusBanner = `<div class="callout muted">${escapeHtml(chapterAutoError)}</div>`;
+    }
+
+    let bodyHtml = "";
+    if (viewLang !== "en" && cached) {
+      bodyHtml = `<div class="translated-chapter-body" dir="${langDir}">${formatTranslatedChapter(cached)}</div>`;
+      if (chapterCompareOriginal) {
+        bodyHtml += `<div class="article-compare-box" dir="ltr"><div class="tag">${escapeHtml(
+          d.compareOriginalTag
+        )}</div><h3 style="margin-top:4px">${escapeHtml(c.title)}</h3>${renderEnglishChapterBody(c, I18N.en)}</div>`;
+      }
+    } else {
+      bodyHtml = `<div dir="ltr">${renderEnglishChapterBody(c, viewLang === "en" ? I18N.en : d)}</div>`;
+    }
 
     const contentEl = document.getElementById("chapterContent");
     if (contentEl) {
       contentEl.innerHTML = `<div class="tag">${escapeHtml(meta.category)} · ${escapeHtml(d.chapterWord)} ${escapeHtml(
         c.id
-      )}</div><h2>${escapeHtml(meta.title)}</h2><p class="muted">${escapeHtml(meta.subtitle)}</p>${trCtrl}${bodyHtml}<p class="muted" style="margin-top:16px">${escapeHtml(
+      )}</div><h2 dir="${langDir}">${escapeHtml(meta.title)}</h2><p class="muted" dir="${langDir}">${escapeHtml(
+        meta.subtitle
+      )}</p>${langBar}${statusBanner}${bodyHtml}<p class="muted" style="margin-top:16px">${escapeHtml(
         d.refsLbl
       )} ${sourceNames(c.sources)}</p><div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap"><button class="btn-ghost" onclick="saveChapterNote(${i})">${escapeHtml(
         d.saveWorkBtn
       )}</button>${
         i > 0
-          ? `<button class="btn-ghost" onclick="setShowOriginalChapter(false,${i - 1})">${escapeHtml(d.prevBtn)}</button>`
+          ? `<button class="btn-ghost" onclick="openChapterIndex(${i - 1})">${escapeHtml(d.prevBtn)}</button>`
           : ""
       }${
         i < CHAPTERS.length - 1
-          ? `<button class="btn-primary" onclick="setShowOriginalChapter(false,${i + 1})">${escapeHtml(d.nextBtn)}</button>`
+          ? `<button class="btn-primary" onclick="openChapterIndex(${i + 1})">${escapeHtml(d.nextBtn)}</button>`
           : ""
       }</div>`;
     }
@@ -339,7 +400,9 @@
 
     nav.querySelectorAll(".chapter-btn").forEach((b) => {
       b.addEventListener("click", () => {
-        showOriginalChapter = false;
+        chapterDisplayLang = lang();
+        chapterCompareOriginal = false;
+        chapterAutoError = "";
         renderChapter(+b.dataset.i);
         if (window.innerWidth <= 1024) {
           chaptersOpenMobile = false;
@@ -380,30 +443,167 @@
   }
 
   /* ========================================================================
-     3. PubMed Search, Question Builder & Workspace Notes
+     3. PubMed Search (Auto-Translate + 3-Language Comparison) & Notes
      ======================================================================== */
 
-  window.translatePubMedTitle = async (btn, titleText) => {
-    const target = btn.nextElementSibling;
-    btn.disabled = true;
-    target.classList.remove("hidden");
-    target.textContent = "...";
+  async function translateSingleText(text, targetLang) {
+    if (targetLang === "en") return text;
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, lang: targetLang, mode: "translate" })
+    });
+    const data = await res.json();
+    if (!res.ok || !data.reply) throw new Error(data.error || "Error");
+    return data.reply.trim();
+  }
+
+  function renderPubMedResults() {
+    const out = document.getElementById("pubmedResults");
+    if (!out) return;
+    if (!pubmedItems.length) {
+      out.innerHTML = "";
+      return;
+    }
+    const l = lang();
+    const d = I18N[l];
+
+    out.innerHTML = pubmedItems
+      .map((item, idx) => {
+        const activeTitle = (l !== "en" && item.translations[l]) || item.titleEn;
+        const activeDir = l !== "en" && item.translations[l] && l === "fa" ? "rtl" : "ltr";
+
+        let compareBox = "";
+        if (item.compareLang) {
+          const cl = item.compareLang;
+          const clDir = cl === "fa" ? "rtl" : "ltr";
+          const tagLabel =
+            cl === "en" ? d.compareOriginalTag : cl === "fa" ? d.compareFaTag : d.compareTrTag;
+          const clText =
+            item.loadingLang === cl
+              ? "..."
+              : item.translations[cl] || (cl === "en" ? item.titleEn : d.autoTrErr);
+          compareBox = `<div class="article-compare-box" dir="${clDir}"><div class="tag">${escapeHtml(
+            tagLabel
+          )}</div><div>${escapeHtml(clText)}</div></div>`;
+        }
+
+        return `<div class="callout">
+          <div class="tag">PMID ${escapeHtml(item.id)}</div>
+          <strong dir="${activeDir}" style="display:block">${escapeHtml(activeTitle)}</strong>
+          <p class="muted" style="margin-top:4px">${escapeHtml(item.metaLine)}</p>
+          <div class="pubmed-actions">
+            <a class="ext" href="https://pubmed.ncbi.nlm.nih.gov/${escapeHtml(item.id)}/" target="_blank" rel="noopener">${escapeHtml(
+          d.openPubmed
+        )}</a>
+            <div class="article-lang-pills">
+              <span class="article-lang-label">${escapeHtml(d.compareLabel)}</span>
+              <button type="button" class="article-lang-btn ${item.compareLang === "en" ? "active" : ""}" onclick="comparePubMedLang(${idx}, 'en')">EN</button>
+              <button type="button" class="article-lang-btn ${item.compareLang === "fa" ? "active" : ""}" onclick="comparePubMedLang(${idx}, 'fa')">فا</button>
+              <button type="button" class="article-lang-btn ${item.compareLang === "tr" ? "active" : ""}" onclick="comparePubMedLang(${idx}, 'tr')">TR</button>
+            </div>
+          </div>
+          ${compareBox}
+        </div>`;
+      })
+      .join("");
+  }
+
+  async function autoTranslatePubMedList(targetLang) {
+    if (!pubmedItems.length || targetLang === "en" || pubmedTranslating) return;
+    const missing = pubmedItems.filter((item) => !item.translations[targetLang]);
+    if (!missing.length) {
+      renderPubMedResults();
+      return;
+    }
+
+    pubmedTranslating = true;
+    const st = document.getElementById("pubmedStatus");
+    const d = I18N[lang()];
+    if (st) st.textContent = d.translatingPubmedMsg;
+
+    const numberedPrompt =
+      "Translate each numbered neuroscience paper title accurately. Keep exact [1], [2], ... numbering on separate lines:\n\n" +
+      missing.map((item, k) => `[${k + 1}] ${item.titleEn}`).join("\n");
+
     try {
-      const r = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: titleText, lang: lang(), mode: "translate" })
+      const batchReply = await translateSingleText(numberedPrompt, targetLang);
+      batchReply.split(/\r?\n/).forEach((line) => {
+        const m = line.trim().match(/^\[?(\d+)\]?[\.\)\:\-\s]+(.+)$/);
+        if (m) {
+          const idx = +m[1] - 1;
+          if (missing[idx]) {
+            const cleaned = m[2].trim();
+            missing[idx].translations[targetLang] = cleaned;
+            pubmedTrCache[`${targetLang}_${missing[idx].id}`] = cleaned;
+          }
+        }
       });
-      const d = await r.json();
-      target.textContent = d.reply || d.error || "Error";
     } catch {
-      target.textContent = "Error";
+      // Fall back below for individual items if batch fails
+    }
+
+    for (const item of missing) {
+      if (!item.translations[targetLang]) {
+        try {
+          const single = await translateSingleText(item.titleEn, targetLang);
+          item.translations[targetLang] = single;
+          pubmedTrCache[`${targetLang}_${item.id}`] = single;
+        } catch {
+          break;
+        }
+      }
+    }
+
+    pubmedTranslating = false;
+    if (st) st.textContent = `${pubmedItems.length} ${I18N[lang()].pubmedDone}`;
+    renderPubMedResults();
+  }
+
+  window.comparePubMedLang = async (idx, targetLang) => {
+    const item = pubmedItems[idx];
+    if (!item) return;
+    if (item.compareLang === targetLang) {
+      item.compareLang = null;
+      renderPubMedResults();
+      return;
+    }
+    item.compareLang = targetLang;
+    if (targetLang === "en" || item.translations[targetLang]) {
+      renderPubMedResults();
+      return;
+    }
+    const cacheKey = `${targetLang}_${item.id}`;
+    if (pubmedTrCache[cacheKey]) {
+      item.translations[targetLang] = pubmedTrCache[cacheKey];
+      renderPubMedResults();
+      return;
+    }
+    item.loadingLang = targetLang;
+    renderPubMedResults();
+    try {
+      const translated = await translateSingleText(item.titleEn, targetLang);
+      item.translations[targetLang] = translated;
+      pubmedTrCache[cacheKey] = translated;
+    } catch {
+      // Error handled smoothly in renderPubMedResults
     } finally {
-      btn.disabled = false;
+      item.loadingLang = null;
+      renderPubMedResults();
     }
   };
 
   const pubmedBtn = document.getElementById("pubmedBtn");
+  const pubmedQueryEl = document.getElementById("pubmedQuery");
+  if (pubmedQueryEl && pubmedBtn) {
+    pubmedQueryEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        pubmedBtn.click();
+      }
+    });
+  }
+
   if (pubmedBtn) {
     pubmedBtn.addEventListener("click", async () => {
       const l = lang();
@@ -414,6 +614,7 @@
       if (!q) return;
       st.textContent = d.pubmedSearching;
       out.innerHTML = "";
+      pubmedItems = [];
       try {
         const r1 = await (
           await fetch(
@@ -435,26 +636,27 @@
           ).json()
         ).result;
 
-        out.innerHTML = ids
-          .map((id) => {
-            const x = r2[id];
-            const title = x.title || "Untitled";
-            const trBtn =
-              l !== "en"
-                ? ` <button type="button" class="btn-ghost" style="margin-inline-start:8px" onclick="translatePubMedTitle(this, ${JSON.stringify(
-                    title
-                  )})">${escapeHtml(d.translateStudyBtn)}</button><div class="muted hidden" style="margin-top:6px"></div>`
-                : "";
-            return `<div class="callout"><div class="tag">PMID ${id}</div><strong>${escapeHtml(
-              title
-            )}</strong><p class="muted">${escapeHtml(
-              (x.fulljournalname || x.source || "") + " · " + (x.pubdate || "")
-            )}</p><a class="ext" href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" rel="noopener">${escapeHtml(
-              d.openPubmed
-            )}</a>${trBtn}</div>`;
-          })
-          .join("");
+        pubmedItems = ids.map((id) => {
+          const x = r2[id] || {};
+          const titleEn = x.title || "Untitled";
+          const translations = { en: titleEn };
+          if (pubmedTrCache[`fa_${id}`]) translations.fa = pubmedTrCache[`fa_${id}`];
+          if (pubmedTrCache[`tr_${id}`]) translations.tr = pubmedTrCache[`tr_${id}`];
+          return {
+            id,
+            titleEn,
+            metaLine: (x.fulljournalname || x.source || "") + (x.pubdate ? " · " + x.pubdate : ""),
+            translations,
+            compareLang: null,
+            loadingLang: null
+          };
+        });
+
         st.textContent = `${ids.length} ${d.pubmedDone}`;
+        renderPubMedResults();
+        if (lang() !== "en") {
+          autoTranslatePubMedList(lang());
+        }
       } catch {
         st.textContent = d.pubmedErr;
       }
@@ -618,12 +820,14 @@
       const mapList = (t && t.map) || MAP;
       mapGrid.innerHTML = MAP.map((orig, i) => {
         const m = mapList[i] || orig;
-        return `<button class="chip" style="padding:14px" data-map="${i}"><div class="tag">${escapeHtml(
+        return `<button type="button" class="map-node" data-map="${i}"><div class="tag">${escapeHtml(
           m[1]
         )}</div><strong>${escapeHtml(m[0])}</strong><div class="muted">${escapeHtml(m[2])}</div></button>`;
       }).join("");
-      document.querySelectorAll("[data-map]").forEach((b) => {
+      const mapNodes = mapGrid.querySelectorAll(".map-node");
+      mapNodes.forEach((b) => {
         b.onclick = () => {
+          mapNodes.forEach((node) => node.classList.toggle("active", node === b));
           const idx = +b.dataset.map;
           const orig = MAP[idx];
           const m = mapList[idx] || orig;
@@ -633,7 +837,7 @@
             .map((id) => {
               const ci = CHAPTERS.findIndex((c) => c.id === id);
               return ci >= 0
-                ? `<button class="chip" onclick="window.switchView('atlas');setShowOriginalChapter(false,${ci})">${id} · ${escapeHtml(
+                ? `<button type="button" class="map-chapter-btn" onclick="window.switchView('atlas');openChapterIndex(${ci})">${id} · ${escapeHtml(
                     getChapterMeta(CHAPTERS[ci]).title
                   )}</button>`
                 : "";
@@ -770,29 +974,65 @@
   }
 
   /* ========================================================================
-     6. Global Exports & Language Lifecycle Hook
+     6. Global Exports & Language / View Lifecycle Hooks
      ======================================================================== */
 
-  window.translateActiveChapter = translateActiveChapter;
-  window.setShowOriginalChapter = (val, idx) => {
-    showOriginalChapter = val;
-    renderChapter(idx);
+  window.setChapterLang = (targetLang, idx) => {
+    chapterDisplayLang = targetLang;
+    chapterCompareOriginal = false;
+    chapterAutoError = "";
+    renderChapter(idx, true);
+    if (targetLang !== "en") {
+      ensureChapterTranslation(idx, targetLang);
+    }
+  };
+
+  window.toggleChapterCompare = (idx) => {
+    chapterCompareOriginal = !chapterCompareOriginal;
+    renderChapter(idx, false);
+  };
+
+  window.openChapterIndex = (idx) => {
+    chapterCompareOriginal = false;
+    chapterAutoError = "";
+    renderChapter(idx, true);
   };
 
   function syncAppWithLanguage() {
-    showOriginalChapter = false;
+    chapterDisplayLang = lang();
+    chapterCompareOriginal = false;
+    chapterAutoError = "";
     updateChapterToggleBtn();
     if (chatHistory.length === 0) renderMessages();
     initAtlas(true);
     initExtras();
     renderNotes();
+    if (pubmedItems.length) {
+      renderPubMedResults();
+      if (lang() !== "en" && UI.getActiveView() === "research") {
+        autoTranslatePubMedList(lang());
+      }
+    }
   }
 
   window.NEURO_APP = {
     onLanguageChange: syncAppWithLanguage,
+    onViewChange: (viewName) => {
+      if (viewName === "atlas") {
+        if (chapterDisplayLang !== lang()) {
+          chapterDisplayLang = lang();
+          chapterCompareOriginal = false;
+        }
+        renderChapter(activeChapterIdx, true);
+      } else if (viewName === "research" && pubmedItems.length && lang() !== "en") {
+        autoTranslatePubMedList(lang());
+      }
+    },
     openChapter: (idx) => {
-      showOriginalChapter = false;
-      renderChapter(idx);
+      chapterDisplayLang = lang();
+      chapterCompareOriginal = false;
+      chapterAutoError = "";
+      renderChapter(idx, true);
     }
   };
 

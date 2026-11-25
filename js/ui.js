@@ -113,7 +113,16 @@
       nextBtn: "Next Chapter →",
       translateChBtn: "Translate this chapter",
       showOrigBtn: "Show English Original",
-      translatingMsg: "Translating chapter with Python AI...",
+      translatingMsg: "Translating chapter automatically with Python AI...",
+      articleLangLabel: "Read & compare language:",
+      compareLabel: "Compare:",
+      compareOriginalTag: "English Original",
+      compareFaTag: "Persian (فارسی)",
+      compareTrTag: "Turkish (Türkçe)",
+      sideCompareBtn: "Compare alongside English",
+      hideCompareBtn: "Hide comparison",
+      autoTrErr: "Auto-translation temporarily unavailable (showing English).",
+      translatingPubmedMsg: "Auto-translating study titles...",
       resHeading: "Literature Search, Methods & Sources",
       resSub: "Explore live NCBI PubMed studies, design testable research questions, and inspect 24 curated sources.",
       subPubmed: "PubMed Search",
@@ -274,7 +283,16 @@
       nextBtn: "فصل بعدی ←",
       translateChBtn: "ترجمه کامل این فصل به فارسی (AI)",
       showOrigBtn: "نمایش متن اصلی انگلیسی",
-      translatingMsg: "در حال ترجمه علمی فصل با پایتون AI...",
+      translatingMsg: "در حال ترجمه خودکار فصل با پایتون AI...",
+      articleLangLabel: "زبان مقاله و مقایسه:",
+      compareLabel: "مقایسه با:",
+      compareOriginalTag: "متن انگلیسی",
+      compareFaTag: "فارسی",
+      compareTrTag: "ترکی (Türkçe)",
+      sideCompareBtn: "مقایسه هم‌زمان با انگلیسی",
+      hideCompareBtn: "بستن مقایسه",
+      autoTrErr: "ترجمه خودکار موقتاً در دسترس نیست (نمایش متن اصلی).",
+      translatingPubmedMsg: "در حال ترجمه خودکار عنوان مقالات...",
       resHeading: "جستجوی مقالات، روش‌ها و منابع",
       resSub: "جستجوی زنده در PubMed، طراحی سوال پژوهش و بررسی ۲۴ منبع علمی.",
       subPubmed: "جستجوی PubMed",
@@ -289,7 +307,7 @@
       pubmedDone: "مقاله از NCBI بازیابی شد.",
       pubmedErr: "جستجوی PubMed در حال حاضر در دسترس نیست.",
       openPubmed: "مشاهده در PubMed ↗",
-      translateStudyBtn: "ترجمه عنوان به فارسی (AI)",
+      translateStudyBtn: "ترجمه عنوان",
       rdTopicPh: "موضوع پژوهش (مثلاً خواب و تثبیت حافظه)",
       rdPopPh: "جامعه یا مدل (مثلاً نوجوانان، بزرگسالان)",
       rdExpPh: "عامل مورد مقایسه (مثلاً مدت خواب)",
@@ -435,7 +453,16 @@
       nextBtn: "Sonraki Bölüm →",
       translateChBtn: "Bu bölümü Türkçeye çevir (AI)",
       showOrigBtn: "İngilizce Aslını Göster",
-      translatingMsg: "Bölüm Python AI ile çevriliyor...",
+      translatingMsg: "Bölüm Python AI ile otomatik çevriliyor...",
+      articleLangLabel: "Makale dili ve karşılaştırma:",
+      compareLabel: "Karşılaştır:",
+      compareOriginalTag: "İngilizce Aslı",
+      compareFaTag: "Farsça (فارسی)",
+      compareTrTag: "Türkçe",
+      sideCompareBtn: "İngilizce ile karşılaştır",
+      hideCompareBtn: "Karşılaştırmayı gizle",
+      autoTrErr: "Otomatik çeviri şu an kullanılamıyor (İngilizce gösteriliyor).",
+      translatingPubmedMsg: "PubMed başlıkları otomatik çevriliyor...",
       resHeading: "Literatür Arama, Yöntemler ve Kaynaklar",
       resSub: "Canlı NCBI PubMed çalışmalarını arayın ve 24 akademik kaynağı inceleyin.",
       subPubmed: "PubMed Arama",
@@ -450,7 +477,7 @@
       pubmedDone: "kayıt NCBI'dan getirildi.",
       pubmedErr: "PubMed araması şu an kullanılamıyor.",
       openPubmed: "PubMed kaydını aç ↗",
-      translateStudyBtn: "Başlığı Türkçeye çevir (AI)",
+      translateStudyBtn: "Başlığı çevir",
       rdTopicPh: "Konu (örn. uyku ve bellek pekiştirme)",
       rdPopPh: "Örneklem / model (örn. ergenler, yetişkinler)",
       rdExpPh: "Karşılaştırma / etken (örn. uyku süresi)",
@@ -536,6 +563,7 @@
   let currentLang = localStorage.getItem("na_lang") || "en";
   if (!I18N[currentLang]) currentLang = "en";
   let currentTheme = localStorage.getItem("na_theme") || "cyber";
+  let currentView = "home";
   let lastStatusState = "checking";
 
   const escapeHtml = (s) =>
@@ -543,8 +571,8 @@
 
   const trData = () => TRANS[currentLang] || null;
 
-  function getChapterMeta(c) {
-    const t = trData();
+  function getChapterMeta(c, targetLang = currentLang) {
+    const t = TRANS[targetLang] || null;
     const ch = t && t.chapters && t.chapters[c.id];
     return {
       category: (t && t.categories && t.categories[c.category]) || c.category,
@@ -581,13 +609,15 @@
   if (drawerBackdrop) drawerBackdrop.addEventListener("click", closeDrawer);
 
   function switchView(name) {
+    currentView = name;
     document.querySelectorAll(".view").forEach((v) => v.classList.toggle("active", v.id === "view-" + name));
     document.querySelectorAll(".nav-tab").forEach((t) => t.classList.toggle("active", t.dataset.view === name));
     document.querySelectorAll(".drawer-link").forEach((t) => t.classList.toggle("active", t.dataset.view === name));
-    const fab = document.getElementById("fabChat");
-    if (fab) fab.classList.toggle("hidden", name === "home");
     closeDrawer();
     if (name === "home") setTimeout(initConnectome, 30);
+    if (window.NEURO_APP && typeof window.NEURO_APP.onViewChange === "function") {
+      window.NEURO_APP.onViewChange(name);
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -609,8 +639,15 @@
           block: window.innerWidth <= 1024 ? "start" : "nearest"
         });
       }
-      if (input) input.focus({ preventScroll: true });
+      if (input && window.innerWidth > 1024) input.focus({ preventScroll: true });
     }, 60);
+  }
+
+  const fabEl = document.getElementById("fabChat");
+  const chatInputEl = document.getElementById("chatInput");
+  if (fabEl && chatInputEl) {
+    chatInputEl.addEventListener("focus", () => fabEl.classList.add("is-typing-hide"));
+    chatInputEl.addEventListener("blur", () => fabEl.classList.remove("is-typing-hide"));
   }
 
   document.querySelectorAll(".nav-tab, .drawer-link").forEach((btn) => {
@@ -738,6 +775,7 @@
 
   const themeSelects = [
     document.getElementById("themeSelect"),
+    document.getElementById("mobileThemeSelect"),
     document.getElementById("drawerThemeSelect")
   ].filter(Boolean);
 
@@ -806,6 +844,7 @@
   function applyLanguage(lang) {
     currentLang = I18N[lang] ? lang : "en";
     localStorage.setItem("na_lang", currentLang);
+    closeDrawer();
     const d = I18N[currentLang];
     document.documentElement.lang = currentLang;
     document.documentElement.dir = d.dir;
@@ -979,6 +1018,7 @@
     getChapterMeta,
     getLang: () => currentLang,
     getTheme: () => currentTheme,
+    getActiveView: () => currentView,
     applyTheme,
     applyLanguage,
     openDrawer,
