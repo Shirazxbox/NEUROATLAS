@@ -69,7 +69,7 @@ body.drawer-open {
 }
 
 /* ==========================================================================
-   Navbar, Desktop Segmented Nav & Mobile Quick Controls Strip
+   Navbar, Desktop Segmented Nav & Clean 2-Row Mobile Bar
    ========================================================================== */
 
 .navbar {
@@ -102,7 +102,7 @@ body.drawer-open {
   letter-spacing: 0.02em;
   font-size: 1rem;
   cursor: pointer;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   background: transparent;
   border: none;
@@ -116,8 +116,6 @@ body.drawer-open {
 
 .brand-name {
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .brand-badge {
@@ -225,9 +223,9 @@ body.drawer-open {
 }
 
 .nav-mobile-actions {
-  display: none;
+  display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   flex-shrink: 0;
 }
 
@@ -252,7 +250,7 @@ body.drawer-open {
 /* Eye-Catching Mobile Menu Trigger Button */
 .menu-trigger-btn {
   height: 38px;
-  padding: 0 11px;
+  padding: 0 12px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -261,7 +259,7 @@ body.drawer-open {
   background: var(--btn-bg);
   color: var(--btn-text);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.81rem;
   font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
@@ -275,13 +273,13 @@ body.drawer-open {
   filter: brightness(1.06);
 }
 
-/* Mobile Quick Strip (Language + Visible Theme Picker) */
+/* Mobile Row 2: Language Switcher + Search + Menu Button */
 .mobile-lang-strip {
   display: none;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 6px 0 9px;
+  gap: 10px;
+  padding: 7px 0 9px;
   border-top: 1px solid var(--border);
   width: 100%;
 }
@@ -292,15 +290,7 @@ body.drawer-open {
 
 .mobile-lang-strip .lang-btn {
   min-height: 32px;
-  padding: 4px 10px;
-}
-
-.mobile-theme-select {
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: 185px;
-  min-height: 36px;
-  padding: 4px 8px;
+  padding: 4px 11px;
 }
 
 /* ==========================================================================
@@ -371,7 +361,6 @@ html[dir="rtl"] .mobile-drawer.open {
   letter-spacing: 0.03em;
 }
 
-/* Placed at TOP of drawer right under header so visitors immediately see it */
 .drawer-controls {
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
@@ -828,7 +817,7 @@ html[dir="rtl"] .mobile-drawer.open {
 }
 
 /* ==========================================================================
-   Buttons, Inputs & Chat Panel
+   Buttons, Inputs & Distinct High-Contrast Chat Panel
    ========================================================================== */
 
 .btn-ghost {
@@ -892,6 +881,7 @@ html[dir="rtl"] .mobile-drawer.open {
   flex-direction: column;
   height: 585px;
   overflow: hidden;
+  border-color: var(--border-strong);
 }
 
 .chat-header {
@@ -1072,8 +1062,9 @@ html[dir="rtl"] .msg-rich ol {
 }
 
 .chat-input-bar {
-  padding: 11px 13px;
-  border-top: 1px solid var(--border);
+  padding: 12px 14px;
+  border-top: 1.5px solid var(--border-strong);
+  background: var(--bg-card-solid);
   display: flex;
   gap: 9px;
   align-items: flex-end;
@@ -1100,9 +1091,17 @@ select.field {
   min-height: 44px;
   max-height: 132px;
   overflow-y: auto;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+  transition: border-color 0.18s, box-shadow 0.18s;
 }
 
-.chat-input:focus,
+.chat-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
 .field:focus,
 textarea:focus {
   border-color: var(--accent);
@@ -1742,14 +1741,23 @@ footer {
   }
 }
 
-/* Switch top bar cleanly into Hamburger Drawer + Quick Language/Theme Strip */
+/* Switch top bar cleanly into 2-Row Mobile Header: Brand Row + Controls Row */
 @media (max-width: 1080px) {
   .nav-tabs,
   .navbar .controls {
     display: none;
   }
 
-  .nav-mobile-actions,
+  .nav-inner {
+    justify-content: center;
+    min-height: 48px;
+    padding: 6px 0;
+  }
+
+  .brand {
+    justify-content: center;
+  }
+
   .mobile-lang-strip {
     display: flex;
   }
@@ -1790,11 +1798,6 @@ footer {
 @media (max-width: 720px) {
   .container {
     width: calc(100% - 24px);
-  }
-
-  .nav-inner {
-    min-height: 52px;
-    padding: 6px 0;
   }
 
   .grid-3,
@@ -1842,7 +1845,7 @@ footer {
 
   .toast-region {
     bottom: auto;
-    top: 76px;
+    top: 96px;
     inset-inline-start: 14px;
     inset-inline-end: 14px;
     max-width: none;
@@ -1881,11 +1884,10 @@ footer {
   }
 }
 
-/* Compact Mobile Top Bar Math — Guarantees 100% of Menu Button Fits on 360px Screens */
 @media (max-width: 520px) {
   .brand {
-    gap: 6px;
-    font-size: 0.88rem;
+    gap: 7px;
+    font-size: 0.94rem;
   }
 
   .brand svg {
@@ -1894,8 +1896,8 @@ footer {
   }
 
   .brand-badge {
-    font-size: 0.61rem;
-    padding: 2px 6px;
+    font-size: 0.65rem;
+    padding: 2px 8px;
   }
 
   .icon-btn {
@@ -1905,13 +1907,9 @@ footer {
 
   .menu-trigger-btn {
     height: 36px;
-    padding: 0 10px;
-    font-size: 0.78rem;
+    padding: 0 11px;
+    font-size: 0.79rem;
     gap: 5px;
-  }
-
-  .mobile-theme-select {
-    max-width: 168px;
   }
 }
 
@@ -1932,7 +1930,7 @@ footer {
 /* Dedicated Mobile Landscape optimization */
 @media (max-height: 520px) and (orientation: landscape) {
   .nav-inner {
-    min-height: 46px;
+    min-height: 42px;
     padding: 4px 0;
   }
 
