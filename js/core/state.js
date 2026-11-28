@@ -48,7 +48,11 @@
   const savedLang = safeGet(STORAGE_KEYS.lang, "en");
   let currentLang = I18N[savedLang] ? savedLang : "en";
 
-  const defaultThemeId = THEMES.length ? THEMES[0].id : "cyber";
+  const defaultThemeId = THEMES.some((th) => th.id === "botanical")
+    ? "botanical"
+    : THEMES.length
+    ? THEMES[0].id
+    : "botanical";
   const savedTheme = safeGet(STORAGE_KEYS.theme, defaultThemeId);
   let currentTheme = THEMES.some((th) => th.id === savedTheme) ? savedTheme : defaultThemeId;
 
