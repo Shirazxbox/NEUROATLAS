@@ -144,4 +144,79 @@ window.NEUROATLAS_I18N_DATA = {
       "23": ["Nörolojik durumlara sistem perspektifi", "Devrelerdeki değişimler işlevi nasıl etkiler"]
     },
     glossary: [
-      ["Aksiyon potansiyeli", "Uyarılab
+      ["Aksiyon potansiyeli", "Uyarılabilir bir zar boyunca yayılan hızlı ve geçici zar voltajı değişimi."],
+      ["Afferent", "Belirli bir yapıya doğru bilgi taşıyan; genellikle MSS'ye giden duyu sinyali."],
+      ["Asosiyasyon korteksi", "Birincil duyu veya motor işlemenin ötesinde bilgiyi bütünleştiren kortikal alanlar."],
+      ["Akson", "Aksiyon potansiyellerini hücre gövdesinden hedef hücrelere ileten nöron uzantısı."],
+      ["Kan-beyin bariyeri (BBB)", "Kan ile merkezi sinir sistemi dokusu arasındaki madde geçişini düzenleyen seçici sınır."],
+      ["Beyin omurilik sıvısı (BOS)", "Ventriküller ve subaraknoid boşlukta dolaşarak beyin ile omuriliği koruyan ve destekleyen sıvı."],
+      ["Dendrit", "Çok sayıda sinaptik girdiyi alan ve bütünleştiren nöron uzantısı."],
+      ["Efferent", "Bir yapıdan dışarıya komut taşıyan; genellikle MSS'den çıkan motor çıkış."],
+      ["Glia", "Sinir dokusunu destekleyen, koruyan ve düzenleyen nöron dışı sinir sistemi hücreleri."],
+      ["Gri madde", "Nöron hücre gövdeleri, dendritler, sinapslar ve yerel devrelerce zengin sinir dokusu."],
+      ["Miyelin", "Birçok aksonu sararak hızlı sinyal iletimini sağlayan lipit bakımından zengin yalıtkan zar."],
+      ["Nörotransmitter", "Bir hücreden salınarak reseptörler aracılığıyla başka bir hücreyi etkileyen kimyasal haberci."],
+      ["Plastisite", "Etkinlik, deneyim veya hasar sonucunda sinir yapısı ya da işlevinde meydana gelen değişim."],
+      ["Reseptör", "Bir sinyali algılayıp hücresel yanıtı başlatan özelleşmiş protein veya hücre."],
+      ["Sinaps", "Bir hücrenin başka bir hücreyle iletişim kurduğu özelleşmiş bağlantı noktası."],
+      ["Beyaz madde", "Çoğu miyelin kılıflı aksonlar bakımından zengin sinir dokusu."]
+    ],
+    methods: [
+      ["Yapısal MRI", "Anatomik görüntüleme için dokuya bağlı manyetik rezonans sinyallerini ölçer.", "Nöron ateşlemelerini veya düşünceleri doğrudan göstermez."],
+      ["İşlevsel MRI (fMRI)", "Sinir etkinliğinin dolaylı bir göstergesi olarak genellikle BOLD (kan oksijen seviyesi) sinyalini kullanır.", "Sinyal dolaylı ve yavaştır; bir bölgenin etkinleşmesi tek başına nedensellik kanıtlamaz."],
+      ["Difüzyon MRI / Traktografi", "Su moleküllerinin yayılım yönünü ölçerek beyaz madde yolaklarının düzenini tahmin eder.", "Traktografi modele dayalı bir tahmindir; tek tek aksonların doğrudan fotoğrafı değildir."],
+      ["Elektroensefalografi (EEG)", "Eşzamanlı nöronal etkinlikten kaynaklanan kafa derisi elektriksel potansiyel farklarını kaydeder.", "Zaman çözünürlüğü mükemmeldir, ancak derin beyin kaynaklarının yerini kesin belirlemek zordur."],
+      ["Manyetoensefalografi (MEG)", "Sinirsel elektrik akımlarıyla ilişkili manyetik alanları ölçer.", "Yüksek zaman çözünürlüğü sunar, ancak özel donanım ve ters modelleme gerektirir."],
+      ["PET Görüntüleme", "Radyoaktif izleyiciler kullanarak metabolik, reseptör düzeyinde veya moleküler süreçleri inceler.", "İyonlaştırıcı radyasyon içerir ve izleyici seçimi ile deney tasarımına bağlıdır."],
+      ["Elektrofizyoloji", "Tek hücrelerin, nöron topluluklarının veya sinirlerin elektriksel etkinliğini kaydeder.", "İnvaziv ve non-invaziv yöntemler farklı ölçekleri ölçer; tüm devreyi tek seferde göstermez."],
+      ["Lezyon ve Uyarım Çalışmaları", "Bölgelerin nedensel rolünü incelemek için doğal hasarları veya kontrollü uyarımı kullanır.", "Lezyonlar geçiş yollarını da kesebilir; uyarım sonuçları konum ve bağlama bağlıdır."],
+      ["Davranışsal Deneyler ve Psikofizik", "Kontrollü koşullarda performansı, algıyı, tepki süresini, doğruluğu veya öğrenmeyi ölçer.", "Görev tasarımı, örneklem ve karıştırıcı değişkenler sonuçları etkiler."]
+    ],
+    map: [
+      ["Nöron", "Hücre", "Girdileri bütünleştiren ve akson ile sinaps üzerinden sinyal ileten uyarılabilir hücre."],
+      ["Glia Hücresi", "Hücre", "Sinir dokusu ortamını koruyan destekleyici ve düzenleyici hücre soyları."],
+      ["Sinaps", "Sinyalleşme", "Hücreler arasında kimyasal veya elektriksel iletişim bağlantı noktası."],
+      ["Serebral Korteks", "Yapı", "Duyu, motor ve asosiyasyon işlemesini yürüten kıvrımlı gri madde tabakası."],
+      ["Talamus", "Yapı", "Duyu/motor aktarımını ve kortikal koordinasyonu sağlayan çekirdek grubu."],
+      ["Hipotalamus", "Yapı", "İç dengeyi (homeostaz) ve nöroendokrin bağlantıları düzenleyen merkez."],
+      ["Bazal Gangliyonlar", "Devre", "Eylem seçimi, öğrenme ve motivasyonda görev alan subkortikal döngüler."],
+      ["Hipokampus", "Yapı", "Bellek organizasyonu ve mekânsal yön bulma için kritik mediyal temporal lob yapısı."],
+      ["Beyincik (Serebellum)", "Yapı", "Koordinasyon, zamanlama, öngörü ve motor öğrenmeden sorumlu yapı."],
+      ["Beyin Sapı", "Yapı", "Solunum, kalp atımı, uyanıklık ve kraniyal sinirler için hayati yolaklar ve çekirdekler."],
+      ["Omurilik", "Yapı", "Refleks devreleri ile çıkan duyu ve inen motor yolakları."],
+      ["Duyu Sistemleri", "İşlev", "İç ve dış uyaranları sinir sinyallerine dönüştürüp işleme."],
+      ["Motor Sistemler", "İşlev", "Hareketlerin planlanması, seçilmesi, yürütülmesi ve sürekli düzeltilmesi."],
+      ["Nöroplastisite", "Süreç", "Beyin yapısı ve işlevinde deneyime ve etkinliğe bağlı değişiklikler."]
+    ],
+    flash: [
+      ["Sinir sisteminin iki ana anatomik bölümü nedir?", "Merkezi sinir sistemi (beyin ve omurilik) ile periferik sinir sistemi."],
+      ["Merkezi sinir sisteminde miyelin kılıfını hangi glia hücresi üretir?", "Oligodendrosit."],
+      ["Periferik sinir sisteminde miyelin kılıfını hangi glia hücresi üretir?", "Schwann hücresi."],
+      ["Nöron aksiyon potansiyelinde hızlı depolarizasyona genellikle hangi iyonun girişi yol açar?", "Voltaj kapılı kanallar üzerinden sodyum iyonu (Na+)."],
+      ["Kimyasal bir sinapsta nörotransmitter veziküllerinin salınmasını ne tetikler?", "Aksiyon potansiyeli ulaştıktan sonra presinaptik uca kalsiyum (Ca2+) girişi."],
+      ["Üç meninks zarını dıştan içe doğru sayınız.", "Dura mater (sert zar), araknoid mater (örümceksi zar) ve pia mater (ince zar)."],
+      ["Frontal lob ile parietal lobu hangi oluk ayırır?", "Merkezi sulkus (Central sulcus)."],
+      ["Hipokampusun bellekteki temel rolü nedir?", "Birçok bildirimsel belleğin oluşturulması ve düzenlenmesi; ancak bellek beyin ağlarına dağılmıştır."],
+      ["Beyin sapının üç ana bölümü nedir?", "Orta beyin (Midbrain), pons ve medulla oblongata."],
+      ["İnce dokunma, titreşim ve bilinçli propriosepsiyonu hangi yol taşır?", "Arka kordon–mediyal lemniskus yolu."],
+      ["fMRI'daki BOLD sinyali neyi yansıtır?", "Kan oksijen seviyesine bağlı değişiklikleri; sinirsel etkinliğin dolaylı bir ölçütüdür."],
+      ["Beyinciğin hareketteki temel işlevi nedir?", "Koordinasyon, zamanlama, öngörü, hata düzeltme ve motor öğrenme."]
+    ],
+    quiz: [
+      { q: "Merkezi sinir sistemini (MSS) hangi yapılar oluşturur?", a: ["Beyin ve omurilik", "Yalnızca kraniyal sinirler", "Tüm kaslar ve bezler"], why: "Merkezi sinir sistemi beyin ve omurilikten oluşur." },
+      { q: "Periferik sinir sisteminde miyelin kılıfını hangi hücre üretir?", a: ["Astrosit", "Schwann hücresi", "Mikroglia"], why: "Schwann hücreleri periferik sistemde, oligodendrositler ise MSS'de miyelin oluşturur." },
+      { q: "Koroid pleksusun temel işlevi nedir?", a: ["Beyin omurilik sıvısının (BOS) çoğunu üretmek", "İstemli hareket başlatmak", "Görsel sinyalleri işlemek"], why: "Koroid pleksus beyin omurilik sıvısının başlıca üretim merkezidir." },
+      { q: "Birincil görme korteksi hangi beyin lobunda bulunur?", a: ["Frontal lob", "Temporal lob", "Oksipital lob"], why: "Birincil görme korteksi oksipital lobda yer alır." },
+      { q: "EEG kafa derisinden neyi ölçer?", a: ["Kan oksijenlenmesini", "Elektriksel potansiyel farklarını", "Glikoz tüketimini"], why: "EEG, eşzamanlı nöron etkinliğinin oluşturduğu voltaj farklarını kaydeder." },
+      { q: "Nörotransmitterler hakkında hangi ifade en doğrudur?", a: ["Her birinin tek bir sabit etkisi vardır", "Etkileri reseptör tipine ve devre bağlamına bağlıdır", "Yalnızca beyinde etki gösterirler"], why: "Nihai etkiyi reseptör tipi, hedef hücre ve devre bağlamı belirler." }
+    ],
+    sourceTypes: {
+      "U.S. government educational resource": "ABD Hükümeti Eğitim Kaynağı (NIH)",
+      "U.S. government educational resource (PDF)": "ABD Hükümeti Eğitim Kaynağı (PDF)",
+      "National Library of Medicine / academic medical reference": "ABD Ulusal Tıp Kütüphanesi / Akademik Referans",
+      "National Library of Medicine / academic textbook archive": "Ulusal Tıp Kütüphanesi Ders Kitabı Arşivi",
+      "U.S. government research strategy": "ABD Hükümeti Araştırma Stratejisi (NIH)",
+      "PubMed-indexed scientific review": "PubMed Dizinli Bilimsel Derleme"
+    }
+  }
+};
