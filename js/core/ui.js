@@ -155,14 +155,14 @@
   const neuralCanvas = document.getElementById("neuralCanvas");
   const nCtx = neuralCanvas ? neuralCanvas.getContext("2d") : null;
   let nNodes = [];
-  const nColors = { a: "#22d3ee", b: "#34d399" };
+  const nColors = { a: "#d49b63", b: "#68b08a" };
   const nPointer = { x: -999, y: -999 };
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function refreshCanvasColors() {
     const st = getComputedStyle(document.documentElement);
-    nColors.a = st.getPropertyValue("--accent").trim() || "#22d3ee";
-    nColors.b = st.getPropertyValue("--accent-2").trim() || "#34d399";
+    nColors.a = st.getPropertyValue("--accent").trim() || "#d49b63";
+    nColors.b = st.getPropertyValue("--accent-2").trim() || "#68b08a";
     if (prefersReducedMotion) drawConnectomeFrame();
   }
 
@@ -256,6 +256,7 @@
 
   const themeSelects = [
     document.getElementById("themeSelect"),
+    document.getElementById("mobileThemeSelect"),
     document.getElementById("drawerThemeSelect")
   ].filter(Boolean);
 
