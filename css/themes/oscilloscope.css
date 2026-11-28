@@ -1,0 +1,98 @@
+/* ==========================================================================
+   NEUROATLAS Theme: EEG Oscilloscope (Signature Style)
+   Electrophysiology CRT instrument aesthetic with calibration grid & phosphor glow
+   ========================================================================== */
+
+:root,
+[data-theme="oscilloscope"] {
+  color-scheme: dark;
+  --bg: #030c07;
+  --bg-elevated: rgba(4, 17, 10, 0.92);
+  --bg-drawer: #05160d;
+  --bg-card: #06180f;
+  --bg-card-solid: #06180f;
+  --bg-input: rgba(57, 255, 106, 0.045);
+  --nav-pill-bg: rgba(57, 255, 106, 0.05);
+  --border: rgba(57, 255, 106, 0.24);
+  --border-strong: rgba(57, 255, 106, 0.62);
+  --card-hover-border: #39ff6a;
+  --on-bg: #d8fbe2;
+  --on-bg-muted: #7eb890;
+  --text: #d8fbe2;
+  --text-muted: #7eb890;
+  --accent: #39ff6a;
+  --accent-2: #fbbf24;
+  --accent-glow: rgba(57, 255, 106, 0.14);
+  --btn-bg: #22c55e;
+  --btn-text: #031209;
+  --nav-active-bg: rgba(57, 255, 106, 0.16);
+  --nav-active-text: #4ade80;
+  --user-bubble: linear-gradient(135deg, #15803d, #0f766e);
+  --bot-bubble: rgba(57, 255, 106, 0.055);
+  --code-bg: #020805;
+  --opt-bg: #06180f;
+  --opt-text: #d8fbe2;
+  --glass-rim: inset 0 1px 0 rgba(57, 255, 106, 0.14);
+  --card-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), var(--glass-rim);
+  --card-hover-shadow: 0 0 28px rgba(57, 255, 106, 0.14), var(--glass-rim);
+  --title-gradient: linear-gradient(125deg, #e7ffef 15%, #39ff6a 65%, #fbbf24 100%);
+  --scrollbar-thumb: rgba(57, 255, 106, 0.35);
+  --radius: 8px;
+  --radius-sm: 4px;
+  --heading-font: "JetBrains Mono", "Vazirmatn", monospace;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+[data-theme="oscilloscope"] body::before {
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(57, 255, 106, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 106, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(57, 255, 106, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 106, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+}
+
+[data-theme="oscilloscope"] body::after {
+  z-index: -1;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.22) 4px
+  );
+}
+
+[data-theme="oscilloscope"] .card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+[data-theme="oscilloscope"] .brand,
+[data-theme="oscilloscope"] .stat-box strong,
+[data-theme="oscilloscope"] .tag {
+  font-family: "JetBrains Mono", "Vazirmatn", monospace;
+}
+
+[data-theme="oscilloscope"] .connectome-box {
+  box-shadow: inset 0 0 24px rgba(57, 255, 106, 0.12);
+}
+
+[data-theme="oscilloscope"] .brand-badge {
+  border-radius: 3px;
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+[data-theme="oscilloscope"] .fab-chat {
+  border-radius: 6px;
+  border: 1.5px solid #39ff6a;
+  box-shadow: 0 0 22px rgba(57, 255, 106, 0.28);
+}

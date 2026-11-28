@@ -1,0 +1,66 @@
+/* ==========================================================================
+   NEUROATLAS Theme: Cyber Terminal (Default)
+   Dark telemetry grid with cyan & emerald accents
+   ========================================================================== */
+
+:root,
+[data-theme="cyber"] {
+  --bg: #040811;
+  --bg-elevated: rgba(6, 11, 22, 0.86);
+  --bg-drawer: #070d1b;
+  --bg-card: rgba(11, 18, 34, 0.82);
+  --bg-card-solid: #0b1324;
+  --bg-input: rgba(255, 255, 255, 0.045);
+  --nav-pill-bg: rgba(255, 255, 255, 0.04);
+  --border: rgba(34, 211, 238, 0.18);
+  --border-strong: rgba(52, 211, 153, 0.45);
+  --card-hover-border: rgba(34, 211, 238, 0.48);
+  --on-bg: #eef4ff;
+  --on-bg-muted: #92a8c8;
+  --text: #eef4ff;
+  --text-muted: #92a8c8;
+  --accent: #22d3ee;
+  --accent-2: #34d399;
+  --accent-glow: rgba(34, 211, 238, 0.16);
+  --btn-bg: linear-gradient(135deg, #0891b2, #059669);
+  --btn-text: #ffffff;
+  --nav-active-bg: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(52, 211, 153, 0.14));
+  --nav-active-text: #67e8f9;
+  --user-bubble: linear-gradient(135deg, #0891b2, #047857);
+  --bot-bubble: rgba(255, 255, 255, 0.05);
+  --code-bg: #02050b;
+  --opt-bg: #0b1324;
+  --opt-text: #eef4ff;
+  --glass-rim: inset 0 1px 0 rgba(165, 243, 252, 0.12);
+  --card-shadow: 0 20px 46px rgba(0, 0, 0, 0.46), var(--glass-rim);
+  --card-hover-shadow: 0 24px 54px rgba(6, 182, 212, 0.14), var(--glass-rim);
+  --title-gradient: linear-gradient(125deg, #f8fafc 12%, #22d3ee 58%, #34d399 100%);
+  --scrollbar-thumb: rgba(34, 211, 238, 0.28);
+  --radius: 18px;
+  --radius-sm: 11px;
+  --heading-font: "Plus Jakarta Sans", "Vazirmatn", system-ui, sans-serif;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+[data-theme="cyber"] body::before {
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 75% 44% at 15% 0%, rgba(34, 211, 238, 0.18), transparent 65%),
+    radial-gradient(ellipse 65% 42% at 88% 12%, rgba(52, 211, 153, 0.14), transparent 62%),
+    radial-gradient(ellipse 60% 45% at 50% 100%, rgba(8, 145, 178, 0.12), transparent 65%);
+}
+
+[data-theme="cyber"] body::after {
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}

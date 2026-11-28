@@ -1,0 +1,83 @@
+/* ==========================================================================
+   NEUROATLAS Theme: Cajal Atelier (Signature Style)
+   Museum neuroanatomy study — deep forest sage, warm ivory & burnished copper
+   ========================================================================== */
+
+:root,
+[data-theme="botanical"] {
+  color-scheme: dark;
+  --bg: #0c1713;
+  --bg-elevated: rgba(12, 23, 19, 0.92);
+  --bg-drawer: #101f19;
+  --bg-card: #13231c;
+  --bg-card-solid: #13231c;
+  --bg-input: rgba(244, 238, 225, 0.045);
+  --nav-pill-bg: rgba(244, 238, 225, 0.04);
+  --border: rgba(212, 155, 99, 0.24);
+  --border-strong: rgba(212, 155, 99, 0.54);
+  --card-hover-border: rgba(212, 155, 99, 0.65);
+  --on-bg: #f4eee1;
+  --on-bg-muted: #a8baa9;
+  --text: #f4eee1;
+  --text-muted: #a8baa9;
+  --accent: #d49b63;
+  --accent-2: #68b08a;
+  --accent-glow: rgba(212, 155, 99, 0.14);
+  --btn-bg: linear-gradient(135deg, #b8743b, #925424);
+  --btn-text: #ffffff;
+  --nav-active-bg: linear-gradient(135deg, rgba(212, 155, 99, 0.22), rgba(104, 176, 138, 0.14));
+  --nav-active-text: #f2c89b;
+  --user-bubble: linear-gradient(135deg, #2d5a45, #1f4232);
+  --bot-bubble: rgba(244, 238, 225, 0.055);
+  --code-bg: #08100d;
+  --opt-bg: #13231c;
+  --opt-text: #f4eee1;
+  --glass-rim: inset 0 0 0 1px rgba(212, 155, 99, 0.13);
+  --card-shadow: 0 18px 42px rgba(0, 0, 0, 0.46), var(--glass-rim);
+  --card-hover-shadow: 0 22px 48px rgba(0, 0, 0, 0.58), inset 0 0 0 1px rgba(212, 155, 99, 0.28);
+  --title-gradient: linear-gradient(125deg, #f8f2e4 15%, #d49b63 65%, #68b08a 100%);
+  --scrollbar-thumb: rgba(212, 155, 99, 0.32);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --heading-font: "Newsreader", "Vazirmatn", Georgia, serif;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+[data-theme="botanical"] body::before {
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 70% 45% at 15% 5%, rgba(104, 176, 138, 0.14), transparent 62%),
+    radial-gradient(ellipse 65% 40% at 85% 90%, rgba(212, 155, 99, 0.12), transparent 60%);
+}
+
+[data-theme="botanical"] body::after {
+  z-index: -1;
+  background-image: radial-gradient(rgba(212, 155, 99, 0.07) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+
+[data-theme="botanical"] .card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+[data-theme="botanical"] .gallery-media img {
+  filter: sepia(0.18) contrast(1.04);
+}
+
+[data-theme="botanical"] .hero-title {
+  letter-spacing: -0.01em;
+}
+
+[data-theme="botanical"] .callout {
+  border-inline-start-width: 2px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}

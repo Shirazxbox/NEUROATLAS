@@ -4,23 +4,23 @@ import os
 import urllib.error
 import urllib.request
 
-SYSTEM_PROMPT = """You are NEUROATLAS, a smart and helpful AI assistant created with Python by Narges Bayat (a student developer learning Python, web engineering, AI systems, and neuroscience, participating in the GenHacks 2026 hackathon).
+SYSTEM_PROMPT = """You are NeuroAI, the intelligent neuroscience and research assistant for NEUROATLAS, created with Python by Narges Bayat (a student developer exploring Python, web engineering, AI systems, and neuroscience for GenHacks 2026).
 
-About NEUROATLAS platform:
-- Combines an interactive 23-chapter Neuroscience Atlas, live PubMed search, flashcards/quiz, concept map, 24 NIH/NCBI references, and an open AI assistant.
-- Built with Python backend, 3 languages (English, Persian, Turkish), and 5 visitor-selectable themes.
-- Educational resource only; never diagnose or prescribe.
+About NEUROATLAS:
+- Combines a 23-chapter evidence-led Neuroscience Atlas, live NCBI PubMed search, flashcards/quiz, concept map, 24 NIH/NCBI references, and NeuroAI.
+- Built with a modular Python serverless backend, 3 languages (English, Persian, Turkish), and pluggable studio themes.
+- Educational resource only; never provide medical diagnosis, clinical advice, or prescriptions.
 
-Response style rules:
-1. Be concise, clear, and comprehensive. Avoid unnecessary filler or long introductions.
-2. For simple greetings (like "Hi", "Merhaba", or "درود"), reply in 1-2 friendly sentences and ask how you can help. Do NOT recite full creator/hackathon details unless asked.
-3. Answer ANY general, scientific, coding, neuroscience, or everyday question accurately and to the point.
+Response rules:
+1. Be concise, clear, accurate, and student-friendly. Avoid unnecessary filler.
+2. For simple greetings (like "Hi", "Merhaba", or "درود"), reply warmly in 1-2 sentences and ask what neuroscience, atlas, or research topic they want to explore. Do NOT recite full bio/hackathon details unless asked.
+3. Prioritize neuroscience, brain circuits, research methods (EEG/MRI), Atlas chapters, and scientific Python/data analysis; also help clearly with general science and coding questions.
 4. Reply in the same language the user writes in (English, Persian/Farsi, or Turkish), unless asked otherwise."""
 
 TRANSLATE_SYSTEM_PROMPT = """You are a precise scientific translator for NEUROATLAS.
 Translate the provided neuroscience educational text accurately into the requested target language.
 Rules:
-1. Keep the exact structure, headings, and bullet points clear and readable.
+1. Keep the exact structure, headings (##), and bullet points clear and readable.
 2. Keep standard scientific acronyms (like CNS, PNS, MRI, fMRI, EEG, CSF, GABA, BOLD, NIH) in parentheses beside the translated term when helpful.
 3. Output ONLY the clean translation without extra commentary."""
 
@@ -134,17 +134,26 @@ def process_chat_request(payload: dict) -> tuple[int, dict]:
     message = str(payload.get("message", "")).strip()
     if not message:
         return 400, {"error": "Message cannot be empty."}
-    if len(message) > 9000:
-        return 400, {"error": "Message is too long (max 9000 characters)."}
+
+    mode = str(payload.get("mode", "chat")).strip().lower()
+    max_len = 18000 if mode == "translate" else 9000
+    if len(message) > max_len:
+        return 400, {"error": f"Message is too long (max {max_len} characters)."}
 
     history = payload.get("history")
     if not isinstance(history, list):
         history = []
+
     lang = str(payload.get("lang", "en")).strip().lower()
-    mode = str(payload.get("mode", "chat")).strip().lower()
-    sys_prompt = TRANSLATE_SYSTEM_PROMPT if mode == "translate" else SYSTEM_PROMPT
+    context = str(payload.get("context", "")).strip()
+
     if mode == "translate":
+        sys_prompt = TRANSLATE_SYSTEM_PROMPT
         history = []
+    else:
+        sys_prompt = SYSTEM_PROMPT
+        if context:
+            sys_prompt += f"\n\nActive NEUROATLAS chapter context for reference:\n{context[:3000]}"
 
     gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
     groq_key = os.environ.get("GROQ_API_KEY", "").strip()

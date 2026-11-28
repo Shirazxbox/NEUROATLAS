@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NEUROATLAS — Studio Bento Layout, Segmented Navbar & Mobile Snap UI
+   NEUROATLAS — Studio Bento Layout, Segmented Navbar, Toast & Responsive UI
    ========================================================================== */
 
 *,
@@ -34,13 +34,38 @@ body.drawer-open {
   overflow: hidden;
 }
 
+/* Shared Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+}
+
+/* Accessible Keyboard Focus Ring */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .container {
   width: min(1320px, 95%);
   margin: 0 auto;
 }
 
 /* ==========================================================================
-   Navbar, Desktop Segmented Nav & Mobile Quick Language Bar
+   Navbar, Desktop Segmented Nav & Mobile Quick Language Strip
    ========================================================================== */
 
 .navbar {
@@ -153,11 +178,11 @@ body.drawer-open {
   font-size: 0.79rem;
   font-weight: 700;
   cursor: pointer;
-  outline: none;
-  max-width: 152px;
+  max-width: 170px;
 }
 
-.control-select option {
+.control-select option,
+.control-select optgroup {
   background: var(--opt-bg);
   color: var(--opt-text);
 }
@@ -188,13 +213,65 @@ body.drawer-open {
   flex-shrink: 0;
 }
 
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.18s;
+  touch-action: manipulation;
+}
+
+.icon-btn:hover {
+  border-color: var(--accent);
+}
+
+/* Eye-Catching Mobile Menu Trigger Button */
+.menu-trigger-btn {
+  height: 40px;
+  padding: 0 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22), 0 0 0 3px var(--accent-glow);
+  transition: transform 0.16s, filter 0.16s, box-shadow 0.16s;
+  touch-action: manipulation;
+}
+
+.menu-trigger-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+/* Mobile Quick Language Strip (Outside Hamburger Menu) */
 .mobile-lang-strip {
   display: none;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
   padding: 6px 0 9px;
   border-top: 1px solid var(--border);
+}
+
+.mobile-lang-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--on-bg-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .mobile-lang-strip .lang-group {
@@ -203,32 +280,7 @@ body.drawer-open {
 
 .mobile-lang-strip .lang-btn {
   min-height: 32px;
-  padding: 4px 10px;
-}
-
-.mobile-theme-select {
-  max-width: 175px;
-  min-height: 36px;
-  padding: 5px 9px;
-}
-
-.icon-btn {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text);
-  cursor: pointer;
-  font-size: 1.15rem;
-  transition: 0.18s;
-  touch-action: manipulation;
-}
-
-.icon-btn:hover {
-  border-color: var(--accent);
+  padding: 4px 12px;
 }
 
 /* ==========================================================================
@@ -239,7 +291,7 @@ body.drawer-open {
   position: fixed;
   inset: 0;
   z-index: 90;
-  background: rgba(2, 6, 16, 0.45);
+  background: rgba(2, 6, 16, 0.5);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.22s ease;
@@ -375,6 +427,13 @@ html[dir="rtl"] .mobile-drawer.open {
 
 .search-bar:focus-within {
   border-color: var(--border-strong);
+}
+
+.search-icon {
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .search-bar input {
@@ -887,6 +946,43 @@ html[dir="rtl"] .msg.bot {
   border-bottom-right-radius: 4px;
 }
 
+.msg-rich {
+  white-space: normal;
+  line-height: 1.62;
+}
+
+.msg-rich p {
+  margin: 6px 0;
+}
+
+.msg-rich p:first-child {
+  margin-top: 0;
+}
+
+.msg-rich p:last-child {
+  margin-bottom: 0;
+}
+
+.msg-rich h4 {
+  font-size: 0.96rem;
+  margin: 10px 0 4px;
+  color: var(--accent);
+}
+
+.msg-rich ul,
+.msg-rich ol {
+  margin: 6px 0 6px 18px;
+}
+
+html[dir="rtl"] .msg-rich ul,
+html[dir="rtl"] .msg-rich ol {
+  margin: 6px 18px 6px 0;
+}
+
+.msg-rich li {
+  margin: 3px 0;
+}
+
 .msg-meta {
   margin-top: 6px;
   font-size: 0.71rem;
@@ -965,14 +1061,14 @@ select.field {
   color: var(--text);
   font-family: inherit;
   font-size: 0.92rem;
-  outline: none;
 }
 
 .chat-input {
   flex: 1;
   resize: none;
   min-height: 44px;
-  max-height: 120px;
+  max-height: 132px;
+  overflow-y: auto;
 }
 
 .chat-input:focus,
@@ -987,7 +1083,7 @@ select.field option {
 }
 
 /* ==========================================================================
-   Grids, Specimen Archive, Atlas, Comparison Bar & Concept Map
+   Grids, Specimen Archive, Atlas Progress, Comparison Bar & Concept Map
    ========================================================================== */
 
 .grid-3 {
@@ -1095,12 +1191,44 @@ select.field option {
   font-family: "JetBrains Mono", monospace;
 }
 
-/* Atlas */
+/* Atlas & Reading Progress */
 .atlas-toolbar {
   display: flex;
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.atlas-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-inline-start: auto;
+  min-width: 185px;
+}
+
+.atlas-progress-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--on-bg-muted);
+  white-space: nowrap;
+}
+
+.atlas-progress-bar {
+  flex: 1;
+  min-width: 80px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.atlas-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--btn-bg);
+  transition: width 0.3s ease;
 }
 
 .chapters-toggle-btn {
@@ -1124,7 +1252,10 @@ select.field option {
 }
 
 .chapter-btn {
-  display: block;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
   width: 100%;
   text-align: start;
   background: transparent;
@@ -1142,6 +1273,13 @@ select.field option {
 .chapter-btn.active {
   color: var(--accent);
   font-weight: 700;
+}
+
+.chapter-btn.is-read::after {
+  content: "✓";
+  font-size: 0.74rem;
+  color: var(--accent-2);
+  flex-shrink: 0;
 }
 
 .chapter-hidden {
@@ -1162,6 +1300,14 @@ select.field option {
   font-size: 1.1rem;
   margin: 18px 0 6px;
   color: var(--accent);
+}
+
+.chapter-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 /* Per-Article & Per-PubMed Multi-Language Comparison Controls */
@@ -1255,6 +1401,11 @@ select.field option {
   overflow-wrap: anywhere;
 }
 
+.callout.is-highlighted {
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
 details.qa {
   background: var(--bg-input);
   border: 1px solid var(--border);
@@ -1311,7 +1462,7 @@ details.qa p {
   display: block;
 }
 
-/* Concept Map Nodes (Full Text Wrapping, Zero Overlap) */
+/* Concept Map Nodes */
 #mapGrid {
   align-items: stretch;
   margin-top: 6px;
@@ -1455,7 +1606,7 @@ details.qa p {
   font-weight: 600;
 }
 
-/* Floating AI Assistant Button (Always Visible & High-Contrast) */
+/* Floating AI Assistant Button */
 .fab-chat {
   position: fixed;
   bottom: 20px;
@@ -1493,6 +1644,42 @@ details.qa p {
   transform: translateY(10px);
 }
 
+/* Toast Notification Region (Replaces browser alert) */
+.toast-region {
+  position: fixed;
+  bottom: 20px;
+  inset-inline-start: 20px;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: min(360px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  background: var(--bg-card-solid);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 11px 15px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.36);
+  animation: toastIn 0.22s ease;
+}
+
+.toast--error {
+  border-inline-start-color: #ef4444;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
 .hidden {
   display: none !important;
 }
@@ -1517,14 +1704,14 @@ footer {
    Responsive Breakpoints: Laptop, Tablet, Mobile Portrait & Landscape
    ========================================================================== */
 
-/* Hide brand badge ONLY in the tight 1081px–1240px desktop window; keep visible on Mobile! */
+/* Hide brand badge ONLY in tight desktop window; keep visible on Mobile */
 @media (min-width: 1081px) and (max-width: 1240px) {
   .brand-badge {
     display: none;
   }
 }
 
-/* Switch top bar cleanly into Hamburger Drawer + Quick Language Strip below 1080px */
+/* Switch top bar cleanly into Eye-Catching Hamburger Drawer + Quick Language Strip */
 @media (max-width: 1080px) {
   .nav-tabs,
   .navbar .controls {
@@ -1616,6 +1803,19 @@ footer {
     display: none;
   }
 
+  .atlas-progress-wrap {
+    width: 100%;
+    margin-inline-start: 0;
+  }
+
+  .toast-region {
+    bottom: auto;
+    top: 76px;
+    inset-inline-start: 14px;
+    inset-inline-end: 14px;
+    max-width: none;
+  }
+
   /* Prevent iOS Safari auto-zoom on form inputs */
   .search-bar input,
   .chat-input,
@@ -1659,12 +1859,13 @@ footer {
     padding: 2px 7px;
   }
 
-  .hero-actions {
-    grid-template-columns: 1fr;
+  .menu-trigger-btn {
+    padding: 0 10px;
+    font-size: 0.78rem;
   }
 
-  .mobile-theme-select {
-    max-width: 158px;
+  .hero-actions {
+    grid-template-columns: 1fr;
   }
 
   .fab-chat {

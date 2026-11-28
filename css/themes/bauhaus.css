@@ -1,0 +1,130 @@
+/* ==========================================================================
+   NEUROATLAS Theme: Swiss Bauhaus (Signature Style)
+   Architectural grid, sharp corners, ink borders & hard offset shadows
+   ========================================================================== */
+
+:root,
+[data-theme="bauhaus"] {
+  color-scheme: light;
+  --bg: #f6f4ef;
+  --bg-elevated: #f6f4ef;
+  --bg-drawer: #f6f4ef;
+  --bg-card: #ffffff;
+  --bg-card-solid: #ffffff;
+  --bg-input: #f0ede4;
+  --nav-pill-bg: #ebe7dc;
+  --border: #141414;
+  --border-strong: #d92d20;
+  --card-hover-border: #141414;
+  --on-bg: #141414;
+  --on-bg-muted: #4b4a45;
+  --text: #141414;
+  --text-muted: #4b4a45;
+  --accent: #d92d20;
+  --accent-2: #155eef;
+  --accent-glow: rgba(217, 45, 32, 0.1);
+  --btn-bg: #d92d20;
+  --btn-text: #ffffff;
+  --nav-active-bg: #141414;
+  --nav-active-text: #ffffff;
+  --user-bubble: #155eef;
+  --bot-bubble: #f0ede4;
+  --code-bg: #141414;
+  --opt-bg: #ffffff;
+  --opt-text: #141414;
+  --glass-rim: inset 0 0 0 transparent;
+  --card-shadow: 5px 5px 0 #141414;
+  --card-hover-shadow: 7px 7px 0 #d92d20;
+  --title-gradient: linear-gradient(120deg, #141414 0%, #141414 68%, #d92d20 100%);
+  --scrollbar-thumb: #141414;
+  --radius: 4px;
+  --radius-sm: 2px;
+  --heading-font: "Plus Jakarta Sans", "Vazirmatn", system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+[data-theme="bauhaus"] body::before {
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(20, 20, 20, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 20, 20, 0.045) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+[data-theme="bauhaus"] .navbar {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 2px solid #141414;
+}
+
+[data-theme="bauhaus"] .card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-width: 2px;
+}
+
+[data-theme="bauhaus"] .hero-title {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: #141414;
+  color: #141414;
+  border-inline-start: 4px solid #d92d20;
+  padding-inline-start: 12px;
+}
+
+[data-theme="bauhaus"] .btn-primary,
+[data-theme="bauhaus"] .menu-trigger-btn {
+  border: 2px solid #141414;
+  box-shadow: 3px 3px 0 #141414;
+}
+
+[data-theme="bauhaus"] .btn-primary:hover,
+[data-theme="bauhaus"] .menu-trigger-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #141414;
+  filter: none;
+}
+
+[data-theme="bauhaus"] .btn-ghost,
+[data-theme="bauhaus"] .control-select,
+[data-theme="bauhaus"] .lang-group,
+[data-theme="bauhaus"] .icon-btn,
+[data-theme="bauhaus"] .search-bar {
+  border-width: 2px;
+}
+
+[data-theme="bauhaus"] .status-pill,
+[data-theme="bauhaus"] .stat-box {
+  border-width: 1.5px;
+}
+
+[data-theme="bauhaus"] .tag {
+  font-family: "JetBrains Mono", "Vazirmatn", monospace;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="bauhaus"] .fab-chat {
+  border-radius: 4px;
+  border: 2px solid #141414;
+  box-shadow: 4px 4px 0 #141414;
+}
+
+[data-theme="bauhaus"] .brand-badge {
+  background: #facc15;
+  color: #141414;
+  border: 1.5px solid #141414;
+  border-radius: 2px;
+}
+
+[data-theme="bauhaus"] .msg.user,
+[data-theme="bauhaus"] .msg.bot {
+  border-radius: 4px;
+  border: 1.5px solid #141414;
+}
