@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NEUROATLAS by Narges Bayat — Multilingual Python AI Assistant & Evidence-Led Neuroscience Atlas." />
+  <meta name="description" content="NEUROATLAS by Narges Bayat — Evidence-led 23-chapter Neuroscience Atlas, live NCBI PubMed research explorer, and NeuroAI Python Assistant for GenHacks 2026." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NEUROATLAS · Evidence-Led Neuroscience Atlas & NeuroAI" />
+  <meta property="og:description" content="Explore 23 neuroscience chapters, live NCBI PubMed studies, interactive concept maps, and multilingual NeuroAI built with Python for GenHacks 2026." />
+  <meta property="og:url" content="https://neuroatlas-alpha.vercel.app/" />
+  <meta name="twitter:card" content="summary" />
   <title>NEUROATLAS · Narges Bayat</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='64' y2='64' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%230b1222'/><stop offset='1' stop-color='%23082032'/></linearGradient><linearGradient id='n' x1='12' y1='12' x2='52' y2='52' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%2322d3ee'/><stop offset='1' stop-color='%2310b981'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><rect x='2' y='2' width='60' height='60' rx='14' fill='none' stroke='url(%23n)' stroke-width='2.5' opacity='0.78'/><path d='M20 44V20L44 44V20' fill='none' stroke='url(%23n)' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='20' cy='20' r='4.2' fill='%2322d3ee'/><circle cx='20' cy='44' r='4.2' fill='%2322d3ee'/><circle cx='44' cy='20' r='4.2' fill='%2310b981'/><circle cx='44' cy='44' r='4.2' fill='%2310b981'/><circle cx='32' cy='32' r='3.5' fill='%23ffffff'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/themes.css" />
+  <link id="themeStylesheet" rel="stylesheet" href="/css/themes/cyber.css" />
   <link rel="stylesheet" href="/css/layout.css" />
 </head>
 <body>
@@ -16,13 +22,20 @@
     <div class="container">
       <div class="nav-inner">
         <button type="button" class="brand" onclick="switchView('home')">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect width="32" height="32" rx="9" fill="url(#na-grad)" />
-            <circle cx="10" cy="11" r="2.2" fill="#fff" />
-            <circle cx="22" cy="11" r="2.2" fill="#fff" />
-            <circle cx="16" cy="22" r="2.5" fill="#fff" />
-            <path d="M10 11L22 11M10 11L16 22M22 11L16 22" stroke="#fff" stroke-width="1.7" stroke-linecap="round" />
-            <defs><linearGradient id="na-grad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#0891b2"/><stop offset="1" stop-color="#10b981"/></linearGradient></defs>
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="na-grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0891b2"/>
+                <stop offset="1" stop-color="#10b981"/>
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="16" fill="url(#na-grad)" />
+            <path d="M20 44V20L44 44V20" stroke="#fff" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="20" cy="20" r="4.2" fill="#fff" />
+            <circle cx="20" cy="44" r="4.2" fill="#fff" />
+            <circle cx="44" cy="20" r="4.2" fill="#fff" />
+            <circle cx="44" cy="44" r="4.2" fill="#fff" />
+            <circle cx="32" cy="32" r="3.4" fill="#fff" />
           </svg>
           <span>NEUROATLAS</span>
           <span class="brand-badge">Narges Bayat</span>
@@ -38,13 +51,7 @@
         </nav>
 
         <div class="controls">
-          <select id="themeSelect" class="control-select" aria-label="Theme selector">
-            <option value="cyber" data-i18n="themeCyber">Cyber Terminal</option>
-            <option value="obsidian" data-i18n="themeObsidian">Obsidian Cinema</option>
-            <option value="ocean" data-i18n="themeOcean">Ocean Glass</option>
-            <option value="light" data-i18n="themeLight">Daylight Lab</option>
-            <option value="paper" data-i18n="themePaper">Editorial Paper</option>
-          </select>
+          <select id="themeSelect" class="control-select" aria-label="Theme selector"></select>
           <div class="lang-group" role="group" aria-label="Language selector">
             <button type="button" class="lang-btn active" data-lang="en">EN</button>
             <button type="button" class="lang-btn" data-lang="fa">فا</button>
@@ -53,24 +60,28 @@
         </div>
 
         <div class="nav-mobile-actions">
-          <button id="mobileSearchBtn" type="button" class="icon-btn" aria-label="Search">⌕</button>
-          <button id="hamburgerBtn" type="button" class="icon-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">☰</button>
+          <button id="mobileSearchBtn" type="button" class="icon-btn" aria-label="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2" />
+              <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </button>
+          <button id="hamburgerBtn" type="button" class="menu-trigger-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h12" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" />
+            </svg>
+            <span data-i18n="menuBtnLabel">Menu</span>
+          </button>
         </div>
       </div>
 
-      <div class="mobile-lang-strip" aria-label="Quick Language and Theme">
+      <div class="mobile-lang-strip" aria-label="Quick Language Switcher">
+        <span class="mobile-lang-label" data-i18n="langLabel">Language</span>
         <div class="lang-group" role="group" aria-label="Language selector">
           <button type="button" class="lang-btn active" data-lang="en">EN</button>
           <button type="button" class="lang-btn" data-lang="fa">فا</button>
           <button type="button" class="lang-btn" data-lang="tr">TR</button>
         </div>
-        <select id="mobileThemeSelect" class="control-select mobile-theme-select" aria-label="Theme selector">
-          <option value="cyber" data-i18n="themeCyber">Cyber Terminal</option>
-          <option value="obsidian" data-i18n="themeObsidian">Obsidian Cinema</option>
-          <option value="ocean" data-i18n="themeOcean">Ocean Glass</option>
-          <option value="light" data-i18n="themeLight">Daylight Lab</option>
-          <option value="paper" data-i18n="themePaper">Editorial Paper</option>
-        </select>
       </div>
     </div>
   </header>
@@ -79,7 +90,11 @@
   <aside id="mobileDrawer" class="mobile-drawer" aria-hidden="true" aria-label="Mobile Navigation">
     <div class="drawer-head">
       <span class="drawer-title" data-i18n="menuLabel">Navigation</span>
-      <button id="drawerCloseBtn" type="button" class="icon-btn" aria-label="Close">✕</button>
+      <button id="drawerCloseBtn" type="button" class="icon-btn" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+      </button>
     </div>
 
     <nav class="drawer-nav">
@@ -94,13 +109,7 @@
     <div class="drawer-controls">
       <div>
         <label class="tag" for="drawerThemeSelect" data-i18n="themeLabel" style="display:block">Color Theme</label>
-        <select id="drawerThemeSelect" class="control-select" aria-label="Theme selector">
-          <option value="cyber" data-i18n="themeCyber">Cyber Terminal</option>
-          <option value="obsidian" data-i18n="themeObsidian">Obsidian Cinema</option>
-          <option value="ocean" data-i18n="themeOcean">Ocean Glass</option>
-          <option value="light" data-i18n="themeLight">Daylight Lab</option>
-          <option value="paper" data-i18n="themePaper">Editorial Paper</option>
-        </select>
+        <select id="drawerThemeSelect" class="control-select" aria-label="Theme selector"></select>
       </div>
     </div>
   </aside>
@@ -108,7 +117,12 @@
   <div class="container">
     <div class="search-wrap" id="globalSearchWrap">
       <div class="search-bar">
-        <span>⌕</span>
+        <span class="search-icon" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2" />
+            <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          </svg>
+        </span>
         <input id="globalSearchInput" type="search" autocomplete="off" data-i18n-placeholder="globalSearchPh" placeholder="Search 23 chapters, glossary, methods, or NIH sources…" />
         <kbd>Ctrl K</kbd>
       </div>
@@ -138,7 +152,7 @@
               <div class="stat-box"><strong id="statChapters">23</strong><span data-i18n="statCh">Atlas Chapters</span></div>
               <div class="stat-box"><strong id="statSources">24</strong><span data-i18n="statSrc">NIH/NCBI Sources</span></div>
               <div class="stat-box"><strong>3</strong><span data-i18n="statLang">Languages</span></div>
-              <div class="stat-box"><strong>5</strong><span data-i18n="statThemes">Themes</span></div>
+              <div class="stat-box"><strong id="statThemes">8</strong><span data-i18n="statThemes">Themes</span></div>
             </div>
 
             <div class="connectome-box" aria-hidden="true">
@@ -148,13 +162,13 @@
           </div>
         </div>
 
-        <div id="chatPanel" class="card chat-panel" aria-label="NEUROATLAS AI Assistant">
+        <div id="chatPanel" class="card chat-panel" aria-label="NeuroAI Research Assistant">
           <div class="chat-header">
             <div class="chat-title-wrap">
               <div class="chat-avatar">NA</div>
               <div>
-                <div class="chat-name" data-i18n="chatTitle">NEUROATLAS AI Assistant</div>
-                <div class="chat-sub" data-i18n="chatSub">Python AI · General, coding & science</div>
+                <div class="chat-name" data-i18n="chatTitle">NeuroAI Research Assistant</div>
+                <div class="chat-sub" data-i18n="chatSub">Python AI · Neuroscience, atlas & scientific coding</div>
               </div>
             </div>
             <button id="clearChatBtn" type="button" class="btn-ghost" data-i18n="clearBtn">Clear</button>
@@ -163,12 +177,12 @@
           <div id="chatMessages" class="chat-messages"></div>
 
           <div class="chat-prompts">
-            <div class="prompts-label" data-i18n="tryAsking">Quick prompts</div>
+            <div class="prompts-label" data-i18n="tryAsking">Neuroscience prompts</div>
             <div class="prompt-chips" id="promptChips"></div>
           </div>
 
           <form id="chatForm" class="chat-input-bar">
-            <textarea id="chatInput" class="chat-input" rows="1" data-i18n-placeholder="inputPlaceholder" placeholder="Ask any question here..."></textarea>
+            <textarea id="chatInput" class="chat-input" rows="1" data-i18n-placeholder="inputPlaceholder" placeholder="Ask about brain circuits, chapters, EEG/MRI, or research..."></textarea>
             <button id="sendBtn" type="submit" class="btn-primary" data-i18n="sendBtn">Send</button>
           </form>
         </div>
@@ -188,10 +202,10 @@
           <div class="card-foot"><button type="button" class="btn-ghost" onclick="switchView('research')" data-i18n="openBtn">Open →</button></div>
         </article>
         <article class="card pad feature-card">
-          <div class="tag" data-i18n="hm3Tag">03 / CREATOR & LEARNING</div>
-          <h3 data-i18n="hm3Title">Narges Bayat · Student Builder</h3>
-          <p class="muted" style="margin-top:6px" data-i18n="hm3Desc">Built with Python for GenHacks 2026.</p>
-          <div class="card-foot"><button type="button" class="btn-ghost" onclick="switchView('about')" data-i18n="openBtn">Open →</button></div>
+          <div class="tag" data-i18n="hm3Tag">03 / ACTIVE LEARNING</div>
+          <h3 data-i18n="hm3Title">Concept Map, Quiz & Notes</h3>
+          <p class="muted" style="margin-top:6px" data-i18n="hm3Desc">Practice with retrieval flashcards, concept maps, glossary, and your personal browser workspace.</p>
+          <div class="card-foot"><button type="button" class="btn-ghost" onclick="switchView('learn')" data-i18n="openBtn">Open →</button></div>
         </article>
       </div>
 
@@ -207,6 +221,10 @@
       <div class="atlas-toolbar">
         <input id="chapterFilter" class="field" style="max-width:340px" type="search" data-i18n-placeholder="filterChaptersPh" placeholder="Filter 23 chapters…" />
         <span id="chapterFilterCount" class="muted" style="color:var(--on-bg-muted)"></span>
+        <div class="atlas-progress-wrap">
+          <span id="atlasProgressText" class="atlas-progress-text">0/23</span>
+          <div class="atlas-progress-bar" aria-hidden="true"><div id="atlasProgressFill" class="atlas-progress-fill"></div></div>
+        </div>
         <button id="toggleChaptersBtn" type="button" class="btn-ghost chapters-toggle-btn" data-i18n="chaptersToggleShow">Show 23 Chapters ▾</button>
       </div>
       <div class="atlas-layout">
@@ -315,11 +333,32 @@
     <section id="view-about" class="view">
       <div class="card about-hero">
         <div class="avatar-ring">
-          <svg width="108" height="108" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-            <circle cx="60" cy="44" r="22" stroke="currentColor" stroke-width="4" opacity=".9" />
-            <path d="M24 98C24 78 40 68 60 68C80 68 96 78 96 98" stroke="currentColor" stroke-width="4" stroke-linecap="round" opacity=".9" />
-            <circle cx="90" cy="30" r="8" fill="var(--accent)" />
-            <circle cx="28" cy="34" r="5" fill="var(--accent-2)" />
+          <svg width="136" height="136" viewBox="0 0 160 160" fill="none" aria-hidden="true">
+            <circle cx="80" cy="80" r="70" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 5" opacity="0.48" />
+            <circle cx="80" cy="80" r="56" stroke="currentColor" stroke-width="1.2" opacity="0.22" />
+            <line x1="80" y1="7" x2="80" y2="15" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+            <line x1="80" y1="145" x2="80" y2="153" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+            <line x1="7" y1="80" x2="15" y2="80" stroke="var(--accent-2)" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+            <line x1="145" y1="80" x2="153" y2="80" stroke="var(--accent-2)" stroke-width="2" stroke-linecap="round" opacity="0.7" />
+            <circle cx="129.5" cy="30.5" r="4.5" fill="var(--accent)" />
+            <circle cx="30.5" cy="129.5" r="3.8" fill="var(--accent-2)" />
+
+            <path d="M76 38 C52 38, 38 54, 38 74 C38 91, 47 103, 58 108 C64 111, 71 110, 76 106" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.92" />
+            <path d="M84 38 C108 38, 122 54, 122 74 C122 91, 113 103, 102 108 C96 111, 89 110, 84 106" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.92" />
+            <path d="M46 66 C53 60, 62 60, 68 66 M44 84 C52 88, 61 88, 67 82" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" opacity="0.55" />
+            <path d="M114 66 C107 60, 98 60, 92 66 M116 84 C108 88, 99 88, 93 82" stroke="var(--accent-2)" stroke-width="1.8" stroke-linecap="round" opacity="0.55" />
+
+            <path d="M60 62 L80 74 L100 62 M58 86 L80 74 L102 86 M80 46 L80 100 M60 62 L58 86 M100 62 L102 86" stroke="var(--accent)" stroke-width="1.9" stroke-linecap="round" opacity="0.85" />
+            <circle cx="80" cy="46" r="3.4" fill="var(--accent)" />
+            <circle cx="60" cy="62" r="3.8" fill="var(--accent-2)" />
+            <circle cx="100" cy="62" r="3.8" fill="var(--accent-2)" />
+            <circle cx="58" cy="86" r="3.5" fill="var(--accent)" />
+            <circle cx="102" cy="86" r="3.5" fill="var(--accent)" />
+            <circle cx="80" cy="100" r="3.4" fill="var(--accent-2)" />
+            <circle cx="80" cy="74" r="5" fill="var(--accent)" />
+            <circle cx="80" cy="74" r="2.2" fill="#ffffff" />
+
+            <path d="M52 125 L65 125 L70 118 L76 132 L83 120 L88 125 L108 125" stroke="var(--accent-2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
         <div>
@@ -340,9 +379,9 @@
         </div>
       </div>
       <div class="grid-3">
-        <article class="card pad feature-card"><div class="tag" data-i18n="ab1Tag">LEARNING JOURNEY</div><h3 data-i18n="ab1Title">Building While Learning</h3><p class="muted" style="margin-top:6px" data-i18n="ab1Desc">Evolved from a prototype atlas into a full-stack Python serverless platform.</p></article>
-        <article class="card pad feature-card"><div class="tag" data-i18n="ab2Tag">HACKATHON GOAL</div><h3 data-i18n="ab2Title">GenHacks 2026</h3><p class="muted" style="margin-top:6px" data-i18n="ab2Desc">Combines neuroscience education and general AI assistance in one lightweight interface.</p></article>
-        <article class="card pad feature-card"><div class="tag" data-i18n="ab3Tag">PRIVACY & ACCESSIBILITY</div><h3 data-i18n="ab3Title">Inclusive by Design</h3><p class="muted" style="margin-top:6px" data-i18n="ab3Desc">Supports English, Persian (RTL), Turkish, five themes, and anti-spam protection.</p></article>
+        <article class="card pad feature-card"><div class="tag" data-i18n="ab1Tag">LEARNING JOURNEY</div><h3 data-i18n="ab1Title">Building While Learning</h3><p class="muted" style="margin-top:6px" data-i18n="ab1Desc">Evolved from a prototype atlas into a modular serverless web application.</p></article>
+        <article class="card pad feature-card"><div class="tag" data-i18n="ab2Tag">HACKATHON GOAL</div><h3 data-i18n="ab2Title">GenHacks 2026</h3><p class="muted" style="margin-top:6px" data-i18n="ab2Desc">Combines neuroscience education and AI research assistance in one lightweight interface.</p></article>
+        <article class="card pad feature-card"><div class="tag" data-i18n="ab3Tag">PRIVACY & ACCESSIBILITY</div><h3 data-i18n="ab3Title">Inclusive by Design</h3><p class="muted" style="margin-top:6px" data-i18n="ab3Desc">Supports English, Persian (RTL), Turkish, pluggable studio themes, and anti-spam protection.</p></article>
       </div>
     </section>
 
@@ -383,6 +422,8 @@
     </section>
   </div>
 
+  <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
   <button id="fabChat" type="button" class="btn-primary fab-chat" onclick="jumpToChat()" aria-label="Ask NeuroAI">
     <span class="fab-pulse" aria-hidden="true"></span>
     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -396,9 +437,16 @@
 
   <footer><div class="container" data-i18n="footerText">NEUROATLAS · Built with Python by Narges Bayat for GenHacks 2026 · Educational Resource Only</div></footer>
 
-  <script src="/neuroatlas-data.js"></script>
-  <script src="/neuroatlas-i18n-data.js"></script>
-  <script src="/js/ui.js"></script>
-  <script src="/js/app.js"></script>
+  <script src="/js/data/neuroatlas-data.js"></script>
+  <script src="/js/data/neuroatlas-i18n-data.js"></script>
+  <script src="/js/data/themes-registry.js"></script>
+  <script src="/js/data/ui-i18n.js"></script>
+  <script src="/js/core/state.js"></script>
+  <script src="/js/core/ui.js"></script>
+  <script src="/js/modules/chat.js"></script>
+  <script src="/js/modules/atlas.js"></script>
+  <script src="/js/modules/research.js"></script>
+  <script src="/js/modules/learn.js"></script>
+  <script src="/js/modules/contact.js"></script>
 </body>
 </html>
